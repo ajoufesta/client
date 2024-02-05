@@ -9,9 +9,27 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "skyBlue-gradient":
+          "radial-gradient( circle at 70% -20%, rgba(4, 127, 254, 0.6) 15%, rgba(0, 208, 236, 0.3) 15%, transparent 40%);",
+      },
+
+      colors: {
+        lightBlue: {
+          100: "rgb(0, 91, 225, 0.05)",
+          200: "rgba(0, 91, 225, 0.1)",
+          300: "rgba(0, 91, 225, 0.2)",
+          400: "rgba(0, 91, 225, 0.3)",
+        },
+        blue: {
+          50: "rgba(0, 91, 225, 0.4)",
+          100: "rgba(0, 91, 225, 0.5)",
+          200: "rgba(0, 91, 225, 0.6)",
+          300: "rgba(0, 91, 225, 0.7)",
+          400: "rgba(0, 91, 225, 0.8)",
+          500: "rgba(0, 91, 225, 0.9)",
+          600: "rgba(0, 91, 225, 1)",
+          900: "#001234",
+        },
       },
     },
   },
