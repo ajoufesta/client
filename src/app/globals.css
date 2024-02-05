@@ -11,7 +11,7 @@
 @layer base {
   html {
     font-family: "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
-    font-size: 14px;
+    font-size: 62.5%;
     font-weight: 400;
   }
 }
