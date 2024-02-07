@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       spacing: {
         footer: "10.4rem",
+        whole_width: "37.5rem",
+        whole_height: "81.2rem",
       },
       backgroundImage: {
         "skyBlue-gradient":
