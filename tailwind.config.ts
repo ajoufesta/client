@@ -12,6 +12,7 @@ const config: Config = {
         footer: "10.4rem",
         whole_width: "37.5rem",
         whole_height: "81.2rem",
+        icon: "3.263rem",
       },
       backgroundImage: {
         "skyBlue-gradient":
