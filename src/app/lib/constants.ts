@@ -2,32 +2,39 @@ const FESTIVAL_DATE = ["2024-02-10", "2024-02-11", "2024-02-12"];
 
 const SECTION_LIST = [
   {
-    section: "S-1",
+    section: "seongho1",
     name: "성호관 앞",
+    image: "/seongho1.png",
   },
   {
-    section: "S-2",
+    section: "seongho2",
     name: "성호관 테라스 옆",
+    image: "/seongho2.png",
   },
   {
-    section: "N-1",
+    section: "theater",
     name: "노천극장",
+    image: "/theater.png",
   },
   {
-    section: "D-1",
+    section: "library",
     name: "도서관",
+    image: "/library.png",
   },
   {
-    section: "D-2",
+    section: "parking",
     name: "도서관 주차장",
+    image: "/parking.png",
   },
   {
-    section: "G-1",
-    name: "가온마당 1구역",
+    section: "yard1",
+    name: "가온마당 A구역",
+    image: "/yard1.png",
   },
   {
-    section: "G-2",
-    name: "가온마당 2구역",
+    section: "yard2",
+    name: "가온마당 B구역",
+    image: "/yard2.png",
   },
 ];
 
