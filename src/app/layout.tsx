@@ -18,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
-        <Footer />
+        <div className="h-whole_height w-whole_width border border-black bg-skyBlue-gradient bg-blue-900">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
