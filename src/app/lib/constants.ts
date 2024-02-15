@@ -1,4 +1,4 @@
-const FESTIVAL_DATE = ["2024-02-10", "2024-02-11", "2024-02-12"];
+const FESTIVAL_DATE = ["2024-02-13", "2024-02-14", "2024-02-15"];
 
 const SECTION_LIST = [
   {
@@ -12,7 +12,7 @@ const SECTION_LIST = [
     image: "/seongho2.png",
   },
   {
-    section: "theater",
+    section: "theater",
     name: "노천극장",
     image: "/theater.png",
   },
