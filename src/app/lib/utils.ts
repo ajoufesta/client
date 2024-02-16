@@ -2,8 +2,8 @@ import { FESTIVAL_DATE } from "./constants";
 
 /**
  * 현재 날짜가 축제 기간 중 몇 번째 날인지 확인
- * @param date Date 객체
- * @returns 1, 2, 3 중 하나의 숫자
+ * @param {Date} date - 날짜
+ * @returns {number} - 1, 2, 3 | -1
  */
 export const getCurrentDay = (date: Date): number => {
   const currentDate = date.toISOString().slice(0, 10);
@@ -15,8 +15,8 @@ export const getCurrentDay = (date: Date): number => {
 
 /**
  * 축제 기간 중 선택된 날이 오늘인지 확인
- * @param day number literal 1, 2, 3
- * @returns true | false
+ * @param {number} day - 1, 2, 3
+ * @returns {boolean} true | false
  */
 export const isToday = (day: number): boolean => {
   const today = new Date().toISOString().slice(0, 10);
@@ -25,8 +25,8 @@ export const isToday = (day: number): boolean => {
 
 /**
  * YYYY-MM-DD 형식의 날짜를 MM월 DD일 형식으로 변환
- * @param date "YYYY-MM-DD" 문자열
- * @returns "MM월 DD일" 문자열
+ * @param {string} date - "YYYY-MM-DD"
+ * @returns {string} - "MM월 DD일"
  */
 export const getFormattedDate = (date: string): string => {
   const [year, month, day] = date.split("-");
