@@ -2,16 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 @layer base {
   html {
     font-family: "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
     font-size: 14px;
     font-weight: 400;
+  }
+
+  .highlight {
+    display: inline;
+    box-shadow: inset 0 -0.5rem 0 rgba(204, 222, 249, 0.7);
+  }
+
+  .move-right {
+    transition: transform 0.3s ease-out;
+    transform: translateX(100%);
   }
 }
