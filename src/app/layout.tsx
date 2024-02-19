@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="h-whole_height w-whole_width border border-black bg-skyBlue-gradient bg-blue-900">
+        <div className="h-whole_height w-whole_width bg-blue-800 bg-skyBlue-gradient">
           {children}
           <Footer />
         </div>

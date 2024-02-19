@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import BoothIc from "../../../public/boothIcon.svg";
-import PubIc from "../../../public/pubIcon.svg";
-import ReservationIc from "../../../public/reservationIcon.svg";
-import ShowIc from "../../../public/showIcon.svg";
-import FooterHr from "../../../public/footerHr.svg";
-import IconHr from "../../../public/iconHr.svg";
+import BoothIc from "@/public/boothIcon.svg";
+import PubIc from "@/public/pubIcon.svg";
+import ReservationIc from "@/public/reservationIcon.svg";
+import ShowIc from "@/public/showIcon.svg";
+import FooterHr from "@/public/footerHr.svg";
+import IconHr from "@/public/iconHr.svg";
 import Link from "next/link";
 
 const Footer = () => {
@@ -21,7 +21,7 @@ const Footer = () => {
       <FooterHr className="relative" />
       <div className="h-footer w-full flex justify-center gap-10">
         <Link
-          href={`http://localhost:3000/1`}
+          href={`/1`}
           className={`flex flex-col items-center justify-center m-0 gap-2 ${
             selectedButton === "공연" ? "" : "opacity-50"
           }`}
@@ -32,7 +32,7 @@ const Footer = () => {
           <span className="text-[#CCDEF9] text-lg">공연</span>
         </Link>
         <Link
-          href={`http://localhost:3000/booths/1/A`}
+          href={`/booths?day=1&section=seongho`}
           className={`flex flex-col items-center justify-center m-0 gap-2 ${
             selectedButton === "부스" ? "" : "opacity-50"
           }`}
@@ -43,7 +43,7 @@ const Footer = () => {
           <span className="text-[#CCDEF9] text-lg">부스</span>
         </Link>
         <Link
-          href={`http://localhost:3000/pubs/1`}
+          href={`/pubs?day=1&section=seongho`}
           className={`flex flex-col items-center justify-center m-0 gap-2 ${
             selectedButton === "주점" ? "" : "opacity-50"
           }`}
