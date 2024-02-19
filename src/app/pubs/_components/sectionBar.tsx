@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryWithDefault } from "@/app/hooks/useQueryWithDefault";
 import { useToggle } from "@/app/hooks/useToggle";
+import EntireMap from "@/public/entire-map.svg";
+import ArrowLeft from "@/public/arrow-left.svg";
+import SectionList from "@/public/section-list.svg";
 
 const SectionBar = ({
   selectedDay,
@@ -74,19 +77,19 @@ const SectionBar = ({
           ))}
         </ul>
       </div>
-      <div className="w-full h-14 flex flex-row justify-between items-center bg-transparentWhite-200 px-6 py-4">
-        <img src="/entire-map.svg" alt="전체 지도" className="w-8" />
+      <div className="w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-200 px-[2.4rem] py-4">
+        <EntireMap />
         <button onClick={() => handleClickLeft()}>
-          <img src="/arrow-left.svg" alt="이전 섹션" />
+          <ArrowLeft />
         </button>
-        <span className="w-36 font-normal text-xl text-center text-blue-400">
+        <span className="w-[13.8rem] font-normal text-3xl text-center text-blue-400">
           {SECTION_LIST[selectedIndex].name}
         </span>
         <button onClick={() => handleClickRight()}>
-          <img src="/arrow-left.svg" alt="다음 섹션" className="rotate-180" />
+          <ArrowLeft className="rotate-180" />
         </button>
         <button onClick={handleToggle}>
-          <img src="/section-list.svg" alt="섹션 펼치기" />
+          <SectionList />
         </button>
       </div>
     </div>
