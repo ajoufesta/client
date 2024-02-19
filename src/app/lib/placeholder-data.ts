@@ -66,3 +66,15 @@ export const pubs: Pub[] = [
     linkIconId: "instagram",
   },
 ];
+
+export const emptyPub: Pub = {
+  id: "x",
+  pubName: "주점 구함",
+  description: "자리 비었음.",
+  pubLocation: "x",
+  pubHours: ["00:00", "00:00"],
+  teamName: "아주페스타",
+  menuImageSrc: "https://via.placeholder.com/150",
+  link: "https://via.placeholder.com/150",
+  linkIconId: "default",
+};

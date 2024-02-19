@@ -6,6 +6,7 @@ import Map from "./_components/map";
 import SectionBar from "./_components/sectionBar";
 import PubNavigator from "./_components/pubNavigator";
 import fetchPubs from "../lib/data";
+import Modal from "../_commons/modal";
 
 export const metadata = {
   title: "Pubs",
@@ -34,19 +35,24 @@ const PubsPage = async ({ searchParams }: PubsPageProps) => {
   }
 
   const pubs = await fetchPubs();
-
   // const totalPubs = await fetchPubs(selectedDay, selectedSection);
+
   return (
     <>
       <DateDisplay selectedDay={selectedDay} />
       <DayDisplay selectedDay={selectedDay} />
-      <div className="flex mt-2 w-[24rem] h-auto flex-col items-center rounded-xl overflow-hidden relative">
-        <Map selectedDay={selectedDay} selectedSection={selectedSection} />
+      <div className="flex mt-2 w-[21rem] h-[31rem] flex-col items-center rounded-xl overflow-hidden relative">
+        <Map
+          selectedDay={selectedDay}
+          selectedSection={selectedSection}
+          pubs={pubs}
+        />
         <PubNavigator pubs={pubs} />
         <SectionBar
           selectedDay={selectedDay}
           selectedSection={selectedSection}
         />
+        <Modal />
       </div>
     </>
   );

@@ -1,4 +1,6 @@
-const FESTIVAL_DATE = ["2024-02-17", "2024-02-18", "2024-02-19"];
+import { PubLocations } from "./types";
+
+const FESTIVAL_DATE = ["2024-02-18", "2024-02-19", "2024-02-20"];
 
 const SECTION_LIST = [
   {
@@ -38,4 +40,112 @@ const SECTION_LIST = [
   },
 ];
 
-export { FESTIVAL_DATE, SECTION_LIST };
+const PUB_LOCATIONS: PubLocations = {
+  // day -> 1, 2, 3
+  // section -> seongho1, seongho2, library, parking, theater, yard1, yard2
+  // 각각의 장소는 location_id(ex. 1, 2, 총1 등)과 section에 해당하는 map에 대한 절대 좌표, rotate을 가지고 있음.
+  1: {
+    seongho1: [
+      {
+        location: "1",
+        x: 10,
+        y: 10,
+        rotate: 0,
+      },
+      {
+        location: "2",
+        x: 10,
+        y: 22,
+        rotate: 0,
+      },
+      {
+        location: "3",
+        x: 10,
+        y: 34,
+        rotate: 20,
+      },
+      {
+        location: "4",
+        x: 10,
+        y: 46,
+        rotate: 0,
+      },
+      {
+        location: "5",
+        x: 10,
+        y: 58,
+        rotate: 0,
+      },
+    ],
+    seongho2: [
+      {
+        location: "6",
+        x: 30,
+        y: 30,
+        rotate: 0,
+      },
+      {
+        location: "7",
+        x: 40,
+        y: 40,
+        rotate: 0,
+      },
+      {
+        location: "총1",
+        x: 50,
+        y: 50,
+        rotate: 10,
+      },
+    ],
+    library: [
+      {
+        location: "3",
+        x: 40,
+        y: 40,
+        rotate: 0,
+      },
+    ],
+    parking: [
+      {
+        location: "4",
+        x: 50,
+        y: 50,
+        rotate: 0,
+      },
+      {
+        location: "총학1",
+        x: 60,
+        y: 60,
+        rotate: 0,
+      },
+    ],
+    theater: [
+      {
+        location: "5",
+        x: 60,
+        y: 60,
+        rotate: 0,
+      },
+    ],
+    yard1: [
+      {
+        location: "6",
+        x: 70,
+        y: 70,
+        rotate: 0,
+      },
+    ],
+    yard2: [
+      {
+        location: "7",
+        x: 80,
+        y: 80,
+        rotate: 0,
+      },
+    ],
+  },
+  2: {},
+  3: {},
+};
+
+export { FESTIVAL_DATE, SECTION_LIST, PUB_LOCATIONS };

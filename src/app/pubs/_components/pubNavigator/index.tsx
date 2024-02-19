@@ -54,17 +54,19 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
             height={32}
             className="mt-4"
           />
-          <Image
-            src="/navigator-handle-arrow-left.svg"
-            alt="navigator-handle-arrow-left"
-            width={8}
-            height={8}
-            className={`transform mt-4 absolute top-4 left-3 ${
-              divRef.current?.style.transform === "translateX(89%)"
-                ? "rotate-0"
-                : "rotate-180"
-            }`}
-          />
+          <div className="w-2 mt-4 absolute top-4 left-3">
+            <Image
+              src="/navigator-handle-arrow-left.svg"
+              alt="navigator-handle-arrow-left"
+              width={8}
+              height={8}
+              className={`transform  ${
+                divRef.current?.style.transform === "translateX(88%)"
+                  ? "rotate-0"
+                  : "rotate-180"
+              }`}
+            />
+          </div>
         </div>
         <div className="flex flex-col p-4 gap-4 items-center w-full bg-transparentBlue-300 overflow-y-auto">
           {pubs.map((pub) => (
