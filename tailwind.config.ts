@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        footer: "10.4rem",
+        whole_width: "37.5rem",
+        whole_height: "81.2rem",
+        icon: "3.263rem",
+      },
       backgroundImage: {
         "skyBlue-gradient":
           "radial-gradient( circle at 70% -20%, rgba(4, 127, 254, 0.6) 15%, rgba(0, 208, 236, 0.3) 15%, transparent 40%);",
