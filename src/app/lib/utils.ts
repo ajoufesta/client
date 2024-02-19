@@ -1,4 +1,6 @@
 import { FESTIVAL_DATE } from "./constants";
+import { emptyPub } from "./placeholder-data";
+import { PubLocation, Pub } from "./types";
 
 /**
  * 현재 날짜가 축제 기간 중 몇 번째 날인지 확인
@@ -31,4 +33,14 @@ export const isToday = (day: number): boolean => {
 export const getFormattedDate = (date: string): string => {
   const [year, month, day] = date.split("-");
   return `${month}월 ${day}일`;
+};
+
+/**
+ * pubs에서 location에 해당하는 pub을 찾아 반환 또는 emptyPub 반환
+ * @param {Pub[]} pubs - pub 배열
+ * @param {Location} location - location
+ * @returns {Pub} pub | emptyPub
+ */
+export const getPubByLocation = (pubs: Pub[], location: PubLocation): Pub => {
+  return pubs.find((pub) => pub.pubLocation === location.location) || emptyPub;
 };
