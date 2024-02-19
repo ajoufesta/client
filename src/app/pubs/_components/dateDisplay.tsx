@@ -8,10 +8,12 @@ const DateDisplay = ({ selectedDay }: { selectedDay: number }) => {
   }
 
   return (
-    <div className="w-auto p-3 flex justify-center items-center h-5 flex-shrink-0 rounded-[3rem] bg-blue-700 text-blue-300 text-center text-sm font-semibold">
-      {isToday(selectedDay)
-        ? "TODAY"
-        : getFormattedDate(FESTIVAL_DATE[selectedDay - 1])}
+    <div className="w-[7rem] p-4 flex justify-center items-center h-[2.1rem] flex-shrink-0 rounded-[3rem] bg-blue-700">
+      <span className="table-cell align-middle text-blue-300 text-center text-lg font-semibold">
+        {isToday(selectedDay)
+          ? "TODAY"
+          : getFormattedDate(FESTIVAL_DATE[selectedDay - 1])}
+      </span>
     </div>
   );
 };

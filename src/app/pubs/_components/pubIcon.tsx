@@ -17,8 +17,8 @@ const PubIcon = ({
     <div
       className="place-to-click z-20"
       style={{
-        top: `${pubLocation.y}%`,
-        left: `${pubLocation.x}%`,
+        top: `${pubLocation.y * 0.1}rem`,
+        left: `${pubLocation.x * 0.1}rem`,
         transform: `rotate(${pubLocation.rotate}deg)`,
       }}
       onClick={() => {

@@ -5,6 +5,7 @@ import { FESTIVAL_DATE } from "@/app/lib/constants";
 import { useQueryWithDefault } from "@/app/hooks/useQueryWithDefault";
 import { useToggle } from "@/app/hooks/useToggle";
 import { useMemo } from "react";
+import ArrowDown from "@/public/arrow-down.svg";
 
 const DayDisplay = ({ selectedDay }: { selectedDay: number }) => {
   const { getQueryParam, getQueryUrl } = useQueryWithDefault();
@@ -22,16 +23,12 @@ const DayDisplay = ({ selectedDay }: { selectedDay: number }) => {
 
   return (
     <div
-      className="flex z-20 flex-col items-center w-auto font-medium relative cursor-pointer"
+      className="flex z-20 flex-col items-center w-[12.3rem] font-medium relative cursor-pointer"
       onClick={handleToggle}
     >
-      <div className="pl-8 text-white text-center text-2xl font-bold w-full p-2 flex items-center justify-center">
+      <div className="w-full pl-[3.2rem] text-white text-center text-3xl font-bold p-[0.8rem] flex items-center justify-center">
         {`DAY ${selectedDay}`}
-        <img
-          src="/arrow-down.svg"
-          className={`w-3 ml-3 ${isToggle ? "rotate-180" : ""}`}
-          alt="arrow-down"
-        />
+        <ArrowDown className={` ml-4 ${isToggle ? "rotate-180" : ""}`} />
       </div>
       <div
         className={`bg-white absolute top-full z-10 rounded-md overflow-hidden ${
@@ -42,7 +39,7 @@ const DayDisplay = ({ selectedDay }: { selectedDay: number }) => {
           {FESTIVAL_DATE.map((date, index) => (
             <li
               key={index}
-              className={`px-10 py-1 text-base text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold`}
+              className={`w-[12.3rem] py-[0.8rem] text-2xl text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold`}
             >
               <Link href={queryUrls[index]}>DAY {index + 1}</Link>
             </li>

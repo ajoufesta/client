@@ -4,15 +4,13 @@ import { SECTION_LIST, PUB_LOCATIONS } from "@/app/lib/constants";
 import { Pub, PubLocation } from "@/app/lib/types";
 import { getPubByLocation } from "@/app/lib/utils";
 
-const Map = ({
-  selectedDay,
-  selectedSection,
-  pubs,
-}: {
+interface MapProps {
   selectedDay: number;
   selectedSection: string;
   pubs: Pub[];
-}) => {
+}
+
+const Map = ({ selectedDay, selectedSection, pubs }: MapProps) => {
   const section = SECTION_LIST.find((s) => s.section === selectedSection);
 
   if (!section) {
@@ -29,7 +27,7 @@ const Map = ({
         src={section.image}
         alt={section.name}
         fill={true}
-        sizes="(max-width: 600px) 100vw, 400px"
+        sizes="(max-width: 60rem) 100vw, 40rem"
         priority
       />
       {PUB_LOCATIONS[selectedDay][selectedSection] &&
