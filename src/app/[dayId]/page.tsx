@@ -1,7 +1,12 @@
 import React from "react";
 
+
+// interface pagePropTypes {
+//   dayId: string;
+// }
+
 const page = () => {
-  return <div>번째날의 공연순서페이지입니다</div>;
+  return <div>dk</div>;
 };
 
 export default page;
