@@ -20,6 +20,7 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
     const newPosition = e.touches[0].clientX;
     const diffX = initialPosition - newPosition;
 
+
     if (initialPosition > window.innerWidth / 2 && diffX > 0) {
       divRef.current.style.transform = `translateX(calc(${-diffX}px + 90%))`;
     } else if (initialPosition < window.innerWidth / 2 && diffX < 0) {
@@ -48,6 +49,7 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
+
           <NavigatorHandle className="mt-[1.6rem]" />
           <div className="absolute top-[2.9rem] left-[0.8rem]">
             <NavigatorHandleArrow
