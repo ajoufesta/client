@@ -19,7 +19,7 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
     const diffX = initialPosition - newPosition;
 
     if (diffX > 0) {
-      divRef.current.style.transform = `translateX(calc(${-diffX}px + 89%))`;
+      divRef.current.style.transform = `translateX(calc(${-diffX}px + 90%))`;
     } else {
       divRef.current.style.transform = `translateX(calc(${-diffX}px)`;
     }
@@ -31,14 +31,14 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
     if (divRef.current.getBoundingClientRect().left < window.innerWidth / 2) {
       divRef.current.style.transform = "translateX(0)";
     } else {
-      divRef.current.style.transform = "translateX(89%)";
+      divRef.current.style.transform = "translateX(90%)";
     }
   };
 
   return (
     <div className="z-10 absolute w-54 h-full right-0">
       <div
-        className="relative flex justify-end w-full h-full transform translate-x-[89%]"
+        className="relative flex justify-end w-full h-full transform translate-x-[90%]"
         ref={divRef}
       >
         <div
@@ -60,11 +60,7 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
               alt="navigator-handle-arrow-left"
               width={8}
               height={8}
-              className={`transform  ${
-                divRef.current?.style.transform === "translateX(88%)"
-                  ? "rotate-0"
-                  : "rotate-180"
-              }`}
+              className={`transform rotate-180`}
             />
           </div>
         </div>

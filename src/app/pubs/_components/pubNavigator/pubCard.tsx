@@ -20,7 +20,7 @@ const PubCard = ({ pub }: { pub: Pub }) => {
 
         <div className="absolute top-[1.2rem] right-[1.2rem] flex flex-col gap-1">
           <div className="w-[2.2rem] h-[2.2rem] rounded-full bg-blue-400 flex justify-center items-center">
-            <span className="text-normal text-center font-bold text-white">
+            <span className="mt-[0.1rem] text-lg font-bold text-white">
               {pub.pubLocation}
             </span>
           </div>
