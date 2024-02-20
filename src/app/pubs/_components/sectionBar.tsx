@@ -48,12 +48,12 @@ const SectionBar = ({
 
   useEffect(() => {
     router.push(getQueryUrl(selectedDay, SECTION_LIST[selectedIndex].section));
-  }, [selectedIndex]);
+  }, [selectedDay, selectedIndex]);
 
   return (
     <div className="z-10 absolute bottom-0 w-full">
       <div
-        className={`bg-white absolute bottom-14 z-10 w-full h-80 rounded-t-xl overflow-y-auto bg-transparentWhite-200 ${
+        className={`bg-white absolute bottom-[5rem] z-10 w-full h-[20rem] rounded-t-2xl overflow-y-auto bg-transparentWhite-300 ${
           isToggle ? "block" : "hidden"
         }`}
       >
@@ -62,7 +62,7 @@ const SectionBar = ({
             <li key={index}>
               <div
                 className={
-                  "px-10 py-4 text-lg text-blue-400 text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold"
+                  "py-[1.2rem] text-xl text-blue-400 text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold"
                 }
                 onClick={() => handleClickSection(index)}
               >

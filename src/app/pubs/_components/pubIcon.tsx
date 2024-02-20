@@ -26,7 +26,7 @@ const PubIcon = ({
         openModal();
       }}
     >
-      <span className="text-lg font-bold">{pubLocation.location}</span>
+      <span className="text-2xl font-bold">{pubLocation.location}</span>
     </div>
   );
 };

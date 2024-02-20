@@ -32,9 +32,9 @@ const PubInfo = ({ pub }: { pub: Pub }) => {
         </div>
       </div>
 
-      <div className="absolute top-8 right-8 flex flex-col gap-1">
+      <div className="absolute top-6 right-7 flex flex-col gap-1">
         <div className="w-[2.7rem] h-[2.7rem] rounded-full bg-blue-400 flex justify-center items-center">
-          <span className="text-sm text-center font-bold text-white">
+          <span className="text-xl text-center font-bold text-white">
             {pub.pubLocation}
           </span>
         </div>
