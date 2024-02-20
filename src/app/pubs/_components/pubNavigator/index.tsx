@@ -4,6 +4,8 @@ import { Pub } from "@/app/lib/types";
 import PubCard from "./pubCard";
 import Image from "next/image";
 import { useRef } from "react";
+import NavigatorHandle from "@/public/navigator-handle.svg";
+import NavigatorHandleArrow from "@/public/navigator-handle-arrow-left.svg";
 
 const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
   const divRef = useRef<HTMLDivElement>(null);
@@ -18,9 +20,10 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
     const newPosition = e.touches[0].clientX;
     const diffX = initialPosition - newPosition;
 
-    if (diffX > 0) {
+
+    if (initialPosition > window.innerWidth / 2 && diffX > 0) {
       divRef.current.style.transform = `translateX(calc(${-diffX}px + 90%))`;
-    } else {
+    } else if (initialPosition < window.innerWidth / 2 && diffX < 0) {
       divRef.current.style.transform = `translateX(calc(${-diffX}px)`;
     }
   };
@@ -36,35 +39,29 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
   };
 
   return (
-    <div className="z-10 absolute w-54 h-full right-0">
+    <div className="z-10 absolute w-[19.7rem] h-full right-0">
       <div
         className="relative flex justify-end w-full h-full transform translate-x-[90%]"
         ref={divRef}
       >
         <div
-          className="w-8"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <Image
-            src="/navigator-handle.svg"
-            alt="navigator-handle"
-            width={32}
-            height={32}
-            className="mt-4"
-          />
-          <div className="w-2 mt-4 absolute top-4 left-3">
-            <Image
-              src="/navigator-handle-arrow-left.svg"
-              alt="navigator-handle-arrow-left"
-              width={8}
-              height={8}
-              className={`transform rotate-180`}
+
+          <NavigatorHandle className="mt-[1.6rem]" />
+          <div className="absolute top-[2.9rem] left-[0.8rem]">
+            <NavigatorHandleArrow
+              className={`transform ${
+                divRef.current?.style.transform === "translateX(90%)"
+                  ? "rotate-0"
+                  : "rotate-180"
+              }`}
             />
           </div>
         </div>
-        <div className="flex flex-col p-4 gap-4 items-center w-full bg-transparentBlue-300 overflow-y-auto">
+        <div className="w-[17.6rem] flex flex-col p-[1.5rem] gap-[1.5rem] items-center bg-transparentBlue-300 overflow-y-auto">
           {pubs.map((pub) => (
             <PubCard key={pub.id} pub={pub} />
           ))}
