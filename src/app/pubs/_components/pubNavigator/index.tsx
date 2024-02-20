@@ -5,7 +5,9 @@ import PubCard from "./pubCard";
 import Image from "next/image";
 import { useRef } from "react";
 
-const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
+type PubData = Pub[];
+
+const PubNavigator = ({ pubs }: { pubs: PubData }) => {
   const divRef = useRef<HTMLDivElement>(null);
   let initialPosition = 0;
 
@@ -69,8 +71,8 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
           </div>
         </div>
         <div className="flex flex-col p-4 gap-4 items-center w-full bg-transparentBlue-300 overflow-y-auto">
-          {pubs.map((pub) => (
-            <PubCard key={pub.id} pub={pub} />
+          {pubs.map((pub, index) => (
+            <PubCard key={index} pub={pub} />
           ))}
         </div>
       </div>

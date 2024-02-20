@@ -1,6 +1,19 @@
-import { Pub } from "@/app/lib/types";
+interface PubDataPropType {
+  pubId: null;
+  pubName: string;
+  teamName: string;
+  phoneNum: string;
+  description: string;
+  menuImageSrc: string;
+  link: string;
+  linkIconId: string;
+  pubLocation: string;
+}
 
-const PubCard = ({ pub }: { pub: Pub }) => {
+const PubCard = ({ pub }: { pub: PubDataPropType }) => {
+  if (!pub) {
+    return null;
+  }
   return (
     <div className="w-[14.2rem] h-[11.8rem] flex-shrink-0 relative bg-white rounded-2xl">
       <div className="w-full h-full flex flex-col items-start p-[1.2rem]">
@@ -12,11 +25,11 @@ const PubCard = ({ pub }: { pub: Pub }) => {
           {pub.description}
         </p>
 
-        <span className="absolute bottom-2 w-full flex-shrink-0 text-[0.8rem] text-blue-400">
+        {/* <span className="absolute bottom-2 w-full flex-shrink-0 text-[0.8rem] text-blue-400">
           <span className="font-semibold mr-2">운영시간</span>
-          {pub.pubHours[0]} ~ {pub.pubHours[1]}
-        </span>
-        {/* <img src={pub.menuImageSrc} alt="menu" /> */}
+          {pub.data[0].pubHours[0]} ~ {pub.pubHours[1]}
+        </span> */}
+        <img src={pub.menuImageSrc} alt="menu" />
 
         <div className="absolute top-[1.2rem] right-[1.2rem] flex flex-col gap-1">
           <div className="w-[2.2rem] h-[2.2rem] rounded-full bg-blue-400 flex justify-center items-center">
