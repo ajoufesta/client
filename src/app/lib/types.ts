@@ -1,16 +1,31 @@
-export interface Pub {
+export type Pub = {
   pubId: null;
   pubName: string;
-  teamName: string;
-  phoneNum: string;
+  pubLocation: string;
   description: string;
+  teamName: string;
   menuImageSrc: string;
   link: string;
   linkIconId: "instagram" | "picture" | "default";
-  pubLocation: string;
-}
+  waitTeam: string;
+  isOpen: boolean;
+};
 
-export type PubLocation = {
+export type Booth = {
+  boothId: null;
+  boothName: string;
+  boothLocation: string;
+  description: string;
+  teamName: string;
+  openTime: string;
+  closeTime: string;
+  link: string;
+  linkIconId: "instagram" | "picture" | "default";
+};
+
+export type Place = Pub | Booth;
+
+export type PlaceLocation = {
   location: string;
   x: number;
   y: number;
@@ -18,9 +33,9 @@ export type PubLocation = {
 };
 
 type Sections = {
-  [key: string]: PubLocation[];
+  [key: string]: PlaceLocation[];
 };
 
-export type PubLocations = {
+export type PlaceLocations = {
   [key: number]: Sections;
 };
