@@ -3,7 +3,6 @@ import React from "react";
 import EmblaCarousel from "./EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 
-import "./base.css";
 import "./sandbox.css";
 import "./embla.css";
 

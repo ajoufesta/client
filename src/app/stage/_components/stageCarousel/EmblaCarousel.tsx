@@ -2,11 +2,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { EmblaCarouselType, EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
-import {
-  DotButton,
-  PrevButton,
-  NextButton,
-} from "./EmblaCarouselArrowsDotsButtons";
+import { DotButton } from "./EmblaCarouselArrowsDotsButtons";
 import Schedule from "../Schedule";
 import Guest from "../Guest";
 
@@ -18,21 +14,14 @@ type PropType = {
 const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
-  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
-  const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
-  const scrollPrev = useCallback(
-    () => emblaApi && emblaApi.scrollPrev(),
-    [emblaApi]
-  );
-  const scrollNext = useCallback(
-    () => emblaApi && emblaApi.scrollNext(),
-    [emblaApi]
-  );
   const scrollTo = useCallback(
-    (index: number) => emblaApi && emblaApi.scrollTo(index),
+    (index: number) => {
+      emblaApi && emblaApi.scrollTo(index);
+    },
     [emblaApi]
   );
 
@@ -42,13 +31,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
     setSelectedIndex(emblaApi.selectedScrollSnap());
-    setPrevBtnDisabled(!emblaApi.canScrollPrev());
-    setNextBtnDisabled(!emblaApi.canScrollNext());
   }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
-
     onInit(emblaApi);
     onSelect(emblaApi);
     emblaApi.on("reInit", onInit);
@@ -70,40 +56,42 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             ))}
           </div>
         </div>
+      </div>
 
-        <div className="embla__dots">
-          {scrollSnaps.map((_, index) => (
-            <DotButton
-              key={index}
-              onClick={() => scrollTo(index)}
-              className={"embla__dot".concat(
-                index === selectedIndex ? " embla__dot--selected" : ""
-              )}
-            >
-              {index === selectedIndex ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="8"
-                  height="8"
-                  viewBox="0 0 8 8"
-                  fill="none"
-                >
-                  <circle cx="4" cy="4" r="4" fill="white" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="8"
-                  height="8"
-                  viewBox="0 0 8 8"
-                  fill="none"
-                >
-                  <circle cx="4" cy="4" r="4" fill="#00285C" />
-                </svg>
-              )}
-            </DotButton>
-          ))}
-        </div>
+      <div className="embla__dots mt-[2.4rem]">
+        {scrollSnaps.map((_, index) => (
+          <DotButton
+            key={index}
+            onClick={() => {
+              scrollTo(index);
+            }}
+            className={"embla__dot".concat(
+              index === selectedIndex ? " embla__dot--selected" : ""
+            )}
+          >
+            {index === selectedIndex ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="8"
+                height="8"
+                viewBox="0 0 8 8"
+                fill="none"
+              >
+                <circle cx="4" cy="4" r="4" fill="white" />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="8"
+                height="8"
+                viewBox="0 0 8 8"
+                fill="none"
+              >
+                <circle cx="4" cy="4" r="4" fill="#00285C" />
+              </svg>
+            )}
+          </DotButton>
+        ))}
       </div>
     </>
   );

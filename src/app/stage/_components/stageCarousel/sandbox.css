@@ -12,6 +12,7 @@
 .sandbox__carousel {
   position: relative;
   background-color: var(--background-code);
+  height: 54.2rem;
 }
 @media (max-width: 749px) {
   .sandbox__carousel {
