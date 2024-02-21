@@ -34,7 +34,8 @@ const Map = ({ selectedDay, selectedSection, places }: MapProps) => {
         sizes="(max-width: 60rem) 100vw, 40rem"
         priority
       />
-      {"pubId" in places[0] &&
+      {places &&
+        "pubId" in places[0] &&
         PUB_LOCATIONS[selectedDay][selectedSection] &&
         PUB_LOCATIONS[selectedDay][selectedSection].map(
           (location: PlaceLocation, index: number) => (
@@ -45,7 +46,8 @@ const Map = ({ selectedDay, selectedSection, places }: MapProps) => {
             />
           ),
         )}
-      {"boothId" in places[0] &&
+      {places &&
+        "boothId" in places[0] &&
         BOOTH_LOCATIONS[selectedDay][selectedSection] &&
         BOOTH_LOCATIONS[selectedDay][selectedSection].map(
           (location: PlaceLocation, index: number) => (
