@@ -38,7 +38,7 @@ const Map = ({ selectedDay, selectedSection, pubs }: MapProps) => {
               pubLocation={location}
               pub={getPubByLocation(pubs, location)}
             />
-          ),
+          )
         )}
     </div>
   );

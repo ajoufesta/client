@@ -7,7 +7,9 @@ import { useRef } from "react";
 import NavigatorHandle from "@/public/navigator-handle.svg";
 import NavigatorHandleArrow from "@/public/navigator-handle-arrow-left.svg";
 
-const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
+type PubData = Pub[];
+
+const PubNavigator = ({ pubs }: { pubs: PubData }) => {
   const divRef = useRef<HTMLDivElement>(null);
   let initialPosition = 0;
 
@@ -61,9 +63,9 @@ const PubNavigator = ({ pubs }: { pubs: Pub[] }) => {
             />
           </div>
         </div>
-        <div className="w-[17.6rem] flex flex-col p-[1.5rem] gap-[1.5rem] items-center bg-transparentBlue-300 overflow-y-auto">
-          {pubs.map((pub) => (
-            <PubCard key={pub.id} pub={pub} />
+        <div className="flex flex-col p-4 gap-4 items-center w-full bg-transparentBlue-300 overflow-y-auto">
+          {pubs.map((pub, index) => (
+            <PubCard key={index} pub={pub} />
           ))}
         </div>
       </div>

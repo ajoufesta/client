@@ -20,7 +20,7 @@ interface PubsPageProps {
   };
 }
 
-const PubsPage = async ({ searchParams }: PubsPageProps) => {
+const PubsPage = ({ searchParams }: PubsPageProps) => {
   // day가 쿼리스트링으로 넘어오지 않으면 오늘 날짜로 설정
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
   // section이 쿼리스트링으로 넘어오지 않으면 G-1로 설정
@@ -34,28 +34,39 @@ const PubsPage = async ({ searchParams }: PubsPageProps) => {
     return <div>Invalid Section</div>;
   }
 
-  const pubs = await fetchPubs();
-  // const totalPubs = await fetchPubs(selectedDay, selectedSection);
+  const fetchData = async () => {
+    const pubs = await fetchPubs(selectedDay, selectedSection);
+    return pubs;
+  };
 
-  return (
-    <>
-      <DateDisplay selectedDay={selectedDay} />
-      <DayDisplay selectedDay={selectedDay} />
-      <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
-        <Map
-          selectedDay={selectedDay}
-          selectedSection={selectedSection}
-          pubs={pubs}
-        />
-        <PubNavigator pubs={pubs} />
-        <SectionBar
-          selectedDay={selectedDay}
-          selectedSection={selectedSection}
-        />
-        <Modal />
-      </div>
-    </>
-  );
+  // fetchData 함수를 실행하고 그 결과를 대기함
+  const fetchAndRenderData = async () => {
+    const pubs = await fetchData();
+    console.log(pubs, "pubs");
+
+    return (
+      <>
+        <DateDisplay selectedDay={selectedDay} />
+        <DayDisplay selectedDay={selectedDay} />
+        <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
+          <Map
+            selectedDay={selectedDay}
+            selectedSection={selectedSection}
+            pubs={pubs}
+          />
+          <PubNavigator pubs={pubs} />
+          <SectionBar
+            selectedDay={selectedDay}
+            selectedSection={selectedSection}
+          />
+          <Modal />
+        </div>
+      </>
+    );
+  };
+
+  // fetchAndRenderData 함수를 실행하여 데이터를 렌더링함
+  return fetchAndRenderData();
 };
 
 export default PubsPage;

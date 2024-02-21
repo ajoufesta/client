@@ -1,13 +1,13 @@
 export interface Pub {
-  id: string;
+  pubId: null;
   pubName: string;
-  description: string;
-  pubLocation: string;
   teamName: string;
-  pubHours: [string, string]; // ["10:00", "23:00"] 형식
+  phoneNum: string;
+  description: string;
   menuImageSrc: string;
   link: string;
   linkIconId: "instagram" | "picture" | "default";
+  pubLocation: string;
 }
 
 export type PubLocation = {
