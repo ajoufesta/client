@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Footer from "./_commons/Footer";
+import Footer from "./_commons/footer";
 
 export const metadata: Metadata = {
   title: "Ajou Festa",
