@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { DotButton } from "./EmblaCarouselArrowsDotsButtons";
 import Schedule from "../Schedule";
 import Guest from "../Guest";
+import { FESTIVAL_DATE } from "@/app/lib/constants";
 
 type PropType = {
   slides: number[];
@@ -44,11 +45,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
   return (
     <>
-      <div className="embla flex flex-col">
+      <div className="embla flex flex-col ">
         <div className="embla__viewport" ref={emblaRef}>
           <div className="embla__container">
             {slides.map((index) => (
               <div className="embla__slide" key={index}>
+                <div className="w-[29.5rem] text-white text-center text-3xl font-bold  flex items-center justify-center mb-[2rem]">
+                  {`DAY ${index + 1}`}
+                </div>
                 <Schedule />
                 <Guest />
                 <div className="text-white">{index + 1}입니다</div>

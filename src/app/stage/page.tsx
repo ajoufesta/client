@@ -17,9 +17,6 @@ const Page = ({ searchParams }: StagePageProps) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <DateDisplay selectedDay={selectedDay} />
-      <DayDisplay selectedDay={selectedDay} />
-      {/* <Schedule />
-      <Guest /> */}
       <Carousel />
     </div>
   );

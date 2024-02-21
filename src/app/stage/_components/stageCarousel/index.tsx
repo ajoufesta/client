@@ -7,7 +7,7 @@ import "./sandbox.css";
 import "./embla.css";
 
 const OPTIONS: EmblaOptionsType = {};
-const SLIDE_COUNT = 5;
+const SLIDE_COUNT = 3;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
 export const Carousel: React.FC = () => (
