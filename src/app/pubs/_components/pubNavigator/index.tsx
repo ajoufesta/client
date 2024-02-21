@@ -4,6 +4,8 @@ import { Pub } from "@/app/lib/types";
 import PubCard from "./pubCard";
 import Image from "next/image";
 import { useRef } from "react";
+import NavigatorHandle from "@/public/navigator-handle.svg";
+import NavigatorHandleArrow from "@/public/navigator-handle-arrow-left.svg";
 
 type PubData = Pub[];
 
@@ -20,9 +22,10 @@ const PubNavigator = ({ pubs }: { pubs: PubData }) => {
     const newPosition = e.touches[0].clientX;
     const diffX = initialPosition - newPosition;
 
-    if (diffX > 0) {
-      divRef.current.style.transform = `translateX(calc(${-diffX}px + 89%))`;
-    } else {
+
+    if (initialPosition > window.innerWidth / 2 && diffX > 0) {
+      divRef.current.style.transform = `translateX(calc(${-diffX}px + 90%))`;
+    } else if (initialPosition < window.innerWidth / 2 && diffX < 0) {
       divRef.current.style.transform = `translateX(calc(${-diffX}px)`;
     }
   };
@@ -33,37 +36,27 @@ const PubNavigator = ({ pubs }: { pubs: PubData }) => {
     if (divRef.current.getBoundingClientRect().left < window.innerWidth / 2) {
       divRef.current.style.transform = "translateX(0)";
     } else {
-      divRef.current.style.transform = "translateX(89%)";
+      divRef.current.style.transform = "translateX(90%)";
     }
   };
 
   return (
-    <div className="z-10 absolute w-54 h-full right-0">
+    <div className="z-10 absolute w-[19.7rem] h-full right-0">
       <div
-        className="relative flex justify-end w-full h-full transform translate-x-[89%]"
+        className="relative flex justify-end w-full h-full transform translate-x-[90%]"
         ref={divRef}
       >
         <div
-          className="w-8"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <Image
-            src="/navigator-handle.svg"
-            alt="navigator-handle"
-            width={32}
-            height={32}
-            className="mt-4"
-          />
-          <div className="w-2 mt-4 absolute top-4 left-3">
-            <Image
-              src="/navigator-handle-arrow-left.svg"
-              alt="navigator-handle-arrow-left"
-              width={8}
-              height={8}
-              className={`transform  ${
-                divRef.current?.style.transform === "translateX(88%)"
+
+          <NavigatorHandle className="mt-[1.6rem]" />
+          <div className="absolute top-[2.9rem] left-[0.8rem]">
+            <NavigatorHandleArrow
+              className={`transform ${
+                divRef.current?.style.transform === "translateX(90%)"
                   ? "rotate-0"
                   : "rotate-180"
               }`}
