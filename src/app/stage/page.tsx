@@ -3,6 +3,7 @@ import Schedule from "./_components/Schedule";
 import DateDisplay from "../pubs/_components/dateDisplay";
 import DayDisplay from "../pubs/_components/dayDisplay";
 import { getCurrentDay } from "../lib/utils";
+import Guest from "./_components/Guest";
 
 interface StagePageProps {
   searchParams?: {
@@ -16,6 +17,7 @@ const Page = ({ searchParams }: StagePageProps) => {
       <DateDisplay selectedDay={selectedDay} />
       <DayDisplay selectedDay={selectedDay} />
       <Schedule />
+      <Guest />
     </div>
   );
 };
