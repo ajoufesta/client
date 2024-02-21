@@ -16,7 +16,6 @@ const Page = ({ searchParams }: StagePageProps) => {
       <DateDisplay selectedDay={selectedDay} />
       <DayDisplay selectedDay={selectedDay} />
       <Schedule />
-      {searchParams?.day}으아아{" "}
     </div>
   );
 };
