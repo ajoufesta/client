@@ -6,6 +6,8 @@ import { DotButton } from "./EmblaCarouselArrowsDotsButtons";
 import Schedule from "../Schedule";
 import Guest from "../Guest";
 import { FESTIVAL_DATE } from "@/app/lib/constants";
+import { isToday } from "@/app/lib/utils";
+import { getFormattedDate } from "@/app/lib/utils";
 
 type PropType = {
   slides: number[];
@@ -50,6 +52,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           <div className="embla__container">
             {slides.map((index) => (
               <div className="embla__slide" key={index}>
+                <div className="w-[29.5rem] flex justify-center items-center text-center h-[3rem] flex-shrink-0">
+                  <span className="w-[8rem] h-[2.1rem] font-semibold text-blue-300 text-[1.4rem] rounded-[3rem] bg-blue-700 mb-[0.5rem] p-[0.5rem] flex justify-center items-center">
+                    {isToday(index + 1)
+                      ? "TODAY"
+                      : getFormattedDate(FESTIVAL_DATE[index])}
+                  </span>
+                </div>
+
                 <div className="w-[29.5rem] text-white text-center text-3xl font-bold  flex items-center justify-center mb-[2rem]">
                   {`DAY ${index + 1}`}
                 </div>

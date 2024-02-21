@@ -16,7 +16,6 @@ const Page = ({ searchParams }: StagePageProps) => {
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
   return (
     <div className="flex flex-col justify-center items-center">
-      <DateDisplay selectedDay={selectedDay} />
       <Carousel />
     </div>
   );
