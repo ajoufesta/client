@@ -5,6 +5,8 @@ import DayDisplay from "../pubs/_components/dayDisplay";
 import { getCurrentDay } from "../lib/utils";
 import Guest from "./_components/Guest";
 
+import { Carousel } from "./_components/stageCarousel";
+
 interface StagePageProps {
   searchParams?: {
     day?: number;
@@ -16,8 +18,9 @@ const Page = ({ searchParams }: StagePageProps) => {
     <div className="flex flex-col justify-center items-center">
       <DateDisplay selectedDay={selectedDay} />
       <DayDisplay selectedDay={selectedDay} />
-      <Schedule />
-      <Guest />
+      {/* <Schedule />
+      <Guest /> */}
+      <Carousel />
     </div>
   );
 };
