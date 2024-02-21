@@ -1,6 +1,6 @@
 import { FESTIVAL_DATE } from "./constants";
-import { emptyPub } from "./placeholder-data";
-import { PubLocation, Pub } from "./types";
+import { emptyBooth, emptyPub } from "./placeholder-data";
+import { Pub, Booth, PlaceLocation, Place } from "./types";
 
 /**
  * 현재 날짜가 축제 기간 중 몇 번째 날인지 확인
@@ -41,6 +41,24 @@ export const getFormattedDate = (date: string): string => {
  * @param {Location} location - location
  * @returns {Pub} pub | emptyPub
  */
-export const getPubByLocation = (pubs: Pub[], location: PubLocation): Pub => {
-  return pubs.find((pub) => pub.pubLocation === location.location) || emptyPub;
+
+export const getPlaceByLocation = (
+  places: Place[],
+  location: PlaceLocation,
+): Place => {
+  if (places && "boothId" in places[0]) {
+    return (
+      places.find(
+        (place): place is Booth =>
+          "boothId" in place && place.boothLocation === location.location,
+      ) || emptyBooth
+    );
+  } else {
+    return (
+      places.find(
+        (place): place is Pub =>
+          "pubId" in place && place.pubLocation === location.location,
+      ) || emptyPub
+    );
+  }
 };
