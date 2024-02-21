@@ -2,7 +2,6 @@ const fetchPubs = async (day: number, section: string) => {
   try {
     const response = await fetch(
       `https://ajou-festi.aolda.net/v1/pubs?day=1&section=A4`
-      //A4는 나중에 얘기해봐유
     );
 
     if (!response.ok) {
@@ -11,8 +10,6 @@ const fetchPubs = async (day: number, section: string) => {
 
     const data = await response.json();
     console.log(data, "data");
-    console.log("성공");
-    console.log(day, "day");
     return data;
   } catch (error) {
     console.log(error);
