@@ -10,16 +10,10 @@ import { isToday } from "@/app/lib/utils";
 import { getFormattedDate } from "@/app/lib/utils";
 import { Stage } from "@/app/lib/types";
 
-type StageData = {
-  stageDay1: Stage;
-  stageDay2: Stage;
-  stageDay3: Stage;
-};
-
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
-  stages: StageData;
+  stages: Stage[][];
 };
 
 const EmblaCarousel = (props: PropType) => {
@@ -71,7 +65,7 @@ const EmblaCarousel = (props: PropType) => {
                 <div className="w-[29.5rem] text-white text-center text-3xl font-bold  flex items-center justify-center mb-[2rem]">
                   {`DAY ${index + 1}`}
                 </div>
-                <Schedule />
+                <Schedule stages={stages[index + 1]} />
                 <Guest />
                 <div className="embla__dots mt-[2.4rem]">
                   {scrollSnaps.map((_, index) => (
@@ -113,42 +107,6 @@ const EmblaCarousel = (props: PropType) => {
           </div>
         </div>
       </div>
-
-      {/* <div className="embla__dots mt-[2.4rem]">
-        {scrollSnaps.map((_, index) => (
-          <DotButton
-            key={index}
-            onClick={() => {
-              scrollTo(index);
-            }}
-            className={"embla__dot".concat(
-              index === selectedIndex ? " embla__dot--selected" : ""
-            )}
-          >
-            {index === selectedIndex ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
-                fill="none"
-              >
-                <circle cx="4" cy="4" r="4" fill="white" />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
-                fill="none"
-              >
-                <circle cx="4" cy="4" r="4" fill="#00285C" />
-              </svg>
-            )}
-          </DotButton>
-        ))}
-      </div> */}
     </div>
   );
 };

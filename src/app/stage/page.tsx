@@ -19,23 +19,32 @@ interface StagePageProps {
 const Page = ({ searchParams }: StagePageProps) => {
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
 
-  const fetchData = async () => {
-    const stageDay1 = await fetchStageData(1);
-    const stageDay2 = await fetchStageData(1);
-    const stageDay3 = await fetchStageData(1);
-    return { stageDay1, stageDay2, stageDay3 };
-  };
+  // const fetchData = async () => {
+  //   const stageDay1 = await fetchStageData(1);
+  //   const stageDay2 = await fetchStageData(1);
+  //   const stageDay3 = await fetchStageData(1);
+  //   return { stageDay1, stageDay2, stageDay3 };
+  // };
 
   // fetchData 함수를 실행하고 그 결과를 대기함
   const fetchAndRenderData = async () => {
-    const stages = await fetchData();
-    console.log(stages, "stages");
+    // const stages = await fetchData();
+    // console.log(stages, "stages");
+    const stageDataPromises = Array.from({ length: SLIDE_COUNT }, (_, index) =>
+      fetchStageData(index + 1)
+    );
+    const stageData = await Promise.all(stageDataPromises);
+    console.log(stageData, "stageData");
 
     return (
       <div className="flex flex-col justify-center items-center">
         <main className="sandbox">
           <section className="sandbox__carousel">
-            <EmblaCarousel slides={SLIDES} options={OPTIONS} stages={stages} />
+            <EmblaCarousel
+              slides={SLIDES}
+              options={OPTIONS}
+              stages={stageData}
+            />
           </section>
         </main>
       </div>
