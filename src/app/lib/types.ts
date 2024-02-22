@@ -24,3 +24,11 @@ type Sections = {
 export type PubLocations = {
   [key: number]: Sections;
 };
+
+export interface Stage {
+  id: null;
+  showName: string;
+  status: string;
+  teamName: string;
+  startTime: string;
+}

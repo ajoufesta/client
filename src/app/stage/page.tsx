@@ -33,7 +33,7 @@ const Page = ({ searchParams }: StagePageProps) => {
       <div className="flex flex-col justify-center items-center">
         <main className="sandbox">
           <section className="sandbox__carousel">
-            <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+            <EmblaCarousel slides={SLIDES} options={OPTIONS} stages={stages} />
           </section>
         </main>
       </div>
