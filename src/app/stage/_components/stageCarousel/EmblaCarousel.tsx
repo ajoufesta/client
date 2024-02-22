@@ -64,7 +64,7 @@ const EmblaCarousel = (props: PropType) => {
                 <div className="w-[29.5rem] text-white text-center text-3xl font-bold  flex items-center justify-center mb-[2rem]">
                   {`DAY ${index + 1} `}
                 </div>
-                <Schedule stages={stages[index]} /> {/* 수정된 부분 */}
+                <Schedule stages={stages[index]} />
                 <Guest />
                 <div className="embla__dots mt-[2.4rem]">
                   {scrollSnaps.map((_, index) => (
