@@ -1,9 +1,7 @@
 import React from "react";
 import ScheduleGradient from "../../../../public/scheduleGradient.svg";
-import ScheduleTitle from "./ScheduleTitle";
 import ScheduleTitleWrapper from "./ScheduleTitleWrapper";
 import StageCurrentButton from "./StageCurrentButton";
-import { useState, useEffect } from "react";
 
 const Schedule = () => {
   return (
