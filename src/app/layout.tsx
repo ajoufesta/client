@@ -15,8 +15,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="h-screen w-screen max-w-screen-sm max-h-whole_height bg-blue-800 bg-skyBlue-gradient relative ">
-          <main className="h-[calc(100%-10.4rem)] flex flex-col justify-center items-center">
+        <div className="h-screen w-screen max-w-screen-sm  bg-blue-800 bg-skyBlue-gradient relative flex flex-col pt-[8.8rem] items-center ">
+          <main className=" flex flex-col justify-center items-center">
             {children}
           </main>
           <Footer />

@@ -65,7 +65,7 @@ const EmblaCarousel = (props: PropType) => {
                 </div>
                 <Schedule />
                 <Guest />
-                <div className="embla__dots">
+                <div className="embla__dots mt-[2.4rem]">
                   {scrollSnaps.map((_, index) => (
                     <DotButton
                       key={index}

@@ -9,8 +9,7 @@
   justify-content: center;
 }
 .embla__viewport {
-  /* overflow: hidden; */
-  /* 디자이너분께 물어보기 */
+  overflow: hidden;
 }
 .embla__container {
   backface-visibility: hidden;
