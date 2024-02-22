@@ -8,13 +8,18 @@ import ShowIc from "@/public/showIcon.svg";
 import FooterHr from "@/public/footerHr.svg";
 import IconHr from "@/public/iconHr.svg";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const Footer = () => {
   const [selectedButton, setSelectedButton] = useState("");
 
   const handleClick = (buttonName: string) => {
-    setSelectedButton(buttonName === selectedButton ? "" : buttonName);
+    setSelectedButton(buttonName);
   };
+
+  useEffect(() => {
+    console.log(selectedButton, "button");
+  }, [selectedButton]);
 
   return (
     <div className="absolute bottom-0">
