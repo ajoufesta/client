@@ -1,11 +1,14 @@
 import React from "react";
-import Schedule from "./_components/Schedule";
-import DateDisplay from "../pubs/_components/dateDisplay";
-import DayDisplay from "../pubs/_components/dayDisplay";
 import { getCurrentDay } from "../lib/utils";
-import Guest from "./_components/Guest";
 
-import { Carousel } from "./_components/stageCarousel";
+import EmblaCarousel from "./_components/stageCarousel/EmblaCarousel";
+import { EmblaOptionsType } from "embla-carousel";
+
+import "./_components/stageCarousel/embla.css";
+
+const OPTIONS: EmblaOptionsType = {};
+const SLIDE_COUNT = 3;
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
 interface StagePageProps {
   searchParams?: {
@@ -16,7 +19,11 @@ const Page = ({ searchParams }: StagePageProps) => {
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
   return (
     <div className="flex flex-col justify-center items-center">
-      <Carousel />
+      <main className="sandbox">
+        <section className="sandbox__carousel">
+          <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+        </section>
+      </main>
     </div>
   );
 };
