@@ -5,7 +5,7 @@ import { SECTION_LIST } from "../lib/constants";
 import Map from "./_components/map";
 import SectionBar from "./_components/sectionBar";
 import PubNavigator from "./_components/pubNavigator";
-import fetchPubs from "../lib/data";
+import { fetchPubs } from "../lib/data";
 import Modal from "../_commons/modal";
 
 export const metadata = {
