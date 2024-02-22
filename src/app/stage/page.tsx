@@ -28,13 +28,11 @@ const Page = ({ searchParams }: StagePageProps) => {
 
   // fetchData 함수를 실행하고 그 결과를 대기함
   const fetchAndRenderData = async () => {
-    // const stages = await fetchData();
-    // console.log(stages, "stages");
     const stageDataPromises = Array.from({ length: SLIDE_COUNT }, (_, index) =>
       fetchStageData(index + 1)
     );
     const stageData = await Promise.all(stageDataPromises);
-    console.log(stageData, "stageData");
+    console.log(stageData, "stageData이거임");
 
     return (
       <div className="flex flex-col justify-center items-center">
@@ -43,7 +41,7 @@ const Page = ({ searchParams }: StagePageProps) => {
             <EmblaCarousel
               slides={SLIDES}
               options={OPTIONS}
-              stages={stageData}
+              stages={[stageData[0], stageData[1], stageData[2]]}
             />
           </section>
         </main>
