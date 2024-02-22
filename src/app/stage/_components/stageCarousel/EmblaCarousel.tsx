@@ -8,14 +8,22 @@ import Guest from "../Guest";
 import { FESTIVAL_DATE } from "@/app/lib/constants";
 import { isToday } from "@/app/lib/utils";
 import { getFormattedDate } from "@/app/lib/utils";
+import { Stage } from "@/app/lib/types";
+
+type StageData = {
+  stageDay1: Stage;
+  stageDay2: Stage;
+  stageDay3: Stage;
+};
 
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
+  stages: StageData;
 };
 
 const EmblaCarousel = (props: PropType) => {
-  const { slides, options } = props;
+  const { slides, options, stages } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const [selectedIndex, setSelectedIndex] = useState(0);

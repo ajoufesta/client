@@ -20,8 +20,10 @@ const Page = ({ searchParams }: StagePageProps) => {
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
 
   const fetchData = async () => {
-    const pubs = await fetchStageData(selectedDay);
-    return pubs;
+    const stageDay1 = await fetchStageData(1);
+    const stageDay2 = await fetchStageData(1);
+    const stageDay3 = await fetchStageData(1);
+    return { stageDay1, stageDay2, stageDay3 };
   };
 
   // fetchData 함수를 실행하고 그 결과를 대기함
