@@ -5,7 +5,7 @@ import BoothIc from "@/public/boothIcon.svg";
 import PubIc from "@/public/pubIcon.svg";
 import ReservationIc from "@/public/reservationIcon.svg";
 import ShowIc from "@/public/showIcon.svg";
-import FooterHr from "@/public/footerHr.svg";
+
 import IconHr from "@/public/iconHr.svg";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -22,8 +22,8 @@ const Footer = () => {
   }, [selectedButton]);
 
   return (
-    <div className="absolute bottom-0">
-      <FooterHr className="relative" />
+    <div className="absolute bottom-0 w-full ">
+      <hr className="relative border-t-2 border-blue-700" />
       <div className="h-footer w-full flex justify-center items-center gap-10">
         <Link
           href={`/stage`}
