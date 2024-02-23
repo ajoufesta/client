@@ -1,6 +1,6 @@
 "use client";
 
-import { SECTION_LIST } from "@/app/lib/constants";
+import { DONGBAK_SECTION_LIST } from "@/app/lib/constants";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryWithDefault } from "@/app/hooks/useQueryWithDefault";
@@ -21,9 +21,9 @@ const SectionBar = ({
   const router = useRouter();
 
   const [selectedIndex, setSelectedIndex] = useState(
-    SECTION_LIST.findIndex((s) => s.section === selectedSection),
+    DONGBAK_SECTION_LIST.findIndex((s) => s.section === selectedSection)
   );
-  const maxIndex = SECTION_LIST.length - 1;
+  const maxIndex = DONGBAK_SECTION_LIST.length - 1;
 
   const handleClickLeft = () => {
     if (selectedIndex === 0) {
@@ -47,7 +47,9 @@ const SectionBar = ({
   };
 
   useEffect(() => {
-    router.push(getQueryUrl(selectedDay, SECTION_LIST[selectedIndex].section));
+    router.push(
+      getQueryUrl(selectedDay, DONGBAK_SECTION_LIST[selectedIndex].section)
+    );
   }, [selectedDay, selectedIndex]);
 
   return (
@@ -58,7 +60,7 @@ const SectionBar = ({
         }`}
       >
         <ul>
-          {SECTION_LIST.map((section, index) => (
+          {DONGBAK_SECTION_LIST.map((section, index) => (
             <li key={index}>
               <div
                 className={
@@ -83,7 +85,7 @@ const SectionBar = ({
           <ArrowLeft />
         </button>
         <span className="w-[13.8rem] font-normal text-3xl text-center text-blue-400">
-          {SECTION_LIST[selectedIndex].name}
+          {DONGBAK_SECTION_LIST[selectedIndex].name}
         </span>
         <button onClick={() => handleClickRight()}>
           <ArrowLeft className="rotate-180" />
