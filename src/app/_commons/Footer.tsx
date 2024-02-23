@@ -17,11 +17,11 @@ const Footer = () => {
   };
 
   return (
-    <div className="fixed bottom-0">
+    <div className="absolute bottom-0">
       <FooterHr className="relative" />
-      <div className="h-footer w-full flex justify-center gap-10">
+      <div className="h-footer w-full flex justify-center items-center gap-10">
         <Link
-          href={`/1`}
+          href={`/stage`}
           className={`flex flex-col items-center justify-center m-0 gap-2 ${
             selectedButton === "공연" ? "" : "opacity-50"
           }`}
