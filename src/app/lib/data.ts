@@ -53,7 +53,7 @@ export const fetchBooths = async (day: number, section: string) => {
 export const fetchDongbakBooths = async (day: number, section: string) => {
   try {
     const response = await fetch(
-      `https://ajou-festi.aoldacloud.com/v1/clubs?day=1&section=A`
+      `https://ajou-festi.aoldacloud.com/v1/clubs?day=${day}&section=${section}`
     );
 
     if (!response.ok) {
