@@ -44,21 +44,29 @@ export const getFormattedDate = (date: string): string => {
 
 export const getPlaceByLocation = (
   places: Place[],
-  location: PlaceLocation,
+  location: PlaceLocation
 ): Place => {
   if (places && "boothId" in places[0]) {
     return (
       places.find(
         (place): place is Booth =>
-          "boothId" in place && place.boothLocation === location.location,
+          "boothId" in place && place.boothLocation === location.location
       ) || emptyBooth
     );
+  } else if (places && "pubId" in places[0]) {
+    return (
+      places.find(
+        (place): place is Booth =>
+          "boothId" in place && place.boothLocation === location.location
+      ) || emptyBooth
+    );
+    //동박
   } else {
     return (
       places.find(
-        (place): place is Pub =>
-          "pubId" in place && place.pubLocation === location.location,
-      ) || emptyPub
+        (place): place is Booth =>
+          "clubId" in place && place.section === location.location
+      ) || emptyBooth
     );
   }
 };
