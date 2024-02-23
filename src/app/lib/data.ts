@@ -26,7 +26,6 @@ export const fetchStageData = async (day: number) => {
       throw new Error("Failed to fetch pubs");
     }
     const data = await response.json();
-    console.log(data, "고산하");
     return data;
   } catch (error) {
     console.log(error);
@@ -62,6 +61,7 @@ export const fetchDongbakBooths = async (day: number, section: string) => {
     }
 
     const data = await response.json();
+    console.log(data, "동박부스");
     return data;
   } catch (error) {
     console.error(error);

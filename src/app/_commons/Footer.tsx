@@ -58,18 +58,17 @@ const Footer = () => {
           <ReservationIc />
           <span className="text-[#CCDEF9] text-lg">주점</span>
         </Link>
-        <div
+        <Link
+          href={`/dongbak?day=1&section=seongho1`}
           className={`flex flex-col flex-1 items-center justify-center m-0 gap-2 ${
-            selectedButton === "MY 예약" ? "" : "opacity-50"
+            selectedButton === "동박" ? "" : "opacity-50"
           }`}
-          onClick={() => handleClick("MY 예약")}
+          onClick={() => handleClick("동박")}
         >
-          {selectedButton === "MY 예약" && (
-            <IconHr className="absolute top-0" />
-          )}
+          {selectedButton === "동박" && <IconHr className="absolute top-0" />}
           <ShowIc />
-          <span className="text-[#CCDEF9] text-lg">MY 예약</span>
-        </div>
+          <span className="text-[#CCDEF9] text-lg">동박</span>
+        </Link>
       </div>
     </div>
   );
