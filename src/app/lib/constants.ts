@@ -40,6 +40,113 @@ const SECTION_LIST = [
   },
 ];
 
+export const DONGBAK_SECTION_LIST = [
+  {
+    section: "A",
+    name: "A구역",
+    image: "/seongho1.png",
+  },
+  {
+    section: "B",
+    name: "B구역",
+    image: "/seongho2.png",
+  },
+  {
+    section: "C",
+    name: "C구역",
+    image: "/theater.png",
+  },
+  {
+    section: "D",
+    name: "D구역",
+    image: "/library.png",
+  },
+];
+
+export const DONGBAK_LOCATIONS: PlaceLocations = {
+  // day -> 1, 2
+  // section -> A,B,C,D
+  // 각각의 장소는 location_id(ex. 1, 2, 총1 등)과 section에 해당하는 map에 대한 절대 좌표, rotate을 가지고 있음.
+  1: {
+    A: [
+      {
+        location: "1",
+        x: 10,
+        y: 10,
+        rotate: 0,
+      },
+      {
+        location: "2",
+        x: 10,
+        y: 60,
+        rotate: 0,
+      },
+      {
+        location: "3",
+        x: 10,
+        y: 110,
+        rotate: 20,
+      },
+      {
+        location: "4",
+        x: 10,
+        y: 160,
+        rotate: 0,
+      },
+      {
+        location: "5",
+        x: 10,
+        y: 210,
+        rotate: 0,
+      },
+    ],
+    B: [
+      {
+        location: "6",
+        x: 30,
+        y: 30,
+        rotate: 0,
+      },
+      {
+        location: "7",
+        x: 40,
+        y: 40,
+        rotate: 0,
+      },
+      {
+        location: "총1",
+        x: 50,
+        y: 50,
+        rotate: 10,
+      },
+    ],
+    C: [
+      {
+        location: "3",
+        x: 40,
+        y: 40,
+        rotate: 0,
+      },
+    ],
+    D: [
+      {
+        location: "4",
+        x: 50,
+        y: 50,
+        rotate: 0,
+      },
+      {
+        location: "총학1",
+        x: 60,
+        y: 60,
+        rotate: 0,
+      },
+    ],
+  },
+  2: {},
+  3: {},
+};
+
 const PUB_LOCATIONS: PlaceLocations = {
   // day -> 1, 2, 3
   // section -> seongho1, seongho2, library, parking, theater, yard1, yard2

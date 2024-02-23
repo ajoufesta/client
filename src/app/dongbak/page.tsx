@@ -46,9 +46,9 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
           <Map
             selectedDay={selectedDay}
             selectedSection={selectedSection}
-            places={pubs}
+            places={dongbak}
           />
-          <PlaceNavigator places={pubs} />
+          <PlaceNavigator places={dongbak} />
           <SectionBar
             selectedDay={selectedDay}
             selectedSection={selectedSection}
