@@ -1,7 +1,7 @@
 "use client";
 
 import { Place } from "@/app/lib/types";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import NavigatorHandle from "@/public/navigator-handle.svg";
 import NavigatorHandleArrow from "@/public/navigator-handle-arrow-left.svg";
 import PlaceCard from "./placeCard";
