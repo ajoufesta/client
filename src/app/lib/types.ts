@@ -39,3 +39,11 @@ type Sections = {
 export type PlaceLocations = {
   [key: number]: Sections;
 };
+
+export interface Stage {
+  id: null;
+  showName: string;
+  status: string;
+  teamName: string;
+  startTime: string;
+}

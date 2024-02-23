@@ -1,4 +1,9 @@
 import React from "react";
+import { Stage } from "@/app/lib/types";
+
+interface ScheduleProps {
+  stages: Stage[];
+}
 
 const Guest = () => {
   return (
@@ -10,10 +15,10 @@ const Guest = () => {
         박재범
       </div>
       <div className="w-[22.4rem] h-[3.6rem] flex justify-center items-center  mb-3  rounded-[0.5rem] text-[1.4rem]">
-        박재범
+        현아
       </div>
       <div className="w-[22.4rem] h-[3.6rem] flex justify-center items-center  mb-3 rounded-[0.5rem] text-[1.4rem]">
-        박재범
+        문다현
       </div>
     </div>
   );
