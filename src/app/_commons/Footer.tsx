@@ -59,7 +59,7 @@ const Footer = () => {
           <span className="text-[#CCDEF9] text-lg">주점</span>
         </Link>
         <Link
-          href={`/dongbak?day=1&section=seongho1`}
+          href={`/dongbak?day=1&section=A`}
           className={`flex flex-col flex-1 items-center justify-center m-0 gap-2 ${
             selectedButton === "동박" ? "" : "opacity-50"
           }`}
