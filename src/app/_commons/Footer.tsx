@@ -37,7 +37,7 @@ const Footer = () => {
           <span className="text-[#CCDEF9] text-lg">공연</span>
         </Link>
         <Link
-          href={`/booths?day=1&section=seongho`}
+          href={`/booths?day=1&section=seongho1`}
           className={`flex flex-col items-center justify-center m-0 gap-2 ${
             selectedButton === "부스" ? "" : "opacity-50"
           }`}

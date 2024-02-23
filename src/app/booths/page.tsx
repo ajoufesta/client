@@ -4,23 +4,24 @@ import Map from "@/app/_commons/map";
 import SectionBar from "@/app/_commons/sectionBar";
 import { getCurrentDay } from "@/app/lib/utils";
 import { SECTION_LIST } from "@/app/lib/constants";
-import { fetchPubs } from "@/app/lib/data";
+import { fetchBooths } from "@/app/lib/data";
 import Modal from "@/app/_commons/modal";
 import PlaceNavigator from "@/app/_commons/placeNavigator";
+import { dummyBooths } from "../lib/placeholder-data";
 
 export const metadata = {
-  title: "Pubs",
-  description: "Pubs Page",
+  title: "Booths",
+  description: "Booths Page",
 };
 
-interface PubsPageProps {
+interface BoothsPageProps {
   searchParams?: {
     day?: string;
     section?: string;
   };
 }
 
-const PubsPage = ({ searchParams }: PubsPageProps) => {
+const BoothsPage = ({ searchParams }: BoothsPageProps) => {
   // day가 쿼리스트링으로 넘어오지 않으면 오늘 날짜로 설정
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
   // section이 쿼리스트링으로 넘어오지 않으면 G-1로 설정
@@ -36,7 +37,8 @@ const PubsPage = ({ searchParams }: PubsPageProps) => {
 
   // fetchData 함수를 실행하고 그 결과를 대기함
   const fetchAndRenderData = async () => {
-    const pubs = await fetchPubs(selectedDay, selectedSection);
+    // const booths = await fetchBooths(selectedDay, selectedSection);
+    const booths = dummyBooths;
 
     return (
       <>
@@ -46,9 +48,9 @@ const PubsPage = ({ searchParams }: PubsPageProps) => {
           <Map
             selectedDay={selectedDay}
             selectedSection={selectedSection}
-            places={pubs}
+            places={booths}
           />
-          <PlaceNavigator places={pubs} />
+          <PlaceNavigator places={booths} />
           <SectionBar
             selectedDay={selectedDay}
             selectedSection={selectedSection}
@@ -63,4 +65,4 @@ const PubsPage = ({ searchParams }: PubsPageProps) => {
   return fetchAndRenderData();
 };
 
-export default PubsPage;
+export default BoothsPage;
