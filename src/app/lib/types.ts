@@ -42,8 +42,8 @@ export type PlaceLocations = {
 
 export interface Stage {
   id: null;
-  showName: string;
-  status: string;
   teamName: string;
   startTime: string;
+  endTime: string;
+  status: string;
 }
