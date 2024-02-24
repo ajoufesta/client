@@ -8,10 +8,50 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        footer: "10.4rem",
+        whole_width: "37.5rem",
+        whole_height: "81.2rem",
+        icon: "3.263rem",
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "skyBlue-gradient":
+          "radial-gradient( circle at 70% -20%, rgba(4, 127, 254, 0.6) 15%, rgba(0, 208, 236, 0.3) 15%, transparent 40%);",
+      },
+
+      colors: {
+        blue: {
+          100: "#E6EFFC",
+          200: "#CCDEF9",
+          300: "#366FC2",
+          400: "#005BE1",
+          500: "#003275",
+          600: "#00285C",
+          700: "#001D44",
+          800: "#001234",
+          900: "#2C72CD",
+        },
+        transparentBlue: {
+          100: "rgba(230, 239, 252, 0.5)",
+          200: "rgba(204, 222, 249, 0.7)",
+          300: "rgba(0,91,225,0.8)",
+        },
+        transparentWhite: {
+          100: "rgba(255, 255, 255, 0.5)",
+          200: "rgba(255, 255, 255, 0.7)",
+          300: "rgba(255, 255, 255, 0.9)",
+        },
+        gray: {
+          50: "#F0F0F0",
+          100: "#F5F5F5",
+          200: "#BFBFBF",
+          300: "#444444",
+        },
+        icon: {
+          1: "#047FFE",
+          2: "#00D0EC",
+          3: "#80D0EC",
+        },
       },
     },
   },
