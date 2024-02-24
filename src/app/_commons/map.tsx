@@ -1,8 +1,9 @@
 import Image from "next/image";
 import {
-  SECTION_LIST,
+  DONGBAK_SECTION_LIST,
   PUB_LOCATIONS,
   BOOTH_LOCATIONS,
+  DONGBAK_LOCATIONS,
 } from "@/app/lib/constants";
 import { Place, PlaceLocation } from "@/app/lib/types";
 import { getPlaceByLocation } from "@/app/lib/utils";
@@ -15,7 +16,9 @@ interface MapProps {
 }
 
 const Map = ({ selectedDay, selectedSection, places }: MapProps) => {
-  const section = SECTION_LIST.find((s) => s.section === selectedSection);
+  const section = DONGBAK_SECTION_LIST.find(
+    (s) => s.section === selectedSection
+  );
 
   if (!section) {
     return null;
@@ -44,7 +47,7 @@ const Map = ({ selectedDay, selectedSection, places }: MapProps) => {
               placeLocation={location}
               place={getPlaceByLocation(places, location)}
             />
-          ),
+          )
         )}
       {places &&
         "boothId" in places[0] &&
@@ -56,7 +59,19 @@ const Map = ({ selectedDay, selectedSection, places }: MapProps) => {
               placeLocation={location}
               place={getPlaceByLocation(places, location)}
             />
-          ),
+          )
+        )}
+      {places &&
+        "clubId" in places[0] &&
+        DONGBAK_LOCATIONS[selectedDay][selectedSection] &&
+        DONGBAK_LOCATIONS[selectedDay][selectedSection].map(
+          (location: PlaceLocation, index: number) => (
+            <MapIcon
+              key={location.location}
+              placeLocation={location}
+              place={getPlaceByLocation(places, location)}
+            />
+          )
         )}
     </div>
   );

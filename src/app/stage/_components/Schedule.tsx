@@ -3,7 +3,6 @@ import ScheduleGradient from "../../../../public/scheduleGradient.svg";
 import ScheduleTitleWrapper from "./ScheduleTitleWrapper";
 import StageCurrentButton from "./StageCurrentButton";
 import { Stage } from "@/app/lib/types";
-import { getFormattedTime } from "@/app/lib/utils";
 
 interface ScheduleProps {
   stages: Stage[];
@@ -16,8 +15,8 @@ const Schedule = ({ stages }: ScheduleProps) => {
       <div className="min-h-[23rem] overflow-y-scroll w-[27.4rem] h-[22rem] px-[2.5rem]">
         {stages.map((stage, index) => (
           <StageCurrentButton
-            key={index}
-            startTime={getFormattedTime(stage.startTime)}
+            key={stage.id}
+            startTime={stage.startTime}
             showName={stage.teamName}
           />
         ))}

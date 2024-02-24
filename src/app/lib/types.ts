@@ -23,7 +23,17 @@ export type Booth = {
   linkIconId: "instagram" | "picture" | "default";
 };
 
-export type Place = Pub | Booth;
+export type Dongbak = {
+  clubId: number;
+  clubName: string;
+  clubDetail: string;
+  clubActivities: string[];
+  link: string;
+  linkIconId: "instagram" | "picture" | "default";
+  section: string;
+};
+
+export type Place = Pub | Booth | Dongbak;
 
 export type PlaceLocation = {
   location: string;
@@ -42,8 +52,8 @@ export type PlaceLocations = {
 
 export interface Stage {
   id: null;
-  showName: string;
-  status: string;
   teamName: string;
   startTime: string;
+  endTime: string;
+  status: string;
 }
