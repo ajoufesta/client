@@ -8,7 +8,7 @@ export const dummyBooths: Booth[] = [
   {
     boothId: null,
     boothName: "부스1",
-    boothLocation: "x",
+    boothLocation: "1",
     description: "부스1 설명",
     teamName: "아주페스타",
     openTime: "10:00",
@@ -19,7 +19,7 @@ export const dummyBooths: Booth[] = [
   {
     boothId: null,
     boothName: "부스2",
-    boothLocation: "x",
+    boothLocation: "2",
     description: "부스2 설명",
     teamName: "아주페스타",
     openTime: "10:00",
@@ -30,7 +30,7 @@ export const dummyBooths: Booth[] = [
   {
     boothId: null,
     boothName: "부스3",
-    boothLocation: "x",
+    boothLocation: "3",
     description: "부스3 설명",
     teamName: "아주페스타",
     openTime: "10:00",
@@ -41,7 +41,7 @@ export const dummyBooths: Booth[] = [
   {
     boothId: null,
     boothName: "부스4",
-    boothLocation: "x",
+    boothLocation: "4",
     description: "부스4 설명",
     teamName: "아주페스타",
     openTime: "10:00",
@@ -52,7 +52,7 @@ export const dummyBooths: Booth[] = [
   {
     boothId: null,
     boothName: "부스5",
-    boothLocation: "x",
+    boothLocation: "5",
     description: "부스5 설명",
     teamName: "아주페스타",
     openTime: "10:00",
