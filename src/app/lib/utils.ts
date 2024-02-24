@@ -44,28 +44,28 @@ export const getFormattedDate = (date: string): string => {
 
 export const getPlaceByLocation = (
   places: Place[],
-  location: PlaceLocation
+  location: PlaceLocation,
 ): Place => {
   if (places && "boothId" in places[0]) {
     return (
       places.find(
         (place): place is Booth =>
-          "boothId" in place && place.boothLocation === location.location
+          "boothId" in place && place.boothLocation === location.location,
       ) || emptyBooth
     );
   } else if (places && "pubId" in places[0]) {
     return (
       places.find(
-        (place): place is Booth =>
-          "boothId" in place && place.boothLocation === location.location
-      ) || emptyBooth
+        (place): place is Pub =>
+          "pubId" in place && place.pubLocation === location.location,
+      ) || emptyPub
     );
     //동박
   } else {
     return (
       places.find(
         (place): place is Booth =>
-          "clubId" in place && place.section === location.location
+          "clubId" in place && place.section === location.location,
       ) || emptyBooth
     );
   }
@@ -76,4 +76,21 @@ export const getFormattedTime = (time: string): string => {
   const hours = dateObject.getHours().toString().padStart(2, "0");
   const minutes = dateObject.getMinutes().toString().padStart(2, "0");
   return `${hours}:${minutes}`;
+};
+
+export const getLocationByPlace = (
+  place: Place,
+  locations: PlaceLocation[],
+): PlaceLocation => {
+  return (
+    locations.find((location) => {
+      if ("boothId" in place) {
+        return location.location === place.boothLocation;
+      } else if ("pubId" in place) {
+        return location.location === place.pubLocation;
+      } else {
+        return location.location === place.clubId.toString();
+      }
+    }) || { location: "", x: 0, y: 0, rotate: 0 }
+  );
 };
