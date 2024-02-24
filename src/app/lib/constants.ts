@@ -1,6 +1,6 @@
 import { PlaceLocations } from "./types";
 
-const FESTIVAL_DATE = ["2024-02-21", "2024-02-22", "2024-02-23"];
+const FESTIVAL_DATE = ["2024-02-23", "2024-02-24", "2024-02-25"];
 
 const SECTION_LIST = [
   {
@@ -309,6 +309,21 @@ const BOOTH_LOCATIONS: PlaceLocations = {
         y: 120,
         rotate: 0,
       },
+      {
+        location: "9",
+        x: 120,
+        y: 151,
+        rotate: 0,
+      },
+      { location: "실험용", x: 120, y: 200, rotate: 0 },
+      {
+        location: "실험용2",
+        x: 120,
+        y: 280,
+        rotate: 0,
+      },
+      { location: "실험용3", x: 120, y: 350, rotate: 0 },
+      { location: "실험용4", x: 120, y: 410, rotate: 0 },
     ],
     seongho2: [
       {
