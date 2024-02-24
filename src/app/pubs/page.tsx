@@ -5,8 +5,8 @@ import SectionBar from "@/app/_commons/sectionBar";
 import { getCurrentDay } from "@/app/lib/utils";
 import { SECTION_LIST } from "@/app/lib/constants";
 import { fetchPubs } from "@/app/lib/data";
-import Modal from "@/app/_commons/modal";
 import PlaceNavigator from "@/app/_commons/placeNavigator";
+import PlaceModal from "../_commons/placeModal";
 
 export const metadata = {
   title: "Pubs",
@@ -48,12 +48,16 @@ const PubsPage = ({ searchParams }: PubsPageProps) => {
             selectedSection={selectedSection}
             places={pubs}
           />
-          <PlaceNavigator places={pubs} />
+          <PlaceNavigator
+            selectedDay={selectedDay}
+            selectedSection={selectedSection}
+            places={pubs}
+          />
           <SectionBar
             selectedDay={selectedDay}
             selectedSection={selectedSection}
           />
-          <Modal />
+          <PlaceModal />
         </div>
       </>
     );

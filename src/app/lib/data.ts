@@ -1,7 +1,7 @@
 export const fetchPubs = async (day: number, section: string) => {
   try {
     const response = await fetch(
-      `https://ajou-festi.aoldacloud.com/v1/pubs?day=1&section=A4`
+      `https://ajou-festi.aoldacloud.com/v1/pubs?day=1&section=A4`,
     );
 
     if (!response.ok) {
@@ -19,7 +19,7 @@ export const fetchPubs = async (day: number, section: string) => {
 export const fetchStageData = async (day: number) => {
   try {
     const response = await fetch(
-      `https://ajou-festi.aoldacloud.com/v1/shows?day=${day}`
+      `https://ajou-festi.aoldacloud.com/v1/shows?day=${day}`,
     );
 
     if (!response.ok) {
@@ -36,7 +36,7 @@ export const fetchStageData = async (day: number) => {
 export const fetchBooths = async (day: number, section: string) => {
   try {
     const response = await fetch(
-      `https://ajou-festi.aoldacloud.com/v1/boothes?day=1&section=seoungho1`
+      `https://ajou-festi.aoldacloud.com/v1/boothes?day=1&section=seoungho1`,
     );
 
     if (!response.ok) {
@@ -53,7 +53,7 @@ export const fetchBooths = async (day: number, section: string) => {
 export const fetchDongbakBooths = async (day: number, section: string) => {
   try {
     const response = await fetch(
-      `https://ajou-festi.aoldacloud.com/v1/clubs?day=${day}&section=${section}`
+      `https://ajou-festi.aoldacloud.com/v1/clubs?day=${day}&section=${section}`,
     );
 
     if (!response.ok) {
@@ -61,7 +61,6 @@ export const fetchDongbakBooths = async (day: number, section: string) => {
     }
 
     const data = await response.json();
-    console.log(data, "동박부스");
     return data;
   } catch (error) {
     console.error(error);

@@ -3,10 +3,10 @@ import DateDisplay from "@/app/_commons/dateDisplay";
 import Map from "@/app/_commons/map";
 import SectionBar from "@/app/_commons/sectionBar";
 import { getCurrentDay } from "@/app/lib/utils";
-import Modal from "@/app/_commons/modal";
 import PlaceNavigator from "@/app/_commons/placeNavigator";
 import { fetchDongbakBooths } from "@/app/lib/data";
 import { DONGBAK_SECTION_LIST } from "@/app/lib/constants";
+import PlaceModal from "../_commons/placeModal";
 
 export const metadata = {
   title: "Dongbak",
@@ -48,12 +48,16 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
             selectedSection={selectedSection}
             places={dongbak}
           />
-          <PlaceNavigator places={dongbak} />
+          <PlaceNavigator
+            selectedDay={selectedDay}
+            selectedSection={selectedSection}
+            places={dongbak}
+          />
           <SectionBar
             selectedDay={selectedDay}
             selectedSection={selectedSection}
           />
-          <Modal />
+          <PlaceModal />
         </div>
       </>
     );

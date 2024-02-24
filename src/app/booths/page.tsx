@@ -4,10 +4,9 @@ import Map from "@/app/_commons/map";
 import SectionBar from "@/app/_commons/sectionBar";
 import { getCurrentDay } from "@/app/lib/utils";
 import { SECTION_LIST } from "@/app/lib/constants";
-import { fetchBooths } from "@/app/lib/data";
-import Modal from "@/app/_commons/modal";
 import PlaceNavigator from "@/app/_commons/placeNavigator";
 import { dummyBooths } from "../lib/placeholder-data";
+import PlaceModal from "../_commons/placeModal";
 
 export const metadata = {
   title: "Booths",
@@ -50,12 +49,16 @@ const BoothsPage = ({ searchParams }: BoothsPageProps) => {
             selectedSection={selectedSection}
             places={booths}
           />
-          <PlaceNavigator places={booths} />
+          <PlaceNavigator
+            selectedDay={selectedDay}
+            selectedSection={selectedSection}
+            places={booths}
+          />
           <SectionBar
             selectedDay={selectedDay}
             selectedSection={selectedSection}
           />
-          <Modal />
+          <PlaceModal />
         </div>
       </>
     );

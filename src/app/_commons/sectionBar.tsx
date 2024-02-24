@@ -21,7 +21,7 @@ const SectionBar = ({
   const router = useRouter();
 
   const [selectedIndex, setSelectedIndex] = useState(
-    DONGBAK_SECTION_LIST.findIndex((s) => s.section === selectedSection)
+    DONGBAK_SECTION_LIST.findIndex((s) => s.section === selectedSection),
   );
   const maxIndex = DONGBAK_SECTION_LIST.length - 1;
 
@@ -48,14 +48,14 @@ const SectionBar = ({
 
   useEffect(() => {
     router.push(
-      getQueryUrl(selectedDay, DONGBAK_SECTION_LIST[selectedIndex].section)
+      getQueryUrl(selectedDay, DONGBAK_SECTION_LIST[selectedIndex].section),
     );
   }, [selectedDay, selectedIndex]);
 
   return (
     <div className="z-10 absolute bottom-0 w-full">
       <div
-        className={`bg-white absolute bottom-[5rem] z-10 w-full h-[20rem] rounded-t-2xl overflow-y-auto bg-transparentWhite-300 ${
+        className={`bg-white absolute bottom-[5rem] z-10 w-full h-[20rem] rounded-t-2xl overflow-y-hidden bg-transparentWhite-300 ${
           isToggle ? "block" : "hidden"
         }`}
       >
@@ -63,9 +63,11 @@ const SectionBar = ({
           {DONGBAK_SECTION_LIST.map((section, index) => (
             <li key={index}>
               <div
-                className={
-                  "py-[1.2rem] text-xl text-blue-400 text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold"
-                }
+                className={`py-[1.5rem] text-2xl text-blue-400 text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold ${
+                  index === selectedIndex
+                    ? "bg-blue-200 font-semibold pointer-events-none"
+                    : ""
+                }`}
                 onClick={() => handleClickSection(index)}
               >
                 {section.name}
