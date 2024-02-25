@@ -114,9 +114,7 @@ const SectionBar = ({
       {isFirstVisited && (
         <div className="z-30 absolute bottom-0 w-full">
           <div
-            className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-transparentWhite-300 ${
-              isSectionBarOpen ? "h-[20rem]" : "h-0"
-            } transition-all duration-300 ease-in-out`}
+            className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-transparentWhite-300  transition-all duration-300 ease-in-out`}
           ></div>
           <div className="w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-200 px-[2.4rem] py-4">
             <EntireMap />
