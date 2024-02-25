@@ -18,7 +18,7 @@ const FirstVisitPage = () => {
           <EntireMap className="absolute top-0 left-0 w-full h-full" />
           <div className="absolute inset-0 bg-white bg-opacity-70 flex justify-center items-center text-white">
             <div>
-              <p className="flex flex-col justify-center items-center text-center text-[#005BE1] text-[2rem]">
+              <div className="flex flex-col justify-center items-center text-center text-[#005BE1] text-[2rem]">
                 구역을 터치해서
                 <br /> 이동해보세요
                 <div
@@ -27,7 +27,7 @@ const FirstVisitPage = () => {
                 >
                   확인
                 </div>
-              </p>
+              </div>
             </div>
           </div>
         </div>
