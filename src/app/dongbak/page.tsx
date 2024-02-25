@@ -47,7 +47,7 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
           selectedSection={selectedSection}
         />
         <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
-          <div className="z-100">{/* <FirstVisitPage /> */}</div>
+          <div className="z-100"></div>
           <Map
             selectedDay={selectedDay}
             selectedSection={selectedSection}

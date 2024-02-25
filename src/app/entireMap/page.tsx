@@ -1,7 +1,6 @@
 import DayDisplay from "@/app/_commons/dayDisplay";
 import DateDisplay from "@/app/_commons/dateDisplay";
 import Map from "@/app/_commons/map";
-import SectionBar from "@/app/_commons/sectionBar";
 import { getCurrentDay } from "@/app/lib/utils";
 import PlaceNavigator from "@/app/_commons/placeNavigator";
 import { fetchDongbakBooths } from "@/app/lib/data";
@@ -9,6 +8,7 @@ import { DONGBAK_SECTION_LIST } from "@/app/lib/constants";
 import PlaceModal from "../_commons/placeModal";
 import FirstVisitPage from "../dongbak/_components/dongbak";
 import EntireMapX from "../../../public/entireMapX.svg";
+import SectionBar from "./_components/sectionBar";
 
 export const metadata = {
   title: "Dongbak",
@@ -55,21 +55,7 @@ const MapPage = ({ searchParams }: DongbakPageProps) => {
             selectedSection={selectedSection}
             places={dongbak}
           />
-          <div className="z-30 absolute bottom-0 w-full">
-            <div
-              className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-transparentWhite-300  transition-all duration-300 ease-in-out`}
-            ></div>
-            <div className="w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-200 px-[2.4rem] py-4">
-              {/* <EntireMap /> */}
-
-              <span className="w-[13.8rem] font-normal text-3xl text-center text-blue-400">
-                전체지도
-              </span>
-              <button>
-                <EntireMapX />
-              </button>
-            </div>
-          </div>
+          <SectionBar />
           <PlaceModal />
         </div>
       </>
