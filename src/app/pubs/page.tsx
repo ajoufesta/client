@@ -41,7 +41,10 @@ const PubsPage = ({ searchParams }: PubsPageProps) => {
     return (
       <>
         <DateDisplay selectedDay={selectedDay} />
-        <DayDisplay selectedDay={selectedDay} />
+        <DayDisplay
+          selectedDay={selectedDay}
+          selectedSection={selectedSection}
+        />
         <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
           <Map
             selectedDay={selectedDay}
