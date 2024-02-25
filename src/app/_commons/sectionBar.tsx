@@ -22,7 +22,7 @@ const SectionBar = ({
   const router = useRouter();
 
   const [selectedIndex, setSelectedIndex] = useState(
-    DONGBAK_SECTION_LIST.findIndex((s) => s.section === selectedSection),
+    DONGBAK_SECTION_LIST.findIndex((s) => s.section === selectedSection)
   );
   const maxIndex = DONGBAK_SECTION_LIST.length - 1;
 
@@ -49,7 +49,7 @@ const SectionBar = ({
 
   useEffect(() => {
     router.push(
-      getQueryUrl(selectedDay, DONGBAK_SECTION_LIST[selectedIndex].section),
+      getQueryUrl(selectedDay, DONGBAK_SECTION_LIST[selectedIndex].section)
     );
   }, [selectedDay, selectedIndex]);
 
@@ -88,7 +88,7 @@ const SectionBar = ({
           <ArrowLeft />
         </button>
         <span className="w-[13.8rem] font-normal text-3xl text-center text-blue-400">
-          {DONGBAK_SECTION_LIST[selectedIndex].name}
+          {DONGBAK_SECTION_LIST[selectedIndex]?.name}
         </span>
         <button onClick={() => handleClickRight()}>
           <ArrowLeft className="rotate-180" />

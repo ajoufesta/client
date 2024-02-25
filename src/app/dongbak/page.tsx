@@ -7,6 +7,7 @@ import PlaceNavigator from "@/app/_commons/placeNavigator";
 import { fetchDongbakBooths } from "@/app/lib/data";
 import { DONGBAK_SECTION_LIST } from "@/app/lib/constants";
 import PlaceModal from "../_commons/placeModal";
+import FirstVisitPage from "./_components/dongbak";
 
 export const metadata = {
   title: "Dongbak",
@@ -40,6 +41,7 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
 
     return (
       <>
+        <FirstVisitPage />
         <DateDisplay selectedDay={selectedDay} />
         <DayDisplay
           selectedDay={selectedDay}

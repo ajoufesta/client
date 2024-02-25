@@ -5,10 +5,10 @@ import BoothIc from "@/public/boothIcon.svg";
 import PubIc from "@/public/pubIcon.svg";
 import ReservationIc from "@/public/reservationIcon.svg";
 import ShowIc from "@/public/showIcon.svg";
-
 import IconHr from "@/public/iconHr.svg";
 import Link from "next/link";
 import { useEffect } from "react";
+import useIsFirstVisitedStore from "../hooks/useIsFirstVisted";
 
 const Footer = () => {
   const [selectedButton, setSelectedButton] = useState("");
@@ -17,8 +17,13 @@ const Footer = () => {
     setSelectedButton(buttonName);
   };
 
+  const isFirstVisited = useIsFirstVisitedStore(
+    (state) => state.isFirstVisited
+  );
+  const setVisited = useIsFirstVisitedStore((state) => state.setVisited);
+
   useEffect(() => {
-    // console.log(selectedButton, "button");
+    console.log(isFirstVisited, "d");
   }, [selectedButton]);
 
   return (
@@ -52,7 +57,9 @@ const Footer = () => {
           className={`flex flex-col flex-1 items-center justify-center m-0 gap-2 ${
             selectedButton === "주점" ? "" : "opacity-50"
           }`}
-          onClick={() => handleClick("주점")}
+          onClick={() => {
+            handleClick("주점");
+          }}
         >
           {selectedButton === "주점" && <IconHr className="absolute top-0" />}
           <ReservationIc />
@@ -63,7 +70,10 @@ const Footer = () => {
           className={`flex flex-col flex-1 items-center justify-center m-0 gap-2 ${
             selectedButton === "동박" ? "" : "opacity-50"
           }`}
-          onClick={() => handleClick("동박")}
+          onClick={() => {
+            handleClick("동박");
+            setVisited();
+          }}
         >
           {selectedButton === "동박" && <IconHr className="absolute top-0" />}
           <ShowIc />
