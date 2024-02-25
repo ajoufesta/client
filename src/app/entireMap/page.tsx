@@ -7,7 +7,8 @@ import PlaceNavigator from "@/app/_commons/placeNavigator";
 import { fetchDongbakBooths } from "@/app/lib/data";
 import { DONGBAK_SECTION_LIST } from "@/app/lib/constants";
 import PlaceModal from "../_commons/placeModal";
-import FirstVisitPage from "./_components/dongbak";
+import FirstVisitPage from "../dongbak/_components/dongbak";
+import EntireMapX from "../../../public/entireMapX.svg";
 
 export const metadata = {
   title: "Dongbak",
@@ -17,15 +18,14 @@ export const metadata = {
 interface DongbakPageProps {
   searchParams?: {
     day?: string;
-    section?: string;
   };
 }
 
-const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
+const MapPage = ({ searchParams }: DongbakPageProps) => {
   // day가 쿼리스트링으로 넘어오지 않으면 오늘 날짜로 설정
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
   // section이 쿼리스트링으로 넘어오지 않으면 G-1로 설정
-  const selectedSection = searchParams?.section || "A";
+  const selectedSection = "A";
 
   if (selectedDay === -1) {
     return <div>Invalid Date</div>;
@@ -47,21 +47,29 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
           selectedSection={selectedSection}
         />
         <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
-          <div className="z-100">{/* <FirstVisitPage /> */}</div>
+          <div className="z-100">
+            <FirstVisitPage />
+          </div>
           <Map
             selectedDay={selectedDay}
             selectedSection={selectedSection}
             places={dongbak}
           />
-          <SectionBar
-            selectedDay={selectedDay}
-            selectedSection={selectedSection}
-          />
-          <PlaceNavigator
-            selectedDay={selectedDay}
-            selectedSection={selectedSection}
-            places={dongbak}
-          />
+          <div className="z-30 absolute bottom-0 w-full">
+            <div
+              className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-transparentWhite-300  transition-all duration-300 ease-in-out`}
+            ></div>
+            <div className="w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-200 px-[2.4rem] py-4">
+              {/* <EntireMap /> */}
+
+              <span className="w-[13.8rem] font-normal text-3xl text-center text-blue-400">
+                전체지도
+              </span>
+              <button>
+                <EntireMapX />
+              </button>
+            </div>
+          </div>
           <PlaceModal />
         </div>
       </>
@@ -72,4 +80,4 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
   return fetchAndRenderData();
 };
 
-export default DongbakBoothPage;
+export default MapPage;
