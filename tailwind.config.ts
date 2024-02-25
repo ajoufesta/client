@@ -60,10 +60,16 @@ const config: Config = {
           "50%": { transform: "scale(1.1)" },
           "100%": { transform: "scale(1)" },
         },
+
+        popUp: {
+          "0%": { transform: "scale(0)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
 
       animation: {
         bounce: "bounce 0.5s ease-in-out",
+        popUp: "popUp 0.1s ease-in-out",
       },
     },
   },

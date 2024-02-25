@@ -32,7 +32,7 @@ const PlaceModal = () => {
           >
             <span className="text-2xl font-bold">{location.location}</span>
           </div>
-          <div className="w-full h-full flex flex-col justify-center items-center">
+          <div className="w-full h-full flex flex-col justify-center items-center transition-all animate-popUp duration-200 ease-in-out">
             <div className="w-full h-[33%] mt-12 flex justify-center items-center">
               {location.y >= 200 && location.y < 300 && (
                 <div className="w-auto h-auto" onClick={stopPropagation}>
@@ -47,7 +47,7 @@ const PlaceModal = () => {
                   {modalContent}
                 </div>
               )}
-              {location.y >= 350 && location.y < 420 && (
+              {location.y >= 300 && location.y < 420 && (
                 <div className="mb-16 w-auto h-auto" onClick={stopPropagation}>
                   {modalContent}
                 </div>

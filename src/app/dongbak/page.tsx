@@ -41,14 +41,12 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
     return (
       <>
         <DateDisplay selectedDay={selectedDay} />
-        <DayDisplay selectedDay={selectedDay} />
+        <DayDisplay
+          selectedDay={selectedDay}
+          selectedSection={selectedSection}
+        />
         <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
           <Map
-            selectedDay={selectedDay}
-            selectedSection={selectedSection}
-            places={dongbak}
-          />
-          <PlaceNavigator
             selectedDay={selectedDay}
             selectedSection={selectedSection}
             places={dongbak}
@@ -56,6 +54,11 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
           <SectionBar
             selectedDay={selectedDay}
             selectedSection={selectedSection}
+          />
+          <PlaceNavigator
+            selectedDay={selectedDay}
+            selectedSection={selectedSection}
+            places={dongbak}
           />
           <PlaceModal />
         </div>
