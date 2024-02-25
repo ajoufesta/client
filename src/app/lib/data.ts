@@ -54,6 +54,11 @@ export const fetchDongbakBooths = async (day: number, section: string) => {
   try {
     const response = await fetch(
       `https://ajou-festi.aoldacloud.com/v1/clubs?day=${day}&section=${section}`,
+      {
+        next: {
+          revalidate: 0,
+        },
+      },
     );
 
     if (!response.ok) {

@@ -53,6 +53,18 @@ const config: Config = {
           3: "#80D0EC",
         },
       },
+
+      keyframes: {
+        bounce: {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.1)" },
+          "100%": { transform: "scale(1)" },
+        },
+      },
+
+      animation: {
+        bounce: "bounce 0.5s ease-in-out",
+      },
     },
   },
   plugins: [],
