@@ -58,6 +58,22 @@ const PlaceNavigator = ({
     }
   };
 
+  const handleClickHandle = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!navOpen) {
+      setNavOpen(true);
+      if (divRef.current) {
+        divRef.current.style.transition = "transform 0.2s ease-out";
+        divRef.current.style.transform = "translateX(-169%)";
+      }
+    } else {
+      setNavClose();
+      if (divRef.current) {
+        divRef.current.style.transition = "transform 0.2s ease-out";
+        divRef.current.style.transform = "translateX(-79%)";
+      }
+    }
+  };
+
   useEffect(() => {
     if (!navOpen) {
       if (divRef.current) {
@@ -77,6 +93,7 @@ const PlaceNavigator = ({
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          onClick={handleClickHandle}
         >
           <NavigatorHandle className="mt-[1.6rem]" />
           <div className="absolute top-[2.9rem] left-[0.8rem]">
