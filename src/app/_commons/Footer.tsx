@@ -5,10 +5,11 @@ import BoothIc from "@/public/boothIcon.svg";
 import PubIc from "@/public/pubIcon.svg";
 import ReservationIc from "@/public/reservationIcon.svg";
 import ShowIc from "@/public/showIcon.svg";
-
 import IconHr from "@/public/iconHr.svg";
 import Link from "next/link";
+import ClubIcon from "@/public/clubIcon.svg";
 import { useEffect } from "react";
+import useIsFirstVisitedStore from "../hooks/useIsFirstVisited";
 
 const Footer = () => {
   const [selectedButton, setSelectedButton] = useState("");
@@ -17,8 +18,12 @@ const Footer = () => {
     setSelectedButton(buttonName);
   };
 
+  const isFirstVisited = useIsFirstVisitedStore(
+    (state) => state.isFirstVisited
+  );
+
   useEffect(() => {
-    // console.log(selectedButton, "button");
+    console.log(isFirstVisited, "d");
   }, [selectedButton]);
 
   return (
@@ -37,37 +42,32 @@ const Footer = () => {
           <span className="text-[#CCDEF9] text-lg">공연</span>
         </Link>
         <Link
-          href={`/booths?day=1&section=seongho1`}
-          className={`flex flex-col flex-1 items-center justify-center m-0 gap-2 ${
-            selectedButton === "부스" ? "" : "opacity-50"
-          }`}
-          onClick={() => handleClick("부스")}
-        >
-          {selectedButton === "부스" && <IconHr className="absolute top-0" />}
-          <PubIc />
-          <span className="text-[#CCDEF9] text-lg">부스</span>
-        </Link>
-        <Link
-          href={`/pubs?day=1&section=seongho1`}
-          className={`flex flex-col flex-1 items-center justify-center m-0 gap-2 ${
-            selectedButton === "주점" ? "" : "opacity-50"
-          }`}
-          onClick={() => handleClick("주점")}
-        >
-          {selectedButton === "주점" && <IconHr className="absolute top-0" />}
-          <ReservationIc />
-          <span className="text-[#CCDEF9] text-lg">주점</span>
-        </Link>
-        <Link
-          href={`/dongbak?day=1&section=A`}
+          href={`/entireMap`}
           className={`flex flex-col flex-1 items-center justify-center m-0 gap-2 ${
             selectedButton === "동박" ? "" : "opacity-50"
           }`}
-          onClick={() => handleClick("동박")}
+          onClick={() => {
+            handleClick("동박");
+          }}
         >
           {selectedButton === "동박" && <IconHr className="absolute top-0" />}
           <ShowIc />
           <span className="text-[#CCDEF9] text-lg">동박</span>
+        </Link>
+        <Link
+          href={`/dongbak?day=1&section=A`}
+          className={`flex flex-col flex-1 items-center justify-center m-0 gap-2 ${
+            selectedButton === "동아리연합" ? "" : "opacity-50"
+          }`}
+          onClick={() => {
+            handleClick("동아리연합");
+          }}
+        >
+          {selectedButton === "동아리연합" && (
+            <IconHr className="absolute top-0" />
+          )}
+          <ClubIcon />
+          <span className="text-[#CCDEF9] text-lg">동아리연합</span>
         </Link>
       </div>
     </div>

@@ -1,13 +1,14 @@
 import DayDisplay from "@/app/_commons/dayDisplay";
 import DateDisplay from "@/app/_commons/dateDisplay";
 import Map from "@/app/_commons/map";
-import SectionBar from "@/app/_commons/sectionBar";
 import { getCurrentDay } from "@/app/lib/utils";
 import PlaceNavigator from "@/app/_commons/placeNavigator";
 import { fetchDongbakBooths } from "@/app/lib/data";
 import { DONGBAK_SECTION_LIST } from "@/app/lib/constants";
 import PlaceModal from "../_commons/placeModal";
-import FirstVisitPage from "./_components/dongbak";
+import FirstVisitPage from "../dongbak/_components/dongbak";
+import EntireMapX from "../../../public/entireMapX.svg";
+import SectionBar from "./_components/sectionBar";
 
 export const metadata = {
   title: "Dongbak",
@@ -17,15 +18,14 @@ export const metadata = {
 interface DongbakPageProps {
   searchParams?: {
     day?: string;
-    section?: string;
   };
 }
 
-const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
+const MapPage = ({ searchParams }: DongbakPageProps) => {
   // day가 쿼리스트링으로 넘어오지 않으면 오늘 날짜로 설정
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
   // section이 쿼리스트링으로 넘어오지 않으면 G-1로 설정
-  const selectedSection = searchParams?.section || "A";
+  const selectedSection = "A";
 
   if (selectedDay === -1) {
     return <div>Invalid Date</div>;
@@ -47,21 +47,15 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
           selectedSection={selectedSection}
         />
         <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
-          <div className="z-100"></div>
+          <div className="z-100">
+            <FirstVisitPage />
+          </div>
           <Map
             selectedDay={selectedDay}
             selectedSection={selectedSection}
             places={dongbak}
           />
-          <SectionBar
-            selectedDay={selectedDay}
-            selectedSection={selectedSection}
-          />
-          <PlaceNavigator
-            selectedDay={selectedDay}
-            selectedSection={selectedSection}
-            places={dongbak}
-          />
+          <SectionBar />
           <PlaceModal />
         </div>
       </>
@@ -72,4 +66,4 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
   return fetchAndRenderData();
 };
 
-export default DongbakBoothPage;
+export default MapPage;
