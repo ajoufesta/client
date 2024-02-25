@@ -9,6 +9,7 @@ import ArrowLeft from "@/public/arrow-left.svg";
 import SectionList from "@/public/section-list.svg";
 import useIsOpenStore from "../hooks/useIsOpenStore";
 import useIsFirstVisitedStore from "../hooks/useIsFirstVisited";
+import EntireMapX from "@/public/entireMapX.svg";
 
 const SectionBar = ({
   selectedDay,
@@ -126,36 +127,10 @@ const SectionBar = ({
 
             <button
               onClick={() => {
-                setIsSectionBarOpen(!isSectionBarOpen);
-                setIsNavOpen(false);
-                setIsDayOpen(false);
+                setVisited();
               }}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="21"
-                height="21"
-                viewBox="0 0 21 21"
-                fill="none"
-              >
-                <path
-                  d="M6.24316 6.24316L15.3242 15.3242"
-                  stroke="#005BE1"
-                  stroke-width="2"
-                />
-                <path
-                  d="M15.3242 6.24316L6.24314 15.3242"
-                  stroke="#005BE1"
-                  stroke-width="2"
-                />
-                <circle
-                  cx="10.5"
-                  cy="10.5"
-                  r="9.5"
-                  stroke="#005BE1"
-                  stroke-width="2"
-                />
-              </svg>
+              <EntireMapX />
             </button>
           </div>
         </div>
