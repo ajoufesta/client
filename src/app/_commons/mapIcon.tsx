@@ -4,7 +4,7 @@ import { Place, PlaceLocation } from "@/app/lib/types";
 import useModalStore from "@/app/hooks/useModalStore";
 import PlaceInfo from "./placeInfo";
 import useSelectedLocationStore from "../hooks/useSelectedLocationStore";
-import UseNavigationStore from "../hooks/useNavigationStore";
+import useIsOpenStore from "@/app/hooks/useIsOpenStore";
 
 const MapIcon = ({
   placeLocation,
@@ -15,7 +15,7 @@ const MapIcon = ({
 }) => {
   const { openModal, setModalContent } = useModalStore();
   const { setLocation, setPlace } = useSelectedLocationStore();
-  const { setNavClose } = UseNavigationStore();
+  const { setIsNavOpen, setIsSectionBarOpen, setIsDayOpen } = useIsOpenStore();
 
   return (
     <div
@@ -30,7 +30,9 @@ const MapIcon = ({
         setPlace(place);
         setModalContent(<PlaceInfo place={place} />);
         openModal();
-        setNavClose();
+        setIsNavOpen(false);
+        setIsDayOpen(false);
+        setIsSectionBarOpen(false);
       }}
     >
       <span className="text-2xl font-bold">{placeLocation.location}</span>

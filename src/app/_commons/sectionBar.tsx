@@ -4,10 +4,10 @@ import { DONGBAK_SECTION_LIST } from "@/app/lib/constants";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryWithDefault } from "@/app/hooks/useQueryWithDefault";
-import { useToggle } from "@/app/hooks/useToggle";
 import EntireMap from "@/public/entire-map.svg";
 import ArrowLeft from "@/public/arrow-left.svg";
 import SectionList from "@/public/section-list.svg";
+import useIsOpenStore from "../hooks/useIsOpenStore";
 
 const SectionBar = ({
   selectedDay,
@@ -17,7 +17,8 @@ const SectionBar = ({
   selectedSection: string;
 }) => {
   const { getQueryUrl } = useQueryWithDefault();
-  const [isToggle, handleToggle] = useToggle();
+  const { isSectionBarOpen, setIsSectionBarOpen, setIsNavOpen, setIsDayOpen } =
+    useIsOpenStore();
   const router = useRouter();
 
   const [selectedIndex, setSelectedIndex] = useState(
@@ -43,7 +44,7 @@ const SectionBar = ({
 
   const handleClickSection = (index: number) => {
     setSelectedIndex(index);
-    handleToggle();
+    setIsSectionBarOpen(!isSectionBarOpen);
   };
 
   useEffect(() => {
@@ -53,17 +54,17 @@ const SectionBar = ({
   }, [selectedDay, selectedIndex]);
 
   return (
-    <div className="z-10 absolute bottom-0 w-full">
+    <div className="z-30 absolute bottom-0 w-full">
       <div
-        className={`bg-white absolute bottom-[5rem] z-10 w-full h-[20rem] rounded-t-2xl overflow-y-hidden bg-transparentWhite-300 ${
-          isToggle ? "block" : "hidden"
-        }`}
+        className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-transparentWhite-300 ${
+          isSectionBarOpen ? "h-[20rem]" : "h-0"
+        } transition-all duration-300 ease-in-out`}
       >
         <ul>
           {DONGBAK_SECTION_LIST.map((section, index) => (
             <li key={index}>
               <div
-                className={`py-[1.5rem] text-2xl text-blue-400 text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold ${
+                className={`w-full py-[1.5rem] text-2xl text-blue-400 text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold ${
                   index === selectedIndex
                     ? "bg-blue-200 font-semibold pointer-events-none"
                     : ""
@@ -92,7 +93,13 @@ const SectionBar = ({
         <button onClick={() => handleClickRight()}>
           <ArrowLeft className="rotate-180" />
         </button>
-        <button onClick={handleToggle}>
+        <button
+          onClick={() => {
+            setIsSectionBarOpen(!isSectionBarOpen);
+            setIsNavOpen(false);
+            setIsDayOpen(false);
+          }}
+        >
           <SectionList />
         </button>
       </div>
