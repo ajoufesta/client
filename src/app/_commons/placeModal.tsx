@@ -47,7 +47,7 @@ const PlaceModal = () => {
                   {modalContent}
                 </div>
               )}
-              {location.y >= 350 && location.y < 420 && (
+              {location.y >= 300 && location.y < 420 && (
                 <div className="mb-16 w-auto h-auto" onClick={stopPropagation}>
                   {modalContent}
                 </div>
