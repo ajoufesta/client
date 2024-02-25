@@ -22,7 +22,6 @@ const SectionBar = ({
   const { isSectionBarOpen, setIsSectionBarOpen, setIsNavOpen, setIsDayOpen } =
     useIsOpenStore();
   const router = useRouter();
-  const { isFirstVisited, setVisited } = useIsFirstVisitedStore();
 
   const [selectedIndex, setSelectedIndex] = useState(
     DONGBAK_SECTION_LIST.findIndex((s) => s.section === selectedSection)
@@ -58,81 +57,58 @@ const SectionBar = ({
 
   return (
     <>
-      {!isFirstVisited && (
-        <div className="z-30 absolute bottom-0 w-full">
-          <div
-            className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-transparentWhite-300 ${
-              isSectionBarOpen ? "h-[20rem]" : "h-0"
-            } transition-all duration-300 ease-in-out`}
+      (
+      <div className="z-30 absolute bottom-0 w-full">
+        <div
+          className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-transparentWhite-300 ${
+            isSectionBarOpen ? "h-[20rem]" : "h-0"
+          } transition-all duration-300 ease-in-out`}
+        >
+          <ul>
+            {DONGBAK_SECTION_LIST.map((section, index) => (
+              <li key={index}>
+                <div
+                  className={`w-full py-[1.5rem] text-2xl text-blue-400 text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold ${
+                    index === selectedIndex
+                      ? "bg-blue-200 font-semibold pointer-events-none"
+                      : ""
+                  }`}
+                  onClick={() => handleClickSection(index)}
+                >
+                  {section.name}
+                </div>
+                <div
+                  className={`w-full h-[0.25px] bg-gray-50 ${
+                    index !== maxIndex ? "block" : "hidden"
+                  }`}
+                ></div>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-200 px-[2.4rem] py-4">
+          <EntireMap />
+          <button onClick={() => handleClickLeft()}>
+            <ArrowLeft />
+          </button>
+          <span className="w-[13.8rem] font-normal text-3xl text-center text-blue-400">
+            {DONGBAK_SECTION_LIST[selectedIndex]?.name}
+          </span>
+          <button onClick={() => handleClickRight()}>
+            <ArrowLeft className="rotate-180" />
+          </button>
+          <button
+            onClick={() => {
+              setIsSectionBarOpen(!isSectionBarOpen);
+              setIsNavOpen(false);
+              setIsDayOpen(false);
+            }}
           >
-            <ul>
-              {DONGBAK_SECTION_LIST.map((section, index) => (
-                <li key={index}>
-                  <div
-                    className={`w-full py-[1.5rem] text-2xl text-blue-400 text-center font-normal hover:bg-blue-100 hover:text-blue-400 hover:font-semibold ${
-                      index === selectedIndex
-                        ? "bg-blue-200 font-semibold pointer-events-none"
-                        : ""
-                    }`}
-                    onClick={() => handleClickSection(index)}
-                  >
-                    {section.name}
-                  </div>
-                  <div
-                    className={`w-full h-[0.25px] bg-gray-50 ${
-                      index !== maxIndex ? "block" : "hidden"
-                    }`}
-                  ></div>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-200 px-[2.4rem] py-4">
-            <EntireMap />
-            <button onClick={() => handleClickLeft()}>
-              <ArrowLeft />
-            </button>
-            <span className="w-[13.8rem] font-normal text-3xl text-center text-blue-400">
-              {DONGBAK_SECTION_LIST[selectedIndex]?.name}
-            </span>
-            <button onClick={() => handleClickRight()}>
-              <ArrowLeft className="rotate-180" />
-            </button>
-            <button
-              onClick={() => {
-                setIsSectionBarOpen(!isSectionBarOpen);
-                setIsNavOpen(false);
-                setIsDayOpen(false);
-              }}
-            >
-              <SectionList />
-            </button>
-          </div>
+            <SectionList />
+          </button>
         </div>
-      )}
-
-      {isFirstVisited && (
-        <div className="z-30 absolute bottom-0 w-full">
-          <div
-            className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-transparentWhite-300  transition-all duration-300 ease-in-out`}
-          ></div>
-          <div className="w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-200 px-[2.4rem] py-4">
-            <EntireMap />
-
-            <span className="w-[13.8rem] font-normal text-3xl text-center text-blue-400">
-              전체지도
-            </span>
-
-            <button
-              onClick={() => {
-                setVisited();
-              }}
-            >
-              <EntireMapX />
-            </button>
-          </div>
-        </div>
-      )}
+      </div>
+      )
     </>
   );
 };
