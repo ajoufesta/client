@@ -1,6 +1,6 @@
 import { PlaceLocations } from "./types";
 
-const FESTIVAL_DATE = ["2024-02-23", "2024-02-24", "2024-02-25"];
+const FESTIVAL_DATE = ["2024-02-24", "2024-02-25", "2024-02-26"];
 
 const SECTION_LIST = [
   {
@@ -44,22 +44,22 @@ export const DONGBAK_SECTION_LIST = [
   {
     section: "A",
     name: "A구역",
-    image: "/seongho1.png",
+    image: "/sectionA.png",
   },
   {
     section: "B",
     name: "B구역",
-    image: "/seongho2.png",
+    image: "/sectionB.png",
   },
   {
     section: "C",
     name: "C구역",
-    image: "/theater.png",
+    image: "/sectionC.png",
   },
   {
     section: "D",
     name: "D구역",
-    image: "/library.png",
+    image: "/sectionD.png",
   },
 ];
 
@@ -97,6 +97,30 @@ export const DONGBAK_LOCATIONS: PlaceLocations = {
         location: "5",
         x: 10,
         y: 210,
+        rotate: 0,
+      },
+      {
+        location: "6",
+        x: 10,
+        y: 260,
+        rotate: 0,
+      },
+      {
+        location: "7",
+        x: 10,
+        y: 310,
+        rotate: 0,
+      },
+      {
+        location: "8",
+        x: 10,
+        y: 360,
+        rotate: 0,
+      },
+      {
+        location: "9",
+        x: 10,
+        y: 410,
         rotate: 0,
       },
     ],
