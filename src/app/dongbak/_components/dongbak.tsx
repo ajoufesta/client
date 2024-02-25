@@ -4,7 +4,7 @@ import useIsFirstVisitedStore from "@/app/hooks/useIsFirstVisited";
 import EntireMap from "../../../../public/entireMap.svg";
 
 const FirstVisitPage = () => {
-  const { isFirstVisited } = useIsFirstVisitedStore();
+  const { isFirstVisited, setVisited } = useIsFirstVisitedStore();
 
   useEffect(() => {
     console.log(isFirstVisited, "visi");
@@ -21,7 +21,12 @@ const FirstVisitPage = () => {
               <p className="flex flex-col justify-center items-center text-center text-[#005BE1] text-[2rem]">
                 구역을 터치해서
                 <br /> 이동해보세요
-                <div className="">확인</div>
+                <div
+                  className="w-[5.7rem] h-[2.3rem] rounded-[5rem] bg-blue-400 text-white text-[1.4rem] mt-[3rem]"
+                  onClick={() => setVisited()}
+                >
+                  확인
+                </div>
               </p>
             </div>
           </div>
