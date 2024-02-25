@@ -10,7 +10,7 @@ import { DONGBAK_LOCATIONS } from "@/app/lib/constants";
 import { getLocationByPlace } from "@/app/lib/utils";
 import useModalStore from "@/app/hooks/useModalStore";
 import PlaceInfo from "../placeInfo";
-import UseNavigationStore from "@/app/hooks/useNavigationStore";
+import useIsOpenStore from "@/app/hooks/useIsOpenStore";
 
 interface PlaceNavigatorProps {
   places: Place[];
@@ -24,7 +24,8 @@ const PlaceNavigator = ({
   selectedSection,
 }: PlaceNavigatorProps) => {
   const { setPlace, setLocation } = useSelectedLocationStore();
-  const { navOpen, setNavOpen, setNavClose } = UseNavigationStore();
+  const { isNavOpen, setIsNavOpen, setIsDayOpen, setIsSectionBarOpen } =
+    useIsOpenStore();
   const { openModal, setModalContent } = useModalStore();
 
   const divRef = useRef<HTMLDivElement>(null);
@@ -50,23 +51,25 @@ const PlaceNavigator = ({
     if (!divRef.current) return;
 
     if (divRef.current.getBoundingClientRect().left < window.innerWidth / 2) {
-      setNavOpen(true);
+      setIsNavOpen(true);
       divRef.current.style.transform = "translateX(-169%)";
     } else {
-      setNavClose();
+      setIsNavOpen(false);
       divRef.current.style.transform = "translateX(-79%)";
     }
   };
 
   const handleClickHandle = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!navOpen) {
-      setNavOpen(true);
+    if (!isNavOpen) {
+      setIsDayOpen(false);
+      setIsSectionBarOpen(false);
+      setIsNavOpen(true);
       if (divRef.current) {
         divRef.current.style.transition = "transform 0.2s ease-out";
         divRef.current.style.transform = "translateX(-169%)";
       }
     } else {
-      setNavClose();
+      setIsNavOpen(false);
       if (divRef.current) {
         divRef.current.style.transition = "transform 0.2s ease-out";
         divRef.current.style.transform = "translateX(-79%)";
@@ -75,13 +78,13 @@ const PlaceNavigator = ({
   };
 
   useEffect(() => {
-    if (!navOpen) {
+    if (!isNavOpen) {
       if (divRef.current) {
         divRef.current.style.transition = "transform 0.2s ease-out";
         divRef.current.style.transform = "translateX(-79%)";
       }
     }
-  }, [navOpen]);
+  }, [isNavOpen]);
 
   return (
     <div className={`z-20 absolute w-[19.7rem] h-full -right-full`}>
@@ -98,13 +101,13 @@ const PlaceNavigator = ({
           <NavigatorHandle className="mt-[1.6rem]" />
           <div className="absolute top-[2.9rem] left-[0.8rem]">
             <NavigatorHandleArrow
-              className={`transform ${navOpen ? "rotate-0" : "rotate-180"}`}
+              className={`transform ${isNavOpen ? "rotate-0" : "rotate-180"}`}
             />
           </div>
         </div>
         <div
           className={`flex flex-col p-4 gap-4 items-center w-full bg-transparentBlue-300 overflow-y-auto ${
-            navOpen ? "z-20" : "touch-none pointer-events-none"
+            isNavOpen ? "z-20" : "touch-none pointer-events-none"
           }`}
         >
           {places.map((place, index) => (
@@ -121,7 +124,7 @@ const PlaceNavigator = ({
                 );
                 setModalContent(<PlaceInfo place={place} />);
                 openModal();
-                setNavClose();
+                setIsNavOpen(false);
                 if (divRef.current) {
                   divRef.current.style.transition = "transform 0.2s ease-out";
                   divRef.current.style.transform = "translateX(-79%)";
