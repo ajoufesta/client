@@ -8,7 +8,7 @@ import ShowIc from "@/public/showIcon.svg";
 import IconHr from "@/public/iconHr.svg";
 import Link from "next/link";
 import { useEffect } from "react";
-import useIsFirstVisitedStore from "../hooks/useIsFirstVisted";
+import useIsFirstVisitedStore from "../hooks/useIsFirstVisited";
 
 const Footer = () => {
   const [selectedButton, setSelectedButton] = useState("");
@@ -20,7 +20,6 @@ const Footer = () => {
   const isFirstVisited = useIsFirstVisitedStore(
     (state) => state.isFirstVisited
   );
-  const setVisited = useIsFirstVisitedStore((state) => state.setVisited);
 
   useEffect(() => {
     console.log(isFirstVisited, "d");
@@ -72,7 +71,6 @@ const Footer = () => {
           }`}
           onClick={() => {
             handleClick("동박");
-            setVisited();
           }}
         >
           {selectedButton === "동박" && <IconHr className="absolute top-0" />}

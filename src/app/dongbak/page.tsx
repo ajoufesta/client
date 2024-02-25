@@ -41,13 +41,15 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
 
     return (
       <>
-        <FirstVisitPage />
         <DateDisplay selectedDay={selectedDay} />
         <DayDisplay
           selectedDay={selectedDay}
           selectedSection={selectedSection}
         />
         <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
+          <div className="z-100">
+            <FirstVisitPage />
+          </div>
           <Map
             selectedDay={selectedDay}
             selectedSection={selectedSection}
