@@ -18,7 +18,7 @@ const Footer = () => {
   };
 
   useEffect(() => {
-    console.log(selectedButton, "button");
+    // console.log(selectedButton, "button");
   }, [selectedButton]);
 
   return (
