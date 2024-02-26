@@ -10,10 +10,29 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import useIsFirstStore from "../hooks/useIsFirstStore";
 
+import DongbakHr from "@/public/dongbakHr.svg";
+import DongyeonActiveIcon from "@/public/dongyeonActiveIcon.svg";
+import DongariActiveIcon from "@/public/dongariActiveIcon.svg";
+import BuskingActiveIcon from "@/public/buskingActiveIcon.svg";
+import YootIcon from "@/public/yootIcon.svg";
+import DongyeonIcon from "@/public/dongyeonIcon.svg";
+import DongariIcon from "@/public/dongariIcon.svg";
+import BuskingIcon from "@/public/buskingIcon.svg";
+import YootActiveIcon from "@/public/yootActiveIcon.svg";
+
 const links = [
-  { name: "버스킹", href: ["/stage"], icon: ShowIc },
-  { name: "동박", href: ["/entire-map", "/dongbak"], icon: BoothIc },
-  { name: "동연페이지", href: ["/dongwha"], icon: ClubIcon },
+  { name: "버스킹", href: ["/stage"], icon: [BuskingIcon, BuskingActiveIcon] },
+  {
+    name: "동아리",
+    href: ["/entire-map", "/dongbak"],
+    icon: [DongariIcon, DongariActiveIcon],
+  },
+  {
+    name: "동연소식",
+    href: ["/dongwha"],
+    icon: [DongyeonIcon, DongyeonActiveIcon],
+  },
+  { name: "윶놀이", href: ["/yoot"], icon: [YootIcon, YootActiveIcon] },
 ];
 
 const FooterLinks = () => {
@@ -23,7 +42,8 @@ const FooterLinks = () => {
   return (
     <>
       {links.map((link) => {
-        const LinkIcon = link.icon;
+        const LinkIcon = link.icon[0];
+        const LinkActive = link.icon[1];
         return (
           <Link
             key={link.name}
@@ -34,9 +54,12 @@ const FooterLinks = () => {
             onClick={() => setCameFromSection(false)}
           >
             {link.href.includes(pathname) && (
-              <IconHr className="absolute top-0" />
+              <>
+                <LinkActive />
+                <DongbakHr className="absolute top-0" />
+              </>
             )}
-            <LinkIcon />
+            {!link.href.includes(pathname) && <LinkIcon />}
             <span className="text-[#CCDEF9] text-lg">{link.name}</span>
           </Link>
         );
