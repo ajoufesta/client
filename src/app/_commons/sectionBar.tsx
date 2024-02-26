@@ -8,8 +8,7 @@ import EntireMap from "@/public/entire-map.svg";
 import ArrowLeft from "@/public/arrow-left.svg";
 import SectionList from "@/public/section-list.svg";
 import useIsOpenStore from "../hooks/useIsOpenStore";
-import useIsFirstVisitedStore from "../hooks/useIsFirstVisited";
-import EntireMapX from "@/public/entireMapX.svg";
+import useIsFirstStore from "../hooks/useIsFirstStore";
 
 const SectionBar = ({
   selectedDay,
@@ -21,10 +20,11 @@ const SectionBar = ({
   const { getQueryUrl } = useQueryWithDefault();
   const { isSectionBarOpen, setIsSectionBarOpen, setIsNavOpen, setIsDayOpen } =
     useIsOpenStore();
+  const { setCameFromSection } = useIsFirstStore();
   const router = useRouter();
 
   const [selectedIndex, setSelectedIndex] = useState(
-    DONGBAK_SECTION_LIST.findIndex((s) => s.section === selectedSection)
+    DONGBAK_SECTION_LIST.findIndex((s) => s.section === selectedSection),
   );
   const maxIndex = DONGBAK_SECTION_LIST.length - 1;
 
@@ -51,13 +51,12 @@ const SectionBar = ({
 
   useEffect(() => {
     router.push(
-      getQueryUrl(selectedDay, DONGBAK_SECTION_LIST[selectedIndex].section)
+      getQueryUrl(selectedDay, DONGBAK_SECTION_LIST[selectedIndex].section),
     );
   }, [selectedDay, selectedIndex]);
 
   return (
     <>
-      (
       <div className="z-30 absolute bottom-0 w-full">
         <div
           className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-transparentWhite-300 ${
@@ -87,7 +86,14 @@ const SectionBar = ({
           </ul>
         </div>
         <div className="w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-200 px-[2.4rem] py-4">
-          <EntireMap />
+          <button
+            onClick={() => {
+              setCameFromSection(true);
+              router.push("/entire-map");
+            }}
+          >
+            <EntireMap />
+          </button>
           <button onClick={() => handleClickLeft()}>
             <ArrowLeft />
           </button>
@@ -108,7 +114,6 @@ const SectionBar = ({
           </button>
         </div>
       </div>
-      )
     </>
   );
 };
