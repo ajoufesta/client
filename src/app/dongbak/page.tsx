@@ -1,5 +1,5 @@
 // import DayDisplay from "@/app/_commons/dayDisplay";
-import DateDisplay from "@/app/_commons/dateDisplay";
+// import DateDisplay from "@/app/_commons/dateDisplay";
 import Map from "@/app/_commons/map";
 import SectionBar from "@/app/_commons/sectionBar";
 import { getCurrentDay } from "@/app/lib/utils";
@@ -41,15 +41,17 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
 
     return (
       <>
-        <DateDisplay selectedDay={selectedDay} />
+        {/* <DateDisplay selectedDay={selectedDay} /> */}
         {/* <DayDisplay
           selectedDay={selectedDay}
           selectedSection={selectedSection}
         /> */}
-        <h1 className="text-4xl font-normal text-center mt-4 text-white mb-4">
-          동아리 박람회
-        </h1>
-        <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
+        <div className="w-[23.4rem] h-[3.8rem] bg-brown-400 border-2 border-brown-500 flex items-center justify-center rounded-full mb-4">
+          <span className="text-3xl font-bold text-center text-brown-500">
+            동아리 박람회 지도
+          </span>
+        </div>
+        <div className="flex mt-2 w-[33.5rem] h-[49.9rem] flex-col items-center border-2 border-brown-500 rounded-3xl overflow-hidden relative shadow-md">
           <Map
             selectedDay={1}
             selectedSection={selectedSection}
