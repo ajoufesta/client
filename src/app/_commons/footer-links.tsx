@@ -48,9 +48,7 @@ const FooterLinks = () => {
           <Link
             key={link.name}
             href={link.href[0]}
-            className={`flex flex-col flex-1 items-center justify-center m-0 gap-2 ${
-              link.href.includes(pathname) ? "" : "opacity-50"
-            }`}
+            className={`flex flex-col flex-1 items-center justify-center m-0 gap-2`}
             onClick={() => setCameFromSection(false)}
           >
             {link.href.includes(pathname) && (
@@ -60,7 +58,15 @@ const FooterLinks = () => {
               </>
             )}
             {!link.href.includes(pathname) && <LinkIcon />}
-            <span className="text-[#CCDEF9] text-lg">{link.name}</span>
+            <span
+              className={`text-lg ${
+                link.href.includes(pathname)
+                  ? "text-brown-500"
+                  : "text-gray-200"
+              }`}
+            >
+              {link.name}
+            </span>
           </Link>
         );
       })}
