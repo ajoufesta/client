@@ -68,7 +68,7 @@ const Map = ({ selectedDay, selectedSection, places }: MapProps) => {
           (location: PlaceLocation, index: number) => (
             <div
               key={location.location}
-              className="animate-bounce origin-bottom"
+              className="animate-bounce origin-center"
             >
               <MapIcon
                 placeLocation={location}

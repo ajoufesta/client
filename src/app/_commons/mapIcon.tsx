@@ -5,6 +5,7 @@ import useModalStore from "@/app/hooks/useModalStore";
 import PlaceInfo from "./placeInfo";
 import useSelectedLocationStore from "../hooks/useSelectedLocationStore";
 import useIsOpenStore from "@/app/hooks/useIsOpenStore";
+import { MapPinColor } from "../lib/constants";
 
 const MapIcon = ({
   placeLocation,
@@ -19,11 +20,12 @@ const MapIcon = ({
 
   return (
     <div
-      className="place-to-click z-10"
+      className={`place-to-click z-10 ${
+        "section" in place && MapPinColor[place.section][0]
+      }`}
       style={{
         top: `${placeLocation.y * 0.1}rem`,
         left: `${placeLocation.x * 0.1}rem`,
-        transform: `rotate(${placeLocation.rotate}deg)`,
       }}
       onClick={() => {
         setLocation(placeLocation);
@@ -35,7 +37,9 @@ const MapIcon = ({
         setIsSectionBarOpen(false);
       }}
     >
-      <span className="text-2xl font-bold">{placeLocation.location}</span>
+      <span className="text-2xl rotate-45 font-bold text-white">
+        {placeLocation.location.padStart(2, "0")}
+      </span>
     </div>
   );
 };
