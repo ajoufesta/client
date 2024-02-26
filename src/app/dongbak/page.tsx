@@ -1,4 +1,4 @@
-import DayDisplay from "@/app/_commons/dayDisplay";
+// import DayDisplay from "@/app/_commons/dayDisplay";
 import DateDisplay from "@/app/_commons/dateDisplay";
 import Map from "@/app/_commons/map";
 import SectionBar from "@/app/_commons/sectionBar";
@@ -7,7 +7,6 @@ import PlaceNavigator from "@/app/_commons/placeNavigator";
 import { fetchDongbakBooths } from "@/app/lib/data";
 import { DONGBAK_SECTION_LIST } from "@/app/lib/constants";
 import PlaceModal from "../_commons/placeModal";
-import FirstVisitPage from "./_components/dongbak";
 
 export const metadata = {
   title: "Dongbak",
@@ -23,13 +22,14 @@ interface DongbakPageProps {
 
 const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
   // day가 쿼리스트링으로 넘어오지 않으면 오늘 날짜로 설정
+
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
   // section이 쿼리스트링으로 넘어오지 않으면 G-1로 설정
   const selectedSection = searchParams?.section || "A";
 
-  if (selectedDay === -1) {
-    return <div>Invalid Date</div>;
-  }
+  // if (selectedDay === -1) {
+  //   return <div>Invalid Date</div>;
+  // }
 
   if (!DONGBAK_SECTION_LIST.some((s) => s.section === selectedSection)) {
     return <div>Invalid Section</div>;
@@ -37,28 +37,27 @@ const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
 
   // fetchData 함수를 실행하고 그 결과를 대기함
   const fetchAndRenderData = async () => {
-    const dongbak = await fetchDongbakBooths(selectedDay, selectedSection);
+    const dongbak = await fetchDongbakBooths(1, selectedSection);
 
     return (
       <>
         <DateDisplay selectedDay={selectedDay} />
-        <DayDisplay
+        {/* <DayDisplay
           selectedDay={selectedDay}
           selectedSection={selectedSection}
-        />
+        /> */}
+        <h1 className="text-4xl font-normal text-center mt-4 text-white mb-4">
+          동아리 박람회
+        </h1>
         <div className="flex mt-2 w-[33.4rem] h-[49.9rem] flex-col items-center rounded-xl overflow-hidden relative">
-          <div className="z-100"></div>
           <Map
-            selectedDay={selectedDay}
+            selectedDay={1}
             selectedSection={selectedSection}
             places={dongbak}
           />
-          <SectionBar
-            selectedDay={selectedDay}
-            selectedSection={selectedSection}
-          />
+          <SectionBar selectedDay={1} selectedSection={selectedSection} />
           <PlaceNavigator
-            selectedDay={selectedDay}
+            selectedDay={1}
             selectedSection={selectedSection}
             places={dongbak}
           />
