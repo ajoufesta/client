@@ -62,9 +62,9 @@ const config: Config = {
 
       keyframes: {
         bounce: {
-          "0%": { transform: "scale(1)" },
-          "50%": { transform: "scale(1.1)" },
-          "100%": { transform: "scale(1)" },
+          "0%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-2rem)" },
+          "100%": { transform: "translateY(0)" },
         },
 
         popUp: {
@@ -74,7 +74,7 @@ const config: Config = {
       },
 
       animation: {
-        bounce: "bounce 0.5s ease-in-out",
+        bounce: "bounce 0.4s ease-in-out",
         popUp: "popUp 0.1s ease-in-out",
       },
     },
