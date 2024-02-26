@@ -12,9 +12,9 @@ const UnderBar = () => {
   return (
     <>
       <div className="absolute w-full h-full">
-        <div className="absolute bottom-0 w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-200 px-[2.4rem] py-4 z-10">
+        <div className="absolute bottom-0 w-full h-[5rem] flex flex-row justify-between items-center bg-transparentWhite-100 px-[2.4rem] py-4 z-10 border-brown-500">
           <EntireMap />
-          <span className="w-[13.8rem] font-normal text-3xl text-center text-blue-400">
+          <span className="w-[13.8rem] font-semibold text-3xl text-center text-brown-500">
             전체지도
           </span>
           <div>
