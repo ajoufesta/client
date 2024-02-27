@@ -2,6 +2,7 @@ import React from "react";
 import EmblaCarousel from "../stage/_components/stageCarousel/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import DongyeonCarousel from "./_components/dongyeonCarousel";
+import DongyeonButton from "./_components/DongyeonButton";
 
 import "./_components/embla.css";
 
@@ -11,7 +12,7 @@ const page = () => {
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
   return (
     <div>
-      {" "}
+      <DongyeonButton />
       <div className="flex flex-col justify-center items-center h-[33.5rem]">
         <main className="relative bg-white w-[33.5rem] h-[33.5rem] rounded-[1.5rem] flex justify-center">
           <section className="sandbox__carousel">
