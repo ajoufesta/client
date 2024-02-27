@@ -1,5 +1,4 @@
 import React from "react";
-import EmblaCarousel from "../stage/_components/stageCarousel/EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import DongyeonCarousel from "./_components/dongyeonCarousel";
 import DongyeonButton from "./_components/DongyeonButton";
