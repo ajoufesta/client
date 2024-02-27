@@ -32,13 +32,18 @@ const DongyeonCarousel: React.FC<PropType> = (props) => {
   //   } = usePrevNextButtons(emblaApi);
 
   return (
-    <section className="embla dongyeon">
+    <section className="embla_dongyeon">
       <div className="embla__viewport dongyeon" ref={emblaRef}>
         <div className="embla__container dongyeon">
           {slides.map((index) => (
             <div className="embla__slide dongyeon" key={index}>
               <div className="embla__slide__number dongyeon">{index + 1}</div>
-              <Image src={Dongbak} alt="df" width={335} height={335} />
+              <Image
+                src={`/dongbak${index + 1}.jpeg`}
+                alt="df"
+                width={335}
+                height={335}
+              />
             </div>
           ))}
         </div>
