@@ -1,14 +1,6 @@
 "use client";
 import React from "react";
 import { EmblaOptionsType } from "embla-carousel";
-// import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
-// import {
-//   PrevButton,
-//   NextButton,
-//   usePrevNextButtons,
-// } from "./EmblaCarouselArrowButtons";
-import DongbakHr from "@/public/dongbakHr.svg";
-import Dongbak from "../../../../public/dongbak1.jpeg";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
