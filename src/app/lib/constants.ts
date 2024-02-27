@@ -64,10 +64,10 @@ export const DONGBAK_SECTION_LIST = [
 ];
 
 export const MapPinColor = {
-  A: ["bg-red-500", "text-red-500"],
-  B: ["bg-yellow-500", "text-yellow-500"],
-  C: ["bg-blue-500", "text-blue-500"],
-  D: ["bg-green-500", "text-green-500"],
+  A: ["bg-mapPin-1", "text-mapPin-1"],
+  B: ["bg-mapPin-2", "text-mapPin-2"],
+  C: ["bg-mapPin-3", "text-mapPin-3"],
+  D: ["bg-mapPin-4", "text-mapPin-4"],
 };
 
 export const DONGBAK_LOCATIONS: PlaceLocations = {
