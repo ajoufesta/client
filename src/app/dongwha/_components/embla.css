@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .embla__container {
   backface-visibility: hidden;
   display: flex;
