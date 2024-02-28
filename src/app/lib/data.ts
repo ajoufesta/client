@@ -52,7 +52,6 @@ export const fetchDongbakBooths = async (day: number, section: string) => {
   try {
     const response = await fetch(
       `http://3.36.106.99/v1/clubs?day=${day}&section=${section}`,
-      { cache: "force-cache" },
     );
 
     if (!response.ok) {
