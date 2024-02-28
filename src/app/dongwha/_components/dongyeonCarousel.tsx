@@ -3,7 +3,7 @@ import React from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
-import { SelectedSnapDisplay, useSelectedSnapDisplay } from "./selectedSnap";
+import { SelectedSnapDisplay, useSelectedSnapDisplay } from "./SelectedSnap";
 
 type PropType = {
   slides: number[];
@@ -24,9 +24,6 @@ const DongyeonCarousel: React.FC<PropType> = (props) => {
               className="relative embla__slide dongyeon flex flex-col items-center"
               key={index}
             >
-              <div className="absolute right-[1rem] top-[1.7rem] w-[7.3rem] h-[3.4rem] rounded-[5rem] bg-brown-500 text-center flex justify-center items-center text-[2rem] text-white">
-                {index + 1} / 8
-              </div>
               <Image
                 src={`/dongbak${index + 1}.jpeg`}
                 alt="이미지"
