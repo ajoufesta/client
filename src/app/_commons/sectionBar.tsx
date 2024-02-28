@@ -66,9 +66,7 @@ const SectionBar = ({
                     }
                   </span>
                 </div>
-                <div
-                  className={`w-full border-transparentWhite-100 border-[0.1px]`}
-                ></div>
+                <div className={`w-full border-gray-50 border-[0.1px]`}></div>
               </li>
             ))}
           </ul>
