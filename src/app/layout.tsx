@@ -32,13 +32,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="167x167" href="192.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="192.png" />
       </Head>
-      <body className="flex items-center justify-center">
-        <div className="h-screen w-screen max-w-screen-sm bg-brown-100 relative flex flex-col items-center">
-          <div className="h-[calc(100vh-10.4rem)] flex flex-col justify-center items-center">
-            {children}
-          </div>
-          <Footer />
-        </div>
+      <body className="h-screen w-screen max-w-screen-sm bg-brown-100 relative flex flex-col items-center">
+        <main className="h-[calc(100vh-10.4rem)] flex flex-col justify-center items-center">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
