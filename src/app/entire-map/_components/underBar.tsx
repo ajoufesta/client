@@ -20,7 +20,7 @@ const UnderBar = () => {
           <button
             onClick={router.back}
             className={`flex flex-col items-center justify-center ${
-              cameFromSection === true ? "visible" : "invisible"
+              cameFromSection ? "visible" : "invisible"
             }`}
           >
             <Exit />
