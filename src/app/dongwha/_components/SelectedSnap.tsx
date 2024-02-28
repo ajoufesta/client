@@ -40,7 +40,7 @@ export const SelectedSnapDisplay = (props: PropType) => {
   const { selectedSnap, snapCount } = props;
 
   return (
-    <div className="embla__selected-snap-display absolute right-[2rem] top-[2rem] w-[7.3rem] h-[3.4rem] rounded-[5rem] bg-brown-500 text-center flex justify-center items-center text-[2rem] text-white">
+    <div className="embla__selected-snap-display absolute right-[2rem] top-[2rem] w-[5.3rem] h-[2.5rem] rounded-[5rem] bg-brown-500 text-center flex justify-center items-center text-[1.6rem] text-white">
       {selectedSnap + 1} / {snapCount}
     </div>
   );
