@@ -1,7 +1,7 @@
 export const fetchPubs = async (day: number, section: string) => {
   try {
     const response = await fetch(
-      `https://api.ajoufesta.com/v1/pubs?day=1&section=A4`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/pubs?day=1&section=A4`,
     );
 
     if (!response.ok) {
@@ -19,7 +19,7 @@ export const fetchPubs = async (day: number, section: string) => {
 export const fetchStageData = async (day: number) => {
   try {
     const response = await fetch(
-      `https://api.ajoufesta.com/v1/shows?day=${day}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/shows?day=${day}`,
     );
 
     if (!response.ok) {
@@ -36,7 +36,7 @@ export const fetchStageData = async (day: number) => {
 export const fetchBooths = async (day: number, section: string) => {
   try {
     const response = await fetch(
-      `https://api.ajoufesta.com/v1/boothes?day=1&section=seoungho1`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/boothes?day=1&section=seoungho1`,
     );
 
     if (!response.ok) {
@@ -53,7 +53,7 @@ export const fetchBooths = async (day: number, section: string) => {
 export const fetchDongbakBooths = async (day: number, section: string) => {
   try {
     const response = await fetch(
-      `https://api.ajoufesta.com/v1/clubs?day=${day}&section=${section}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/clubs?day=${day}&section=${section}`,
     );
 
     if (!response.ok) {
@@ -69,11 +69,14 @@ export const fetchDongbakBooths = async (day: number, section: string) => {
 
 export const fetchGamePlayers = async () => {
   try {
-    const response = await fetch("https://api.ajoufesta.com/v1/game", {
-      next: {
-        revalidate: 300,
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/game`,
+      {
+        next: {
+          revalidate: 300,
+        },
       },
-    });
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch game players");
