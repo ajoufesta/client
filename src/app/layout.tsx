@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import Head from "next/head";
 import Footer from "@/app/_commons/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   manifest: "/manifest.json",
@@ -38,6 +39,7 @@ export default function RootLayout({
         </main>
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-9Q7W6YM2CM" />
     </html>
   );
 }
