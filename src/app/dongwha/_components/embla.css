@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: center;
   box-shadow: 0px 5px 5px 0px rgba(230, 194, 153, 0.2);
+  border-radius: 15px;
 }
 
 .embla__container {
