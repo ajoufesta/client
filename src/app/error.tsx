@@ -1,6 +1,12 @@
 "use client";
 
+import { Metadata } from "next";
 import { useEffect } from "react";
+
+export const metadata: Metadata = {
+  title: "오류",
+  description: "오류 페이지 | 동화",
+};
 
 type Props = {
   error: Error;
