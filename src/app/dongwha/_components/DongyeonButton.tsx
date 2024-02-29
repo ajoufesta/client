@@ -30,7 +30,7 @@ const DongyeonButton = () => {
         <p className="font-bold">이벤트 안내 </p>
       </div>
       <div
-        className={`w-[16rem] h-[8.6rem] rounded-[1rem] pl-[1.4rem] py-[1rem] ${
+        className={`w-[16rem] h-[6.5rem] rounded-[1rem] pl-[1.4rem] py-[1rem] ${
           isClicked === "ajouFesta" ? clickedStyle : unClickedStyle
         } `}
         onClick={() => {
@@ -38,8 +38,9 @@ const DongyeonButton = () => {
           router.push("dongwha?category=ajouFesta");
         }}
       >
-        <p>아주페스타</p>
-        <p className="font-bold">웹 바로가기</p>
+        <p>
+          동화 <span className="font-bold">웹 바로가기</span>
+        </p>
         <p className="font-bold">아이콘 추가 방법 </p>
       </div>
     </div>
