@@ -89,11 +89,23 @@ const config: Config = {
           "0%": { transform: "scale(0)" },
           "100%": { transform: "scale(1)" },
         },
+
+        rotate: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+
+        vanish: {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
       },
 
       animation: {
         bounce: "bounce 0.4s ease-in-out",
         popUp: "popUp 0.1s ease-in-out",
+        loading: "rotate 1s linear",
+        vanish: "vanish 5s ease-in-out",
       },
     },
   },
