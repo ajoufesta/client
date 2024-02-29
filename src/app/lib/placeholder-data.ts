@@ -92,7 +92,8 @@ export const emptyClub: Club = {
   clubName: "동아리 구함",
   clubDetail: "자리 비었음.",
   clubActivities: ["자리 비었음."],
-  link: "https://via.placeholder.com/150",
+  link: "https://www.instagram.com/ajou_club.union/",
   linkIconId: "default",
   section: "A",
+  phoneNumber: "010-0000-0000",
 };
