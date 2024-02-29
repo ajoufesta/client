@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
@@ -8,10 +8,11 @@ import { SelectedSnapDisplay, useSelectedSnapDisplay } from "./SelectedSnap";
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
+  isAjouFesta: boolean;
 };
 
 const DongyeonCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
+  const { slides, options, isAjouFesta } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
 
@@ -24,13 +25,24 @@ const DongyeonCarousel: React.FC<PropType> = (props) => {
               className="relative embla__slide dongyeon flex flex-col items-center"
               key={index}
             >
-              <Image
-                src={`/dongbak${index + 1}.jpeg`}
-                alt="이미지"
-                width={315}
-                height={315}
-                priority
-              />
+              {isAjouFesta && (
+                <Image
+                  src={`/donghwa${index + 1}.png`}
+                  alt="이미지"
+                  width={315}
+                  height={315}
+                  priority
+                />
+              )}
+              {!isAjouFesta && (
+                <Image
+                  src={`/dongbak${index + 1}.jpeg`}
+                  alt="이미지"
+                  width={315}
+                  height={315}
+                  priority
+                />
+              )}
             </div>
           ))}
         </div>

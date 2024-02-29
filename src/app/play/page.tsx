@@ -26,7 +26,7 @@ const PlayPage = async () => {
       <h1 className="text-3xl text-brown-600 font-bold mt-4">
         실시간 공기놀이 순위
       </h1>
-      <div className="w-full h-[30rem] relative flex justify-center items-center">
+      <div className="w-full h-[28rem] relative flex justify-center items-center">
         <div className="w-fit flex gap-4">
           <Trophy rank={2} player={players[1] ? players[1] : dummyPlayer} />
           <Trophy rank={1} player={players[0] ? players[0] : dummyPlayer} />
@@ -37,10 +37,8 @@ const PlayPage = async () => {
         </span>
       </div>
 
-      <h2 className="text-3xl text-brown-500 font-bold mb-4">
-        공기놀이 대회 ?
-      </h2>
-      <div className="w-[30rem] h-[18rem] flex flex-col justify-center items-center bg-white rounded-lg p-8 text-xl text-brown-500 relative ">
+      <h2 className="text-3xl text-brown-500 font-bold mb-4">공기놀이 대회</h2>
+      <div className="w-[30rem] h-[16rem] flex flex-col justify-center items-center bg-white rounded-lg  text-xl text-brown-500 relative ">
         <p className=" font-normal highlight-2 text-center">
           공기놀이 대회에 참가하여
         </p>
