@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
@@ -14,6 +14,7 @@ const DongyeonCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
+  const [isAjouFesta, setIsAjouFesta] = useState(false);
 
   return (
     <section className="embla_dongyeon flex items-center mx-auto">

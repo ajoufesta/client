@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const DongyeonButton = () => {
   const [isClicked, setIsClicked] = useState("dongari");
@@ -12,13 +13,18 @@ const DongyeonButton = () => {
   const handleClick = (buttonName: string) => {
     setIsClicked(buttonName);
   };
+
+  const router = useRouter();
   return (
     <div className="w-[33.5rem] text-[1.6rem] flex justify-between items-end mb-[1.6rem]">
       <div
         className={`w-[16rem] h-[6.5rem] rounded-[1rem] pl-[1.4rem] py-[1rem] ${
           isClicked === "dongari" ? clickedStyle : unClickedStyle
         }`}
-        onClick={() => handleClick("dongari")}
+        onClick={() => {
+          handleClick("dongari");
+          router.push("dongwha?category=events");
+        }}
       >
         <p>동아리박람회</p>
         <p className="font-bold">이벤트 안내 </p>
@@ -27,7 +33,10 @@ const DongyeonButton = () => {
         className={`w-[16rem] h-[8.6rem] rounded-[1rem] pl-[1.4rem] py-[1rem] ${
           isClicked === "ajouFesta" ? clickedStyle : unClickedStyle
         } `}
-        onClick={() => handleClick("ajouFesta")}
+        onClick={() => {
+          handleClick("ajouFesta");
+          router.push("dongwha?category=ajouFesta");
+        }}
       >
         <p>아주페스타</p>
         <p className="font-bold">웹 바로가기</p>
