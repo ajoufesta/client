@@ -20,6 +20,11 @@ export const fetchStageData = async (day: number) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/shows?day=${day}`,
+      {
+        next: {
+          revalidate: 900, // 15분
+        },
+      },
     );
 
     if (!response.ok) {
@@ -54,6 +59,11 @@ export const fetchDongbakBooths = async (day: number, section: string) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/clubs?day=${day}&section=${section}`,
+      {
+        next: {
+          revalidate: 900, // 15분
+        },
+      },
     );
 
     if (!response.ok) {
