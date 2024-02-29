@@ -1,20 +1,36 @@
-import MedalBackground from "@/public/medal.svg";
 import { fetchGamePlayers } from "../lib/data";
+import { dummyPlayer } from "../lib/placeholder-data";
+import RefreshButton from "./_components/refreshButton";
 import Trophy from "./_components/trophy";
+import dynamic from "next/dynamic";
+
+const Fireworks = dynamic(() => import("./_components/firework"), {
+  ssr: false,
+});
 
 const PlayPage = async () => {
-  const players = await fetchGamePlayers();
+  const { players, currentTime } = await fetchGamePlayers();
 
   return (
     <>
-      <h1 className="text-3xl text-brown-600 font-bold ">
+      <div className="flex justify-between items-center gap-2">
+        <RefreshButton tag={"game"} />
+        <span className="font-normal text-2xl text-brown-500">{`${currentTime} 기준`}</span>
+      </div>
+      <h1 className="text-3xl text-brown-600 font-bold mt-4">
         실시간 공기놀이 순위
       </h1>
-      <div className="w-fit flex gap-4 my-14">
-        <Trophy rank={2} player={players[1]} />
-        <Trophy rank={1} player={players[0]} />
-        <Trophy rank={3} player={players[2]} />
+      <div className="w-full h-[30rem] relative flex justify-center items-center">
+        <div className="w-fit flex gap-4">
+          <Trophy rank={2} player={players[1] ? players[1] : dummyPlayer} />
+          <Trophy rank={1} player={players[0] ? players[0] : dummyPlayer} />
+          <Trophy rank={3} player={players[2] ? players[2] : dummyPlayer} />
+        </div>
+        <span className="absolute top-16 right-2 text-red-500 font-bold text-2xl animate-pulse duration-300">
+          LIVE
+        </span>
       </div>
+
       <h2 className="text-3xl text-brown-500 font-bold mb-4">
         공기놀이 대회 ?
       </h2>
@@ -49,6 +65,8 @@ const PlayPage = async () => {
 
         <div className="absolute border bottom-0 w-[19rem] border-brown-500" />
       </div>
+
+      <Fireworks />
     </>
   );
 };
