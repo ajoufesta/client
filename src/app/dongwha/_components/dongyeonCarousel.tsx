@@ -8,13 +8,13 @@ import { SelectedSnapDisplay, useSelectedSnapDisplay } from "./SelectedSnap";
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
+  isAjouFesta: boolean;
 };
 
 const DongyeonCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
+  const { slides, options, isAjouFesta } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
-  const [isAjouFesta, setIsAjouFesta] = useState(false);
 
   return (
     <section className="embla_dongyeon flex items-center mx-auto">
@@ -25,12 +25,22 @@ const DongyeonCarousel: React.FC<PropType> = (props) => {
               className="relative embla__slide dongyeon flex flex-col items-center"
               key={index}
             >
-              <Image
-                src={`/dongbak${index + 1}.jpeg`}
-                alt="이미지"
-                width={315}
-                height={315}
-              />
+              {isAjouFesta && (
+                <Image
+                  src={`/donghwa${index + 1}.png`}
+                  alt="이미지"
+                  width={315}
+                  height={315}
+                />
+              )}
+              {!isAjouFesta && (
+                <Image
+                  src={`/dongbak${index + 1}.jpeg`}
+                  alt="이미지"
+                  width={315}
+                  height={315}
+                />
+              )}
             </div>
           ))}
         </div>
