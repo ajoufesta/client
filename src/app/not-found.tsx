@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "404",
+  description: "페이지를 찾을 수 없습니다.",
+};
 
 export default function NotFound() {
   return (

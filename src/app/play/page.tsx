@@ -7,6 +7,12 @@ import dynamic from "next/dynamic";
 const Fireworks = dynamic(() => import("./_components/firework"), {
   ssr: false,
 });
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "공기놀이",
+  description: "공기놀이 대회 | 동화",
+};
 
 const PlayPage = async () => {
   const { players, currentTime } = await fetchGamePlayers();

@@ -3,6 +3,12 @@ import SectionNavigator from "./_components/sectionNavigator";
 import Tutorial from "./_components/tutorial";
 import UnderBar from "./_components/underBar";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "전체지도",
+  description: "전체지도 | 동화",
+};
 
 const EntireMapPage = () => {
   // day가 쿼리스트링으로 넘어오지 않으면 오늘 날짜로 설정

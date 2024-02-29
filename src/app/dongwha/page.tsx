@@ -4,6 +4,12 @@ import DongyeonCarousel from "./_components/dongyeonCarousel";
 import DongyeonButton from "./_components/DongyeonButton";
 
 import "./_components/embla.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "동아리연합회",
+  description: "동아리연합회 | 동화",
+};
 
 const page = () => {
   const OPTIONS: EmblaOptionsType = {};
