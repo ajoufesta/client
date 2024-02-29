@@ -7,7 +7,7 @@ import "./_components/embla.css";
 
 const page = () => {
   const OPTIONS: EmblaOptionsType = {};
-  const SLIDE_COUNT = 8;
+  const SLIDE_COUNT = 7;
   const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
   return (
     <div>
