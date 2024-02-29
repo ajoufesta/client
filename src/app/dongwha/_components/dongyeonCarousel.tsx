@@ -29,6 +29,7 @@ const DongyeonCarousel: React.FC<PropType> = (props) => {
                 alt="이미지"
                 width={315}
                 height={315}
+                priority
               />
             </div>
           ))}
