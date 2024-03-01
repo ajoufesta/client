@@ -11,14 +11,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ajoufesta.com"),
   description: "아주대학교 동아리박람회 도우미",
   keywords: ["아주대학교", "동아리박람회", "아주페스타", "동화"],
-  openGraph: {
-    title: "동아리박람회",
-    description: "동아리박람회 도우미 | 동화",
-    url: "https://ajoufesta.com/entire-map",
-    siteName: "동아리박람회 | 동화",
-    type: "website",
-    locale: "ko_KR",
-  },
   icons: {
     icon: "/favicon.ico",
     apple: [
