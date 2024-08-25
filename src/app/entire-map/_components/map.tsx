@@ -1,6 +1,9 @@
-"use client";
-import React, { useRef, useEffect } from "react";
-import pins from "../_resources/pins.json";
+'use client';
+import React, { useRef, useEffect } from 'react';
+import pins from '../_resources/pins.json';
+import useModalStore from '@/app/hooks/useModalStore';
+import ClubInfo from '@/app/_commons/clubInfo';
+import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
 
 const INITIAL_POSITION = { x: 0, y: 0 };
 const MAP_SIZE = 1000;
@@ -18,6 +21,9 @@ interface Pin {
 }
 
 function MapWithPin() {
+  const { openModal, setModalContent } = useModalStore();
+  const { setLocation } = useSelectedLocationStore();
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const viewPosRef = useRef(INITIAL_POSITION);
   const isPanningRef = useRef(false);
@@ -28,7 +34,7 @@ function MapWithPin() {
     const handleResize = () => {
       const canvas = canvasRef.current;
       if (canvas) {
-        const canvasSize = window.innerWidth * 0.8;
+        const canvasSize = window.innerWidth - 40;
         canvasSizeRef.current = canvasSize;
         canvas.width = canvasSize;
         canvas.height = canvasSize * 1.48;
@@ -36,25 +42,28 @@ function MapWithPin() {
     };
 
     handleResize();
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
+    const ctx = canvas?.getContext('2d');
     const mapImage = new Image();
 
-    mapImage.src = "asset/map.png"; // 지도 이미지
-    const pinImages = pins.reduce((acc, pin) => {
-      const img = new Image();
-      img.src = `asset/${pin.pinName}.png`; // 핀 이미지 로드
-      acc[pin.pinName] = img;
-      return acc;
-    }, {} as Record<string, HTMLImageElement>);
+    mapImage.src = 'asset/map.png'; // 지도 이미지
+    const pinImages = pins.reduce(
+      (acc, pin) => {
+        const img = new Image();
+        img.src = `asset/${pin.pinName}.png`; // 핀 이미지 로드
+        acc[pin.pinName] = img;
+        return acc;
+      },
+      {} as Record<string, HTMLImageElement>
+    );
 
     const draw = () => {
       if (!ctx || !canvas) return;
@@ -167,7 +176,11 @@ function MapWithPin() {
           mouseY >= pinTop &&
           mouseY <= pinBottom
         ) {
-          alert(`${pin.pinName} 클릭`);
+          console.log('clientX', clientX, clientY);
+
+          setLocation({ location: '1', x: pin.x, y: pin.y });
+          setModalContent(<ClubInfo boothId={pin.boothId || 0} />);
+          openModal();
         }
       });
     };
@@ -197,33 +210,33 @@ function MapWithPin() {
     };
 
     const handleTouch = (e: TouchEvent) => {
-      const touch = e.touches[0];
+      const touch = e.changedTouches[0];
       handleInteraction(touch.clientX, touch.clientY);
     };
 
     if (canvas) {
-      canvas.addEventListener("mousedown", handleMouseDown);
-      canvas.addEventListener("mouseup", handleEnd);
-      canvas.addEventListener("mousemove", handleMouseMove);
-      canvas.addEventListener("click", handleClick);
+      canvas.addEventListener('mousedown', handleMouseDown);
+      canvas.addEventListener('mouseup', handleEnd);
+      canvas.addEventListener('mousemove', handleMouseMove);
+      canvas.addEventListener('click', handleClick);
 
-      canvas.addEventListener("touchstart", handleTouchStart);
-      canvas.addEventListener("touchend", handleEnd);
-      canvas.addEventListener("touchmove", handleTouchMove);
-      canvas.addEventListener("touchend", handleTouch);
+      canvas.addEventListener('touchstart', handleTouchStart);
+      canvas.addEventListener('touchend', handleEnd);
+      canvas.addEventListener('touchmove', handleTouchMove);
+      canvas.addEventListener('touchend', handleTouch);
     }
 
     return () => {
       if (canvas) {
-        canvas.removeEventListener("mousedown", handleMouseDown);
-        canvas.removeEventListener("mouseup", handleEnd);
-        canvas.removeEventListener("mousemove", handleMouseMove);
-        canvas.removeEventListener("click", handleClick);
+        canvas.removeEventListener('mousedown', handleMouseDown);
+        canvas.removeEventListener('mouseup', handleEnd);
+        canvas.removeEventListener('mousemove', handleMouseMove);
+        canvas.removeEventListener('click', handleClick);
 
-        canvas.removeEventListener("touchstart", handleTouchStart);
-        canvas.removeEventListener("touchend", handleEnd);
-        canvas.removeEventListener("touchmove", handleTouchMove);
-        canvas.removeEventListener("touchend", handleTouch);
+        canvas.removeEventListener('touchstart', handleTouchStart);
+        canvas.removeEventListener('touchend', handleEnd);
+        canvas.removeEventListener('touchmove', handleTouchMove);
+        canvas.removeEventListener('touchend', handleTouch);
       }
     };
   }, []);

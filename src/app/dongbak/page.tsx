@@ -1,29 +1,29 @@
 // import DayDisplay from "@/app/_commons/dayDisplay";
 // import DateDisplay from "@/app/_commons/dateDisplay";
-import Map from "@/app/_commons/map";
-import SectionBar from "@/app/_commons/sectionBar";
-import { getCurrentDay } from "@/app/lib/utils";
-import PlaceNavigator from "@/app/_commons/placeNavigator";
-import { fetchDongbakBooths } from "@/app/lib/data";
-import PlaceModal from "../_commons/placeModal";
-import { Metadata } from "next";
+import Map from '@/app/_commons/map';
+import SectionBar from '@/app/_commons/sectionBar';
+import { getCurrentDay } from '@/app/lib/utils';
+import PlaceNavigator from '@/app/_commons/placeNavigator';
+import { fetchDongbakBooths } from '@/app/lib/data';
+import PlaceModal from '../_commons/placeModal';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "동박 지도",
-  description: "동박 지도 | 동화",
+  title: '동박 지도',
+  description: '동박 지도 | 동화',
 };
 
 interface DongbakPageProps {
   searchParams?: {
     day?: string;
-    section?: "A" | "B" | "C" | "D";
+    section?: 'A' | 'B' | 'C' | 'D';
   };
 }
 
 const DongbakBoothPage = ({ searchParams }: DongbakPageProps) => {
   // day가 쿼리스트링으로 넘어오지 않으면 오늘 날짜로 설정
   const selectedDay = Number(searchParams?.day) || getCurrentDay(new Date());
-  const selectedSection = searchParams?.section || "A";
+  const selectedSection = searchParams?.section || 'A';
 
   // if (selectedDay === -1) {
   //   return <div>Invalid Date</div>;

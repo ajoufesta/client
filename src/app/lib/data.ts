@@ -1,5 +1,5 @@
-import { GamePlayer } from "./types";
-import { getKoreanTime } from "./utils";
+import { GamePlayer } from './types';
+import { getKoreanTime } from './utils';
 
 //사용자 공연 목록 GET
 export const fetchStageData = async (day: number) => {
@@ -10,11 +10,11 @@ export const fetchStageData = async (day: number) => {
         next: {
           revalidate: 60,
         },
-      },
+      }
     );
 
     if (!response.ok) {
-      throw new Error("Failed to fetch pubs");
+      throw new Error('Failed to fetch pubs');
     }
     const data = await response.json();
     return data;
@@ -32,11 +32,11 @@ export const fetchDongbakBooths = async (day: number, section: string) => {
         next: {
           revalidate: 900, // 15분
         },
-      },
+      }
     );
 
     if (!response.ok) {
-      throw new Error("Failed to fetch dongbak booths");
+      throw new Error('Failed to fetch dongbak booths');
     }
 
     const data = await response.json();
@@ -53,13 +53,13 @@ export const fetchGamePlayers = async (): Promise<{
 }> => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/game`, {
     next: {
-      tags: ["game"],
+      tags: ['game'],
       revalidate: 300, // 5분
     },
   });
 
   if (!response.ok) {
-    throw new Error("공기놀이 기록을 가져오는데 실패했습니다.");
+    throw new Error('공기놀이 기록을 가져오는데 실패했습니다.');
   }
 
   const players = await response.json();

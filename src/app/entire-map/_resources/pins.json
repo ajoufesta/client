@@ -13,7 +13,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a1"
+    "pinName": "a1",
+    "boothId": 1
   },
   {
     "x": 260,
@@ -21,7 +22,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a2"
+    "pinName": "a2",
+    "boothId": 2
   },
   {
     "x": 340,
@@ -29,7 +31,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a3"
+    "pinName": "a3",
+    "boothId": 3
   },
   {
     "x": 420,
@@ -37,7 +40,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a4"
+    "pinName": "a4",
+    "boothId": 4
   },
   {
     "x": 500,
@@ -45,7 +49,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a5"
+    "pinName": "a5",
+    "boothId": 5
   },
   {
     "x": 580,
@@ -53,7 +58,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a6"
+    "pinName": "a6",
+    "boothId": 6
   },
   {
     "x": 660,
@@ -61,7 +67,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a7"
+    "pinName": "a7",
+    "boothId": 7
   },
   {
     "x": 740,
@@ -69,7 +76,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a8"
+    "pinName": "a8",
+    "boothId": 8
   },
   {
     "x": 820,
@@ -77,7 +85,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a9"
+    "pinName": "a9",
+    "boothId": 9
   },
   {
     "x": 900,
@@ -85,7 +94,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a10"
+    "pinName": "a10",
+    "boothId": 10
   },
   {
     "x": 980,
@@ -93,7 +103,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a11"
+    "pinName": "a11",
+    "boothId": 11
   },
   {
     "x": 1060,
@@ -101,7 +112,8 @@
     "width": 56,
     "height": 40,
     "type": "bothPin",
-    "pinName": "a12"
+    "pinName": "a12",
+    "boothId": 12
   },
   {
     "x": 1250,
@@ -109,7 +121,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b13"
+    "pinName": "b13",
+    "boothId": 13
   },
   {
     "x": 1200,
@@ -117,7 +130,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b14"
+    "pinName": "b14",
+    "boothId": 14
   },
   {
     "x": 1260,
@@ -125,7 +139,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b15"
+    "pinName": "b15",
+    "boothId": 15
   },
   {
     "x": 1210,
@@ -133,7 +148,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b16"
+    "pinName": "b16",
+    "boothId": 16
   },
   {
     "x": 1270,
@@ -141,7 +157,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b17"
+    "pinName": "b17",
+    "boothId": 17
   },
   {
     "x": 1220,
@@ -149,7 +166,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b18"
+    "pinName": "b18",
+    "boothId": 18
   },
   {
     "x": 1280,
@@ -157,7 +175,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b19"
+    "pinName": "b19",
+    "boothId": 19
   },
   {
     "x": 1230,
@@ -165,7 +184,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b20"
+    "pinName": "b20",
+    "boothId": 20
   },
   {
     "x": 1290,
@@ -173,7 +193,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b21"
+    "pinName": "b21",
+    "boothId": 21
   },
   {
     "x": 1240,
@@ -181,7 +202,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b22"
+    "pinName": "b22",
+    "boothId": 22
   },
   {
     "x": 1300,
@@ -189,7 +211,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b23"
+    "pinName": "b23",
+    "boothId": 23
   },
   {
     "x": 1250,
@@ -197,7 +220,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b24"
+    "pinName": "b24",
+    "boothId": 24
   },
   {
     "x": 1310,
@@ -205,7 +229,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b25"
+    "pinName": "b25",
+    "boothId": 25
   },
   {
     "x": 1260,
@@ -213,7 +238,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b26"
+    "pinName": "b26",
+    "boothId": 26
   },
   {
     "x": 1320,
@@ -221,7 +247,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b27"
+    "pinName": "b27",
+    "boothId": 27
   },
   {
     "x": 1270,
@@ -229,7 +256,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b28"
+    "pinName": "b28",
+    "boothId": 28
   },
   {
     "x": 1330,
@@ -237,7 +265,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b29"
+    "pinName": "b29",
+    "boothId": 29
   },
   {
     "x": 1280,
@@ -245,7 +274,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b30"
+    "pinName": "b30",
+    "boothId": 30
   },
   {
     "x": 1030,
@@ -253,7 +283,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b31"
+    "pinName": "b31",
+    "boothId": 31
   },
   {
     "x": 1050,
@@ -261,7 +292,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b32"
+    "pinName": "b32",
+    "boothId": 32
   },
   {
     "x": 1050,
@@ -269,7 +301,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b33"
+    "pinName": "b33",
+    "boothId": 33
   },
   {
     "x": 1055,
@@ -277,7 +310,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b34"
+    "pinName": "b34",
+    "boothId": 34
   },
   {
     "x": 1060,
@@ -285,7 +319,8 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b35"
+    "pinName": "b35",
+    "boothId": 35
   },
   {
     "x": 1060,
@@ -293,6 +328,7 @@
     "width": 40,
     "height": 50,
     "type": "bothPin",
-    "pinName": "b36"
+    "pinName": "b36",
+    "boothId": 36
   }
 ]
