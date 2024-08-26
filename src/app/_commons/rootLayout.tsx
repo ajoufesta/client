@@ -31,7 +31,7 @@ const CustomRootLayout = ({ children }: { children: React.ReactNode }) => {
       >
         <main
           style={{ height: `calc(var(--vh, 1vh) * 100 - 94px)` }}
-          className="w-full px-8 py-20 flex flex-col items-center justify-center"
+          className="w-full px-8 py-14 flex flex-col items-center justify-center"
         >
           {children}
         </main>

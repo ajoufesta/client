@@ -1,15 +1,15 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import pins from '../_resources/pins.json';
 import useModalStore from '@/app/hooks/useModalStore';
 import ClubInfo from '@/app/_commons/clubInfo';
 import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
 
-const INITIAL_POSITION = { x: 0, y: 0 };
-const MAP_SIZE = 1000;
+const INITIAL_POSITION = { x: 650, y: 550 };
+const MAP_SIZE = 1300;
 const PAN_SENSITIVITY = 2.5;
 const MAP_WIDTH_LIMIT = 1300;
-const MAP_HEIGHT_LIMIT = 1100;
+const MAP_HEIGHT_LIMIT = 1300;
 
 interface Pin {
   x: number;
@@ -23,21 +23,42 @@ interface Pin {
 function MapWithPin() {
   const { openModal, setModalContent } = useModalStore();
   const { setLocation } = useSelectedLocationStore();
+  const mapContainerRef = useRef<HTMLDivElement>(null);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const viewPosRef = useRef(INITIAL_POSITION);
   const isPanningRef = useRef(false);
   const startPosRef = useRef({ x: 0, y: 0 });
   const canvasSizeRef = useRef<number>(0);
+  const containerHeight = useMemo(
+    () =>
+      mapContainerRef.current ? mapContainerRef.current.clientHeight : 1000,
+    [mapContainerRef]
+  );
+  const containerWidth = useMemo(
+    () => (mapContainerRef.current ? mapContainerRef.current.clientWidth : 600),
+    [mapContainerRef]
+  );
+  const screenRatio = useMemo(
+    () => containerHeight / containerWidth,
+    [containerHeight, containerWidth]
+  );
+  const maxViewPosX = useMemo(
+    () => MAP_SIZE + containerWidth * 0.75,
+    [containerWidth]
+  );
+  const maxViewPosY = useMemo(
+    () => MAP_SIZE + containerHeight * 0.5,
+    [containerHeight]
+  );
 
   useEffect(() => {
     const handleResize = () => {
       const canvas = canvasRef.current;
       if (canvas) {
-        const canvasSize = window.innerWidth - 40;
-        canvasSizeRef.current = canvasSize;
-        canvas.width = canvasSize;
-        canvas.height = canvasSize * 1.48;
+        canvasSizeRef.current = containerWidth;
+        canvas.width = containerWidth;
+        canvas.height = containerHeight;
       }
     };
 
@@ -47,7 +68,7 @@ function MapWithPin() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [containerHeight, containerWidth]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -70,18 +91,20 @@ function MapWithPin() {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // render map in canvas
       ctx.drawImage(
         mapImage,
         viewPosRef.current.x,
         viewPosRef.current.y,
         MAP_SIZE,
-        MAP_SIZE * 1.48,
+        MAP_SIZE * screenRatio,
         0,
         0,
-        canvasSizeRef.current,
-        canvasSizeRef.current * 1.48
+        containerWidth,
+        containerHeight
       );
 
+      // render pins in canvas
       pins.forEach((pin: Pin) => {
         const relativePinX =
           (pin.x - viewPosRef.current.x) * (canvasSizeRef.current / MAP_SIZE);
@@ -92,7 +115,7 @@ function MapWithPin() {
           relativePinX >= 0 &&
           relativePinX <= canvasSizeRef.current &&
           relativePinY >= 0 &&
-          relativePinY <= canvasSizeRef.current * 1.48
+          relativePinY <= canvasSizeRef.current * screenRatio
         ) {
           const img = pinImages[pin.pinName];
           if (img.complete) {
@@ -136,14 +159,13 @@ function MapWithPin() {
       const newViewPosX = viewPosRef.current.x - deltaX;
       const newViewPosY = viewPosRef.current.y - deltaY;
 
-      const limitedViewPosX = Math.max(
-        Math.min(newViewPosX, MAP_WIDTH_LIMIT),
-        0
-      );
-      const limitedViewPosY = Math.max(
-        Math.min(newViewPosY, MAP_HEIGHT_LIMIT),
-        0
-      );
+      const limitedViewPosX = Math.max(Math.min(newViewPosX, maxViewPosX), 0);
+      const limitedViewPosY = Math.max(Math.min(newViewPosY, maxViewPosY), 0);
+
+      console.log('y : ', limitedViewPosY, newViewPosY, maxViewPosX);
+      console.log('x : ', limitedViewPosX, newViewPosX, maxViewPosX);
+      console.log('ratio : ', screenRatio);
+
       viewPosRef.current = { x: limitedViewPosX, y: limitedViewPosY };
       draw();
     };
@@ -176,8 +198,6 @@ function MapWithPin() {
           mouseY >= pinTop &&
           mouseY <= pinBottom
         ) {
-          console.log('clientX', clientX, clientY);
-
           setLocation({ location: '1', x: pin.x, y: pin.y });
           setModalContent(<ClubInfo boothId={pin.boothId || 0} />);
           openModal();
@@ -239,9 +259,20 @@ function MapWithPin() {
         canvas.removeEventListener('touchend', handleTouch);
       }
     };
-  }, []);
+  }, [
+    containerHeight,
+    containerWidth,
+    openModal,
+    screenRatio,
+    setLocation,
+    setModalContent,
+  ]);
 
-  return <canvas ref={canvasRef} />;
+  return (
+    <div ref={mapContainerRef} className="w-full h-full">
+      <canvas ref={canvasRef} />
+    </div>
+  );
 }
 
 export default MapWithPin;
