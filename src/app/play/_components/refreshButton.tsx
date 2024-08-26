@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import RefreshIcon from "@/public/refreshIcon.svg";
-import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import RefreshIcon from '@/public/refreshIcon.svg';
+import { useState } from 'react';
 
 type Props = {
   tag: string;
@@ -14,7 +14,7 @@ export default function RevalidateButton({ tag }: Props) {
 
   const handleClick = async () => {
     await fetch(`/api/revalidate?tag=${tag}`, {
-      method: "POST",
+      method: 'POST',
     });
 
     setIsClicked(true);
@@ -26,7 +26,7 @@ export default function RevalidateButton({ tag }: Props) {
 
   return (
     <button
-      className={`${isClicked ? "animate-loading" : ""}`}
+      className={`${isClicked ? 'animate-loading' : ''}`}
       onClick={handleClick}
     >
       <RefreshIcon />

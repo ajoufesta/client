@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { Metadata } from "next";
-import { useEffect } from "react";
+import { Metadata } from 'next';
+import { useEffect } from 'react';
 
 export const metadata: Metadata = {
-  title: "오류",
-  description: "오류 페이지 | 동화",
+  title: '오류',
+  description: '오류 페이지 | 동화',
 };
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
 
 export default function Error({ error, reset }: Props) {
   useEffect(() => {
-    console.error("----", error.message);
+    console.error('----', error.message);
   }, [error]);
 
   return (
@@ -27,7 +27,7 @@ export default function Error({ error, reset }: Props) {
       </div>
       <h1
         className="text-3xl font-bold text-center text-brown-500"
-        style={{ marginTop: "2rem" }}
+        style={{ marginTop: '2rem' }}
       >
         WOW !!!
       </h1>
@@ -36,15 +36,15 @@ export default function Error({ error, reset }: Props) {
         <br />
         스크린샷을 찍고 Do it! 동아리방으로 오신 뒤
         <br />
-        <span className="text-brown-600">'오동재'</span>를 찾아 보여주시면
-        사탕을 받아가실 수 있습니다 !
+        <span className="text-brown-600">오동재</span>를 찾아 보여주시면 사탕을
+        받아가실 수 있습니다 !
       </h2>
       {/* entire-map 페이지로 이동 */}
       <button
         className="w-[12rem] h-[3rem] font-semibold bg-brown-500 text-white rounded-md mt-4"
         onClick={() => {
           reset();
-          window.location.href = "/entire-map";
+          window.location.href = '/entire-map';
         }}
       >
         전체지도로 보내드릴게요 !

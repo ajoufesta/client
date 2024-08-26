@@ -1,9 +1,9 @@
-import { Metadata } from "next";
-import Link from "next/link";
+import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "404",
-  description: "페이지를 찾을 수 없습니다.",
+  title: '404',
+  description: '페이지를 찾을 수 없습니다.',
 };
 
 export default function NotFound() {
@@ -16,7 +16,7 @@ export default function NotFound() {
       </div>
       <h1
         className="text-3xl font-bold text-center text-brown-500"
-        style={{ marginTop: "2rem" }}
+        style={{ marginTop: '2rem' }}
       >
         WOW !!!
       </h1>
@@ -25,8 +25,8 @@ export default function NotFound() {
         <br />
         스크린샷을 찍고 Do it! 동아리방으로 오신 뒤
         <br />
-        <span className="text-brown-600">'오동재'</span>를 찾아 보여주시면
-        사탕을 받아가실 수 있습니다 !
+        <span className="text-brown-600">오동재</span>를 찾아 보여주시면 사탕을
+        받아가실 수 있습니다 !
       </h2>
       {/* entire-map 페이지로 이동 */}
       <Link href="/entire-map">

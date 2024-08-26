@@ -1,14 +1,14 @@
-"use client";
-import React from "react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+'use client';
+import React from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const DongyeonButton = () => {
-  const [isClicked, setIsClicked] = useState("dongari");
+  const [isClicked, setIsClicked] = useState('dongari');
 
-  const clickedStyle = "bg-brown-500 border-[0.2rem]  text-white";
+  const clickedStyle = 'bg-brown-500 border-[0.2rem]  text-white';
   const unClickedStyle =
-    "bg-white text-brown-500 border-[0.2rem] border-solid border-brown-500";
+    'bg-white text-brown-500 border-[0.2rem] border-solid border-brown-500';
 
   const handleClick = (buttonName: string) => {
     setIsClicked(buttonName);
@@ -19,11 +19,11 @@ const DongyeonButton = () => {
     <div className="w-[33.5rem] text-[1.6rem] flex justify-between items-end mb-[1.6rem]">
       <div
         className={`w-[16rem] h-[6.5rem] rounded-[1rem] pl-[1.4rem] py-[1rem] ${
-          isClicked === "dongari" ? clickedStyle : unClickedStyle
+          isClicked === 'dongari' ? clickedStyle : unClickedStyle
         }`}
         onClick={() => {
-          handleClick("dongari");
-          router.push("dongwha?category=events");
+          handleClick('dongari');
+          router.push('dongwha?category=events');
         }}
       >
         <p>동아리박람회</p>
@@ -31,11 +31,11 @@ const DongyeonButton = () => {
       </div>
       <div
         className={`w-[16rem] h-[6.5rem] rounded-[1rem] pl-[1.4rem] py-[1rem] ${
-          isClicked === "ajouFesta" ? clickedStyle : unClickedStyle
+          isClicked === 'ajouFesta' ? clickedStyle : unClickedStyle
         } `}
         onClick={() => {
-          handleClick("ajouFesta");
-          router.push("dongwha?category=ajouFesta");
+          handleClick('ajouFesta');
+          router.push('dongwha?category=ajouFesta');
         }}
       >
         <p>

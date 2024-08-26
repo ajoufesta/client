@@ -6,7 +6,7 @@ export type Pub = {
   teamName: string;
   menuImageSrc: string;
   link: string;
-  linkIconId: "instagram" | "picture" | "default";
+  linkIconId: 'instagram' | 'picture' | 'default';
   waitTeam: string;
   isOpen: boolean;
 };
@@ -20,7 +20,7 @@ export type Booth = {
   openTime: string;
   closeTime: string;
   link: string;
-  linkIconId: "instagram" | "picture" | "default";
+  linkIconId: 'instagram' | 'picture' | 'default';
 };
 
 export type Club = {
@@ -29,8 +29,8 @@ export type Club = {
   clubDetail: string;
   clubActivities: string[];
   link: string;
-  linkIconId: "instagram" | "picture" | "default";
-  section: "A" | "B" | "C" | "D";
+  linkIconId: 'instagram' | 'picture' | 'default';
+  section: 'A' | 'B' | 'C' | 'D';
   phoneNumber: string;
 };
 
@@ -55,7 +55,7 @@ export interface Stage {
   teamName: string;
   startTime: string;
   endTime: string;
-  status: "SCHEDULED" | "IN_PROGRESS" | "DONE";
+  status: 'SCHEDULED' | 'IN_PROGRESS' | 'DONE';
 }
 
 export interface GamePlayer {

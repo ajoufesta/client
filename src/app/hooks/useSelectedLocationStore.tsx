@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { Place, PlaceLocation } from "../lib/types";
+import { create } from 'zustand';
+import { Place, PlaceLocation } from '../lib/types';
 
 type SelectedLocationStore = {
   place: Place | null;

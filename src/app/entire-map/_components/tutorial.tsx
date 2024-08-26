@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useIsFirstStore } from "@/app/hooks/useIsFirstStore";
+import { useIsFirstStore } from '@/app/hooks/useIsFirstStore';
 
 const Tutorial = () => {
   const { isFirst, setVisited } = useIsFirstStore();

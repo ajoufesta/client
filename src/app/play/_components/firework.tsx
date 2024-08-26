@@ -1,16 +1,12 @@
-"use client";
+'use client';
 
-import Confetti from "react-confetti";
-import useWindowSize from "@/app/hooks/useWindowSize";
-import { useEffect, useState } from "react";
+import Confetti from 'react-confetti';
+import useWindowSize from '@/app/hooks/useWindowSize';
+import { useEffect, useState } from 'react';
 
 const Fireworks = () => {
   const [isConfettiRunning, setIsConfettiRunning] = useState(true);
   const size = useWindowSize();
-
-  if (!size) {
-    return null;
-  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,6 +15,10 @@ const Fireworks = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  if (!size) {
+    return null;
+  }
 
   return (
     <div className="animate-vanish">

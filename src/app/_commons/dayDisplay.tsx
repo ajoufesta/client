@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { FESTIVAL_DATE } from "@/app/lib/constants";
-import { useQueryWithDefault } from "@/app/hooks/useQueryWithDefault";
-import { useMemo } from "react";
-import ArrowDown from "@/public/arrow-down.svg";
-import useIsOpenStore from "../hooks/useIsOpenStore";
+import Link from 'next/link';
+import { FESTIVAL_DATE } from '@/app/lib/constants';
+import { useQueryWithDefault } from '@/app/hooks/useQueryWithDefault';
+import { useMemo } from 'react';
+import ArrowDown from '@/public/arrow-down.svg';
+import useIsOpenStore from '../hooks/useIsOpenStore';
 
 const DayDisplay = ({
   selectedDay,
@@ -18,11 +18,11 @@ const DayDisplay = ({
   const { isDayOpen, setIsDayOpen, setIsNavOpen, setIsSectionBarOpen } =
     useIsOpenStore();
 
-  const section = selectedSection || getQueryParam("section", "A");
+  const section = selectedSection || getQueryParam('section', 'A');
 
   const queryUrls = useMemo(
     () => FESTIVAL_DATE.map((date, index) => getQueryUrl(index + 1, section)),
-    [section],
+    [section]
   );
 
   return (
@@ -36,11 +36,11 @@ const DayDisplay = ({
     >
       <div className="w-full pl-[3.2rem] text-white text-center text-3xl font-bold p-[0.8rem] flex items-center justify-center">
         {`DAY ${selectedDay}`}
-        <ArrowDown className={` ml-4 ${isDayOpen ? "rotate-180" : ""}`} />
+        <ArrowDown className={` ml-4 ${isDayOpen ? 'rotate-180' : ''}`} />
       </div>
       <div
         className={`bg-transparentWhite-300 absolute top-full z-10 rounded-md overflow-hidden transition- transition-all ease-in-out duration-300 ${
-          isDayOpen ? "h-28" : "h-0"
+          isDayOpen ? 'h-28' : 'h-0'
         }`}
       >
         <ul>

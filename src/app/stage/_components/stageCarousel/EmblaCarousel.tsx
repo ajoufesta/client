@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   EmblaCarouselType,
   EmblaOptionsType,
   EmblaEventType,
-} from "embla-carousel";
-import useEmblaCarousel from "embla-carousel-react";
+} from 'embla-carousel';
+import useEmblaCarousel from 'embla-carousel-react';
 
-import { DotButton } from "./EmblaCarouselArrowsDotsButtons";
-import Schedule from "../Schedule";
-import { FESTIVAL_DATE } from "@/app/lib/constants";
-import { getCurrentDay, isToday } from "@/app/lib/utils";
-import { getFormattedDate } from "@/app/lib/utils";
-import { Stage } from "@/app/lib/types";
+import { DotButton } from './EmblaCarouselArrowsDotsButtons';
+import Schedule from '../Schedule';
+import { FESTIVAL_DATE } from '@/app/lib/constants';
+import { getCurrentDay, isToday } from '@/app/lib/utils';
+import { getFormattedDate } from '@/app/lib/utils';
+import { Stage } from '@/app/lib/types';
 
 type PropType = {
   slides: number[];
@@ -31,9 +31,11 @@ const EmblaCarousel = (props: PropType) => {
 
   const scrollTo = useCallback(
     (index: number) => {
-      emblaApi && emblaApi.scrollTo(index);
+      if (emblaApi) {
+        emblaApi.scrollTo(index);
+      }
     },
-    [emblaApi],
+    [emblaApi]
   );
 
   const onInit = useCallback((emblaApi: EmblaCarouselType) => {
@@ -48,13 +50,13 @@ const EmblaCarousel = (props: PropType) => {
     (emblaApi: EmblaCarouselType, eventName: EmblaEventType) => {
       console.log(`Embla just triggered ${eventName}!`);
     },
-    [],
+    []
   );
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    emblaApi.on("select", () => {
+    emblaApi.on('select', () => {
       const previousSlideIndex = emblaApi.previousScrollSnap();
       const currentSlideIndex = emblaApi.selectedScrollSnap();
 
@@ -73,9 +75,9 @@ const EmblaCarousel = (props: PropType) => {
 
     onInit(emblaApi);
     onSelect(emblaApi);
-    emblaApi.on("reInit", onInit);
-    emblaApi.on("reInit", onSelect);
-    emblaApi.on("select", onSelect);
+    emblaApi.on('reInit', onInit);
+    emblaApi.on('reInit', onSelect);
+    emblaApi.on('select', onSelect);
   }, [emblaApi, onInit, onSelect]);
 
   // useEffect(() => {
@@ -86,7 +88,7 @@ const EmblaCarousel = (props: PropType) => {
     <>
       <div className="w-[32.5rem] mt-[1.5rem]  flex flex-col justify-center items-center text-center h-[3rem] flex-shrink-0">
         <span className="w-[8rem] h-[2.1rem] font-semibold text-brown-100 text-xl rounded-[3rem] bg-brown-400 mb-[1rem] p-[0.5rem] flex justify-center items-center">
-          {isToday(day) ? "TODAY" : getFormattedDate(FESTIVAL_DATE[day - 1])}
+          {isToday(day) ? 'TODAY' : getFormattedDate(FESTIVAL_DATE[day - 1])}
         </span>
       </div>
       <div className="w-[32.5rem] text-brown-500 text-center text-4xl font-bold flex items-center justify-center mb-[1rem]">
@@ -114,8 +116,8 @@ const EmblaCarousel = (props: PropType) => {
             onClick={() => {
               scrollTo(index);
             }}
-            className={"embla__dot".concat(
-              index === selectedIndex ? " embla__dot--selected" : "",
+            className={'embla__dot'.concat(
+              index === selectedIndex ? ' embla__dot--selected' : ''
             )}
           >
             {index === selectedIndex ? (

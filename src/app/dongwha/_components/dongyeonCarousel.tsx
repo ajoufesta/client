@@ -1,9 +1,9 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { EmblaOptionsType } from "embla-carousel";
-import useEmblaCarousel from "embla-carousel-react";
-import Image from "next/image";
-import { SelectedSnapDisplay, useSelectedSnapDisplay } from "./SelectedSnap";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { EmblaOptionsType } from 'embla-carousel';
+import useEmblaCarousel from 'embla-carousel-react';
+import Image from 'next/image';
+import { SelectedSnapDisplay, useSelectedSnapDisplay } from './SelectedSnap';
 
 type PropType = {
   slides: number[];

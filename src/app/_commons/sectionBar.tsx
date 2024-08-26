@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { DONGBAK_SECTION_LIST } from "@/app/lib/constants";
-import { useRouter } from "next/navigation";
-import { useQueryWithDefault } from "@/app/hooks/useQueryWithDefault";
-import EntireMap from "@/public/entire-map.svg";
-import SectionList from "@/public/section-list.svg";
-import useIsOpenStore from "../hooks/useIsOpenStore";
-import useIsFirstStore from "../hooks/useIsFirstStore";
+import { DONGBAK_SECTION_LIST } from '@/app/lib/constants';
+import { useRouter } from 'next/navigation';
+import { useQueryWithDefault } from '@/app/hooks/useQueryWithDefault';
+import EntireMap from '@/public/entire-map.svg';
+import SectionList from '@/public/section-list.svg';
+import useIsOpenStore from '../hooks/useIsOpenStore';
+import useIsFirstStore from '../hooks/useIsFirstStore';
 
 const SectionBar = ({
   selectedDay,
@@ -24,7 +24,7 @@ const SectionBar = ({
   const sections = Object.keys(DONGBAK_SECTION_LIST);
   const maxIndex = sections.length - 1;
   const selectedIndex = sections.findIndex(
-    (section) => section === selectedSection,
+    (section) => section === selectedSection
   );
 
   const handleClickLeft = () => {
@@ -47,7 +47,7 @@ const SectionBar = ({
       <div className="z-30 absolute bottom-0 w-full">
         <div
           className={`absolute bottom-[5rem] z-10 w-full rounded-t-2xl overflow-y-hidden bg-brown-100  ${
-            isSectionBarOpen ? "h-[15rem]" : "h-0"
+            isSectionBarOpen ? 'h-[15rem]' : 'h-0'
           } transition-all duration-300 ease-in-out`}
         >
           <ul>
@@ -55,13 +55,13 @@ const SectionBar = ({
               <li key={index}>
                 <div
                   className={`flex justify-center items-center w-full py-[1.5rem] hover:bg-brown-200 hover:font-semibold ${
-                    sectionKey === selectedSection ? "hidden" : "block"
+                    sectionKey === selectedSection ? 'hidden' : 'block'
                   }`}
                   onClick={() => handleClickSection(sectionKey)}
                 >
                   <span className="text-2xl text-brown-500 text-center font-semibold">
                     {
-                      DONGBAK_SECTION_LIST[sectionKey as "A" | "B" | "C" | "D"]
+                      DONGBAK_SECTION_LIST[sectionKey as 'A' | 'B' | 'C' | 'D']
                         .name
                     }
                   </span>
@@ -75,7 +75,7 @@ const SectionBar = ({
           <button
             onClick={() => {
               setCameFromSection(true);
-              router.push("/entire-map");
+              router.push('/entire-map');
             }}
           >
             <EntireMap />
@@ -89,7 +89,7 @@ const SectionBar = ({
           </button>
           <span className="w-[13.8rem] font-semibold text-3xl text-center text-brown-500">
             {
-              DONGBAK_SECTION_LIST[selectedSection as "A" | "B" | "C" | "D"]
+              DONGBAK_SECTION_LIST[selectedSection as 'A' | 'B' | 'C' | 'D']
                 .name
             }
           </span>

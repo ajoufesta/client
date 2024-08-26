@@ -1,37 +1,36 @@
-import { Club } from "@/app/lib/types";
-import Image from "next/image";
+import { Club } from '@/app/lib/types';
+import Image from 'next/image';
 
 const imageUrls = {
-  default: "/link-icon.svg",
-  picture: "/picture-icon.svg",
-  instagram: "/instagram-icon.svg",
+  default: '/link-icon.svg',
+  picture: '/picture-icon.svg',
+  instagram: '/instagram-icon.svg',
 };
 
 interface Props {
-  boothId: number
+  boothId: number;
 }
 
 const ClubCard = ({ boothId }: Props) => {
-
-  console.log("ClubCard", boothId);
+  console.log('ClubCard', boothId);
 
   const mock: Club = {
     clubId: 1,
-    clubName: "testName",
-    clubDetail: "놀러오세요",
-    clubActivities: ["아주페스타 개발하기"],
-    link: "www.google.com",
-    linkIconId: "default",
-    section: "A",
-    phoneNumber: "010-0000-0000"
-  }
+    clubName: 'testName',
+    clubDetail: '놀러오세요',
+    clubActivities: ['아주페스타 개발하기'],
+    link: 'www.google.com',
+    linkIconId: 'default',
+    section: 'A',
+    phoneNumber: '010-0000-0000',
+  };
 
   return (
     <div className="w-[14.2rem] flex-shrink-0 relative bg-white rounded-2xl">
       <div className="w-full h-full min-h-[7.5rem] flex flex-col items-start px-[1.2rem] py-4">
         <div className="w-[2.4rem] h-[1.8rem] rounded-full bg-brown-500 flex justify-center items-center">
           <span className="mt-[0.1rem] text-lg font-bold text-white">
-            {mock.clubId.toString().padStart(2, "0")}
+            {mock.clubId.toString().padStart(2, '0')}
           </span>
         </div>
         <span className="text-xl font-bold text-brown-500 mt-2">
@@ -81,7 +80,7 @@ const ClubCard = ({ boothId }: Props) => {
             onClick={(e) => e.stopPropagation()}
           >
             <Image
-              src={"/call-icon.svg"}
+              src={'/call-icon.svg'}
               alt="동아리 임원 연락처"
               width={26}
               height={26}
