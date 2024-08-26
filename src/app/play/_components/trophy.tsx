@@ -1,12 +1,12 @@
-import { GamePlayer } from "@/app/lib/types";
-import ThirdMedal from "@/public/medal.svg";
-import SecondMedal from "@/public/medal2.svg";
-import FirstMedal from "@/public/medal3.svg";
+import { GamePlayer } from '@/app/lib/types';
+import ThirdMedal from '@/public/medal.svg';
+import SecondMedal from '@/public/medal2.svg';
+import FirstMedal from '@/public/medal3.svg';
 
 const colors = {
-  1: ["bg-brown-300", "border-brown-400"],
-  2: ["bg-brown-400", "border-brown-500"],
-  3: ["bg-brown-500", "border-brown-600"],
+  1: ['bg-brown-300', 'border-brown-400'],
+  2: ['bg-brown-400', 'border-brown-500'],
+  3: ['bg-brown-500', 'border-brown-600'],
 };
 
 const Trophy = ({ rank, player }: { rank: 1 | 2 | 3; player: GamePlayer }) => {

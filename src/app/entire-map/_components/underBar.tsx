@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import useIsFirstStore from "@/app/hooks/useIsFirstStore";
-import { useRouter } from "next/navigation";
-import EntireMap from "@/public/entire-map.svg";
-import Exit from "@/public/exit.svg";
+import useIsFirstStore from '@/app/hooks/useIsFirstStore';
+import { useRouter } from 'next/navigation';
+import EntireMap from '@/public/entire-map.svg';
+import Exit from '@/public/exit.svg';
+import React from 'react';
 
 const UnderBar = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const UnderBar = () => {
           <button
             onClick={router.back}
             className={`flex flex-col items-center justify-center ${
-              cameFromSection ? "visible" : "invisible"
+              cameFromSection ? 'visible' : 'invisible'
             }`}
           >
             <Exit />

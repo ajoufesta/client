@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import useModalStore from "@/app/hooks/useModalStore";
+import useModalStore from '@/app/hooks/useModalStore';
 
 const Modal = () => {
   const { isModalOpen, modalContent, closeModal } = useModalStore();

@@ -1,18 +1,18 @@
-import { fetchGamePlayers } from "../lib/data";
-import { dummyPlayer } from "../lib/placeholder-data";
-import RefreshButton from "./_components/refreshButton";
-import Trophy from "./_components/trophy";
-import dynamic from "next/dynamic";
+import { fetchGamePlayers } from '../lib/data';
+import { dummyPlayer } from '../lib/placeholder-data';
+import RefreshButton from './_components/refreshButton';
+import Trophy from './_components/trophy';
+import dynamic from 'next/dynamic';
 
-const Fireworks = dynamic(() => import("./_components/firework"), {
+const Fireworks = dynamic(() => import('./_components/firework'), {
   ssr: false,
 });
 
-import { Metadata } from "next";
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "공기놀이",
-  description: "공기놀이 대회 | 동화",
+  title: '공기놀이',
+  description: '공기놀이 대회 | 동화',
 };
 
 const PlayPage = async () => {
@@ -21,7 +21,7 @@ const PlayPage = async () => {
   return (
     <>
       <div className="flex justify-between items-center gap-2">
-        <RefreshButton tag={"game"} />
+        <RefreshButton tag={'game'} />
         <span className="font-normal text-2xl text-brown-500">{`${currentTime} 기준`}</span>
       </div>
       <h1 className="text-3xl text-brown-600 font-bold mt-4">

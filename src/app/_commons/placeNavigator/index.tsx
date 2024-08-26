@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { Club, Place } from "@/app/lib/types";
-import { useRef, useEffect } from "react";
-import NavigatorHandle from "@/public/navigator-handle.svg";
-import useSelectedLocationStore from "@/app/hooks/useSelectedLocationStore";
-import { DONGBAK_LOCATIONS } from "@/app/lib/constants";
-import { getLocationByPlace } from "@/app/lib/utils";
-import useModalStore from "@/app/hooks/useModalStore";
-import ClubInfo from "../clubInfo";
-import useIsOpenStore from "@/app/hooks/useIsOpenStore";
-import ClubCard from "./clubCard";
-import HandleArrowLeft from "@/public/handle-arrow-left.svg";
+import { Club, Place } from '@/app/lib/types';
+import { useRef, useEffect } from 'react';
+import NavigatorHandle from '@/public/navigator-handle.svg';
+import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
+import { DONGBAK_LOCATIONS } from '@/app/lib/constants';
+import { getLocationByPlace } from '@/app/lib/utils';
+import useModalStore from '@/app/hooks/useModalStore';
+import ClubInfo from '../clubInfo';
+import useIsOpenStore from '@/app/hooks/useIsOpenStore';
+import ClubCard from './clubCard';
+import HandleArrowLeft from '@/public/handle-arrow-left.svg';
 
 interface PlaceNavigatorProps {
   places: Place[];
@@ -29,7 +29,7 @@ const PlaceNavigator = ({
   const { openModal, setModalContent } = useModalStore();
 
   const divRef = useRef<HTMLDivElement>(null);
-  let initialPosition = 0;
+  const initialPosition = 0;
 
   // const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
   //   initialPosition = e.touches[0].clientX;
@@ -65,14 +65,14 @@ const PlaceNavigator = ({
       setIsSectionBarOpen(false);
       setIsNavOpen(true);
       if (divRef.current) {
-        divRef.current.style.transition = "transform 0.2s ease-out";
-        divRef.current.style.transform = "translateX(-166%)";
+        divRef.current.style.transition = 'transform 0.2s ease-out';
+        divRef.current.style.transform = 'translateX(-166%)';
       }
     } else {
       setIsNavOpen(false);
       if (divRef.current) {
-        divRef.current.style.transition = "transform 0.2s ease-out";
-        divRef.current.style.transform = "translateX(-77%)";
+        divRef.current.style.transition = 'transform 0.2s ease-out';
+        divRef.current.style.transform = 'translateX(-77%)';
       }
     }
   };
@@ -80,8 +80,8 @@ const PlaceNavigator = ({
   useEffect(() => {
     if (!isNavOpen) {
       if (divRef.current) {
-        divRef.current.style.transition = "transform 0.2s ease-out";
-        divRef.current.style.transform = "translateX(-77%)";
+        divRef.current.style.transition = 'transform 0.2s ease-out';
+        divRef.current.style.transform = 'translateX(-77%)';
       }
     }
   }, [isNavOpen]);
@@ -99,14 +99,14 @@ const PlaceNavigator = ({
           />
           <HandleArrowLeft
             className={`absolute top-[3rem] left-3 ${
-              isNavOpen ? "rotate-180" : ""
+              isNavOpen ? 'rotate-180' : ''
             }`}
             onClick={handleClickHandle}
           />
         </div>
         <div
           className={`flex flex-col p-4 gap-4 items-center w-full bg-brown-500 overflow-y-auto ${
-            isNavOpen ? "z-20" : "touch-none pointer-events-none"
+            isNavOpen ? 'z-20' : 'touch-none pointer-events-none'
           }`}
         >
           {places.map((place, index) => (
@@ -118,19 +118,19 @@ const PlaceNavigator = ({
                   // ❗️ 현재 동아리 박람회 페이지에서만 사용가능함 ❗️
                   getLocationByPlace(
                     place,
-                    DONGBAK_LOCATIONS[selectedDay][selectedSection],
-                  ),
+                    DONGBAK_LOCATIONS[selectedDay][selectedSection]
+                  )
                 );
-                setModalContent(<ClubInfo place={place as Club} />);
+                setModalContent(<ClubInfo boothId={1} />);
                 openModal();
                 setIsNavOpen(false);
                 if (divRef.current) {
-                  divRef.current.style.transition = "transform 0.2s ease-out";
-                  divRef.current.style.transform = "translateX(-77%)";
+                  divRef.current.style.transition = 'transform 0.2s ease-out';
+                  divRef.current.style.transform = 'translateX(-77%)';
                 }
               }}
             >
-              <ClubCard place={place as Club} />
+              <ClubCard boothId={1} />
             </div>
           ))}
           <div className="h-32 mb-10">&nbsp;</div>

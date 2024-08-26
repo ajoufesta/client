@@ -1,7 +1,7 @@
-import React from "react";
-import StageCurrentButton from "./StageCurrentButton";
-import { Stage } from "@/app/lib/types";
-import { checkNow } from "./checkNow";
+import React from 'react';
+import StageCurrentButton from './StageCurrentButton';
+import { Stage } from '@/app/lib/types';
+import { checkNow } from './checkNow';
 
 interface ScheduleProps {
   stages: Stage[];

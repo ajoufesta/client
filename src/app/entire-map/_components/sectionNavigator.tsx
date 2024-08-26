@@ -1,37 +1,37 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const sectionLinks = [
   {
-    name: "A구역",
-    href: "/dongbak/?day=1&section=A",
+    name: 'A구역',
+    href: '/dongbak/?day=1&section=A',
     x: 4.5,
     y: 9,
     diameter: 10,
-    color: "bg-section-1",
+    color: 'bg-section-1',
   },
   {
-    name: "B구역",
-    href: "/dongbak/?day=1&section=B",
+    name: 'B구역',
+    href: '/dongbak/?day=1&section=B',
     x: 13,
     y: 26,
     diameter: 10,
-    color: "bg-section-2",
+    color: 'bg-section-2',
   },
   {
-    name: "C구역",
-    href: "/dongbak/?day=1&section=C",
+    name: 'C구역',
+    href: '/dongbak/?day=1&section=C',
     x: 4,
     y: 21,
     diameter: 10,
-    color: "bg-section-3",
+    color: 'bg-section-3',
   },
   {
-    name: "D구역",
-    href: "/dongbak/?day=1&section=D",
+    name: 'D구역',
+    href: '/dongbak/?day=1&section=D',
     x: 15.5,
     y: 11,
     diameter: 10,
-    color: "bg-section-4",
+    color: 'bg-section-4',
   },
 ];
 

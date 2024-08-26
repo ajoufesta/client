@@ -1,11 +1,11 @@
-import { NextRequest } from "next/server";
-import { revalidateTag } from "next/cache";
+import { NextRequest } from 'next/server';
+import { revalidateTag } from 'next/cache';
 
 export async function POST(request: NextRequest) {
-  const tag = request.nextUrl.searchParams.get("tag");
+  const tag = request.nextUrl.searchParams.get('tag');
 
   if (!tag) {
-    return console.error("No tag provided");
+    return console.error('No tag provided');
   }
 
   try {

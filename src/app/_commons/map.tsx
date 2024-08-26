@@ -1,12 +1,12 @@
-import Image from "next/image";
-import { DONGBAK_SECTION_LIST, DONGBAK_LOCATIONS } from "@/app/lib/constants";
-import { Place, PlaceLocation } from "@/app/lib/types";
-import { getPlaceByLocation } from "@/app/lib/utils";
-import MapIcon from "./mapIcon";
+import Image from 'next/image';
+import { DONGBAK_SECTION_LIST, DONGBAK_LOCATIONS } from '@/app/lib/constants';
+import { Place, PlaceLocation } from '@/app/lib/types';
+import { getPlaceByLocation } from '@/app/lib/utils';
+import MapIcon from './mapIcon';
 
 interface MapProps {
   selectedDay: number;
-  selectedSection: "A" | "B" | "C" | "D";
+  selectedSection: 'A' | 'B' | 'C' | 'D';
   places: Place[];
 }
 
@@ -21,7 +21,7 @@ const Map = ({ selectedDay, selectedSection, places }: MapProps) => {
         priority
       />
       {places &&
-        "clubId" in places[0] &&
+        'clubId' in places[0] &&
         DONGBAK_LOCATIONS[selectedDay][selectedSection] &&
         DONGBAK_LOCATIONS[selectedDay][selectedSection].map(
           (location: PlaceLocation) => (
@@ -34,7 +34,7 @@ const Map = ({ selectedDay, selectedSection, places }: MapProps) => {
                 place={getPlaceByLocation(places, location)}
               />
             </div>
-          ),
+          )
         )}
     </div>
   );

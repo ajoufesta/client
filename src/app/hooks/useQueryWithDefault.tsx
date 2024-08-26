@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { usePathname, useSearchParams } from "next/navigation";
-import { getCurrentDay } from "../lib/utils";
+import { usePathname, useSearchParams } from 'next/navigation';
+import { getCurrentDay } from '../lib/utils';
 
 export const useQueryWithDefault = () => {
   const searchParams = useSearchParams();
@@ -23,16 +23,16 @@ export const useQueryWithDefault = () => {
    */
   const getQueryParamsWidthDefault = () => {
     const day = Number(
-      getQueryParam("day", getCurrentDay(new Date()).toString()),
+      getQueryParam('day', getCurrentDay(new Date()).toString())
     );
-    const section = getQueryParam("section", "seongho1");
+    const section = getQueryParam('section', 'seongho1');
     return { day, section };
   };
 
   const getQueryUrl = (day: number, section: string) => {
     const params = new URLSearchParams();
-    params.set("day", day.toString());
-    params.set("section", section);
+    params.set('day', day.toString());
+    params.set('section', section);
     return `${pathname}?${params.toString()}`;
   };
 
