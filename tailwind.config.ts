@@ -18,6 +18,9 @@ const config: Config = {
         'skyBlue-gradient':
           'radial-gradient( circle at 70% -20%, rgba(4, 127, 254, 0.6) 15%, rgba(0, 208, 236, 0.3) 15%, transparent 40%);',
       },
+      boxShadow: {
+        'carousel-container': '0 5px 5px 0 rgba(230, 194, 153, 0.2)',
+      },
 
       colors: {
         blue: {
@@ -45,10 +48,11 @@ const config: Config = {
         brown: {
           100: '#FAF8F5',
           200: '#FBF3E3',
-          300: '#FBE6BF',
+          300: '#F1E9E8',
           400: '#E6C299',
           500: '#B67E5C',
-          600: '#612D0D',
+          600: '#6D2114',
+          700: '#742215',
         },
         gray: {
           50: '#F0F0F0',

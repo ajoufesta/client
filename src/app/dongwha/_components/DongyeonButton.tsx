@@ -1,47 +1,43 @@
 'use client';
 import React from 'react';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const DongyeonButton = () => {
-  const [isClicked, setIsClicked] = useState('dongari');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [isAjouFesta, setIsAjouFesta] = useState(
+    searchParams.get('category') === 'ajouFesta'
+  );
 
-  const clickedStyle = 'bg-brown-500 border-[0.2rem]  text-white';
-  const unClickedStyle =
-    'bg-white text-brown-500 border-[0.2rem] border-solid border-brown-500';
-
-  const handleClick = (buttonName: string) => {
-    setIsClicked(buttonName);
+  const handleClick = (isClickAjouFesta: boolean) => {
+    setIsAjouFesta(isClickAjouFesta);
+    router.push(
+      `dongwha?category=${isClickAjouFesta ? 'ajouFesta' : 'events'}`
+    );
   };
 
-  const router = useRouter();
   return (
-    <div className="w-[33.5rem] text-[1.6rem] flex justify-between items-end mb-[1.6rem]">
+    <div className="flex w-full gap-3.5 mb-3.5">
       <div
-        className={`w-[16rem] h-[6.5rem] rounded-[1rem] pl-[1.4rem] py-[1rem] ${
-          isClicked === 'dongari' ? clickedStyle : unClickedStyle
-        }`}
-        onClick={() => {
-          handleClick('dongari');
-          router.push('dongwha?category=events');
-        }}
+        className={`w-full h-[6.5rem] rounded-2xl bg-brown-600 flex justify-center align-middle text-center ${isAjouFesta && 'opacity-60'}`}
+        onClick={() => handleClick(false)}
       >
-        <p>동아리박람회</p>
-        <p className="font-bold">이벤트 안내 </p>
+        <p className="font-bold text-2xl text-brown-300 content-center">
+          동아리박람회
+          <br />
+          이벤트 안내
+        </p>
       </div>
       <div
-        className={`w-[16rem] h-[6.5rem] rounded-[1rem] pl-[1.4rem] py-[1rem] ${
-          isClicked === 'ajouFesta' ? clickedStyle : unClickedStyle
-        } `}
-        onClick={() => {
-          handleClick('ajouFesta');
-          router.push('dongwha?category=ajouFesta');
-        }}
+        className={`w-full h-[6.5rem] rounded-2xl bg-brown-600 flex justify-center align-middle text-center ${isAjouFesta || 'opacity-60'}`}
+        onClick={() => handleClick(true)}
       >
-        <p>
-          동화 <span className="font-bold">웹 바로가기</span>
+        <p className="font-bold text-2xl text-brown-300 content-center">
+          동화 웹 바로가기
+          <br />
+          아이콘 추가방법
         </p>
-        <p className="font-bold">아이콘 추가 방법 </p>
       </div>
     </div>
   );
