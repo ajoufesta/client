@@ -1,5 +1,4 @@
 import React from 'react';
-import { getCurrentDay } from '../lib/utils';
 
 import EmblaCarousel from './_components/stageCarousel/EmblaCarousel';
 import { EmblaOptionsType } from 'embla-carousel';
@@ -25,13 +24,11 @@ const Page = () => {
     const stageData = await Promise.all(stageDataPromises);
 
     return (
-      <>
-        <EmblaCarousel
-          slides={SLIDES}
-          options={OPTIONS}
-          stages={[stageData[0], stageData[1]]}
-        />
-      </>
+      <EmblaCarousel
+        slides={SLIDES}
+        options={OPTIONS}
+        stages={[stageData[0], stageData[1]]}
+      />
     );
   };
 

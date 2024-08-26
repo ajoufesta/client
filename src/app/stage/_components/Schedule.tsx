@@ -12,14 +12,17 @@ interface ScheduleProps {
 const Schedule = ({ stages, isToday }: ScheduleProps) => {
   return (
     <div className="w-[32.5rem] flex flex-col items-center justify-center ">
-      <div className="w-[31rem] pt-4 pb-8 h-fit flex flex-col items-center justify-center relative rounded-3xl bg-white px-[0.4rem] overflow-hidden">
-        <div className="h-[4.5rem] w-full flex  justify-between mb-4 px-[1.3rem]">
-          <div className="w-[13rem] h-[4rem] text-brown-500 text-[1.6rem] flex items-center justify-center font-bold border-b-2 border-brown-500">
-            공연시간
+      <div className="w-[31rem] pt-4 pb-8 h-fit flex flex-col items-center justify-center relative rounded-[1.2rem] bg-white px-[1.2rem] overflow-hidden">
+        <div className="h-[4.5rem] w-full flex flex-col px-[1.3rem]">
+          <div className="w-full flex justify-between">
+            <div className="w-full h-[4rem] text-brown-600 text-[1.6rem] flex items-center justify-center font-bold">
+              공연시간
+            </div>
+            <div className="w-full h-[4rem] text-brown-600 text-[1.6rem] flex items-center justify-center font-bold">
+              공연팀
+            </div>
           </div>
-          <div className="w-[13rem] h-[4rem] text-brown-500 text-[1.6rem] flex items-center justify-center font-bold border-b-2 border-brown-500">
-            공연팀
-          </div>
+          <hr className="h-[0.2rem] bg-brown-700 w-full rounded-xl" />
         </div>
         {stages.map((stage, index) => (
           <StageCurrentButton
@@ -32,11 +35,11 @@ const Schedule = ({ stages, isToday }: ScheduleProps) => {
             isToday={isToday}
           />
         ))}
-        <div className="w-full flex justify-between text-center font-bold  text-2xl px-[1.6rem] mt-[2rem] ">
-          <div className="flex justify-center items-center w-[6rem] h-[2.4rem] rounded-[5rem] text-center font-bold bg-brown-500 text-brown-100">
+        <div className="w-full flex justify-between text-center font-bold text-2xl px-[1.6rem] mt-[2rem] ">
+          <div className="flex justify-center items-center w-[5rem] h-[2.4rem] rounded-[5rem] text-center font-bold bg-brown-700 text-brown-100">
             상시
           </div>
-          <div className="ml-2 flex justify-center items-center  w-[24rem]  text-center font-semibold text-brown-500">
+          <div className="ml-2 flex justify-center items-center  w-[24rem]  text-center font-semibold text-brown-600">
             아주대학교 중앙동아리 AMI 전시
           </div>
         </div>
