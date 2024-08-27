@@ -46,6 +46,28 @@ export const fetchDongbakBooths = async (day: number, section: string) => {
   }
 };
 
+export const fetchDongbakBooth = async (boothId: number) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/clubs/id?id=${boothId}`,
+      {
+        next: {
+          revalidate: 900, // 15분
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch dongbak booths');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // 요청한 시간도 같이 return하도록 수정
 export const fetchGamePlayers = async (): Promise<{
   players: GamePlayer[];
