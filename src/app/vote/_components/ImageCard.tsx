@@ -20,22 +20,45 @@ const ImageCard: React.FC<ImageCardProps> = ({
 }) => {
   return (
     <div className="embla__slide flex flex-col items-center">
-      <h2 className="text-xl font-semibold mb-2 text-center">{CATEGORY_DISPLAYNAMES[category]}</h2>
+      <h2 className="text-xl font-semibold mb-2 text-center">
+        {CATEGORY_DISPLAYNAMES[category]}
+      </h2>
       <div className="grid grid-cols-2 gap-4 p-4">
         {images.map((image, index) => (
-          <div key={index} className="relative cursor-pointer" onClick={() => onZoomImage(image)}>
-            <Image src={image} alt={`Image ${index}`} width={150} height={150} className="rounded-lg" />
-            <button
+          <div
+            key={index}
+            className="relative cursor-pointer rounded-lg overflow-hidden"
+            onClick={() => onZoomImage(image)}
+          >
+            <Image
+              src={image}
+              alt={`Image ${index}`}
+              width={150}
+              height={150}
+              className="rounded-lg"
+            />
+
+            {/* 오버레이: 선택된 이미지일 때 어둡게 */}
+            {selectedImage === image && (
+              <div className="absolute inset-0 bg-black opacity-50"></div>
+            )}
+
+            {/* 체크박스 */}
+            <div
               onClick={(e) => {
                 e.stopPropagation();
                 onSelectImage(image);
               }}
-              className={`absolute bottom-2 left-1/2 transform -translate-x-1/2 mt-2 p-2 w-[85%] text-gray-800 font-semibold text-lg ${
-                selectedImage === image ? 'bg-white border-2 border-gray-300 shadow-lg' : 'bg-white border-2 border-gray-200 shadow-md'
-              } rounded-xl hover:bg-gray-100 transition-all duration-200 ease-in-out`}
+              className={`absolute top-2 right-2 w-6 h-6 rounded-full border-2 ${
+                selectedImage === image
+                  ? 'bg-black border-black'
+                  : 'bg-white border-gray-300'
+              } flex items-center justify-center transition-all duration-200 ease-in-out`}
             >
-              {selectedImage === image ? '선택됨' : '선택'}
-            </button>
+              {selectedImage === image && (
+                <div className="w-3 h-3 bg-white rounded-full"></div>
+              )}
+            </div>
           </div>
         ))}
       </div>
