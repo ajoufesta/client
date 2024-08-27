@@ -1,12 +1,12 @@
 'use client';
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 
 import { DotButton } from './EmblaCarouselArrowsDotsButtons';
 import Schedule from '../Schedule';
 import { FESTIVAL_DATE } from '@/app/lib/constants';
-import { getCurrentDay, isToday } from '@/app/lib/utils';
+import { isToday } from '@/app/lib/utils';
 import { getFormattedDate } from '@/app/lib/utils';
 import { Stage } from '@/app/lib/types';
 import Image from 'next/image';

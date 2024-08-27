@@ -4,14 +4,14 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import useIsFirstStore from '../hooks/useIsFirstStore';
 
-import DongyeonActiveIcon from '@/public/dongyeonActiveIcon.svg';
-import DongariActiveIcon from '../../../public/assets/footer/dongariActiveIcon.svg';
-import BuskingActiveIcon from '@/public/buskingActiveIcon.svg';
-import PlayIcon from '../../../public/assets/footer/playIcon.svg';
-import DongyeonIcon from '../../../public/assets/footer/dongyeonIcon.svg';
-import DongariIcon from '../../../public/assets/footer/dongariIcon.svg';
-import BuskingIcon from '../../../public/assets/footer/buskingIcon.svg';
-import PlayActiveIcon from '@/public/playActiveIcon.svg';
+import DongyeonActiveIcon from '@/public/assets/footer/dongyeonActiveIcon.svg';
+import DongariActiveIcon from '@/public/assets/footer/dongariActiveIcon.svg';
+import BuskingActiveIcon from '@/public/assets/footer/buskingActiveIcon.svg';
+import PlayIcon from '@/public/assets/footer/playIcon.svg';
+import DongyeonIcon from '@/public/assets/footer/dongyeonIcon.svg';
+import DongariIcon from '@/public/assets/footer/dongariIcon.svg';
+import BuskingIcon from '@/public/assets/footer/buskingIcon.svg';
+import PlayActiveIcon from '@/public/assets/footer/playActiveIcon.svg';
 
 const links = [
   { name: '버스킹', href: ['/stage'], icon: [BuskingIcon, BuskingActiveIcon] },
