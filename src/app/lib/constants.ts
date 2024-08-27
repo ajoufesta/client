@@ -1,4 +1,4 @@
-import { PlaceLocations } from './types';
+import { PlaceLocations, Category } from './types';
 
 const FESTIVAL_DATE = ['2024-09-02', '2024-09-03'];
 
@@ -605,4 +605,73 @@ const BOOTH_LOCATIONS: PlaceLocations = {
   3: {},
 };
 
-export { FESTIVAL_DATE, SECTION_LIST, PUB_LOCATIONS, BOOTH_LOCATIONS };
+const CATEGORY_IMAGES: Record<Category, string[]> = {
+  'Category 1': [
+    '/category1/1.png',
+    '/category1/2.png',
+    '/category1/3.png',
+    '/category1/4.png',
+    '/category1/5.png',
+  ],
+  'Category 2': [
+    '/category2/1.png',
+    '/category2/2.png',
+    '/category2/3.png',
+    '/category2/4.png',
+    '/category2/5.png',
+  ],
+  'Category 3': [
+    '/category3/1.png',
+    '/category3/2.png',
+    '/category3/3.png',
+    '/category3/4.png',
+    '/category3/5.png',
+  ],
+  'Category 4': [
+    '/category4/1.png',
+    '/category4/2.png',
+    '/category4/3.png',
+    '/category4/4.png',
+    '/category4/5.png',
+  ],
+};
+
+const CATEGORY_IMAGE_IDS: Record<Category, Record<string, number>> = {
+  'Category 1': {
+    '/category1/1.png': 1,
+    '/category1/2.png': 2,
+    '/category1/3.png': 3,
+    '/category1/4.png': 4,
+    '/category1/5.png': 5,
+  },
+  'Category 2': {
+    '/category2/1.png': 6,
+    '/category2/2.png': 7,
+    '/category2/3.png': 8,
+    '/category2/4.png': 9,
+    '/category2/5.png': 10,
+  },
+  'Category 3': {
+    '/category3/1.png': 11,
+    '/category3/2.png': 12,
+    '/category3/3.png': 13,
+    '/category3/4.png': 14,
+    '/category3/5.png': 15,
+  },
+  'Category 4': {
+    '/category4/1.png': 16,
+    '/category4/2.png': 17,
+    '/category4/3.png': 18,
+    '/category4/4.png': 19,
+    '/category4/5.png': 20,
+  },
+};
+
+const CATEGORY_DISPLAYNAMES: Record<Category, string> = {
+  'Category 1': '카테고리 1',
+  'Category 2': '카테고리 2',
+  'Category 3': '카테고리 3',
+  'Category 4': '카테고리 4',
+};
+
+export { FESTIVAL_DATE, SECTION_LIST, PUB_LOCATIONS, BOOTH_LOCATIONS, CATEGORY_IMAGES, CATEGORY_IMAGE_IDS, CATEGORY_DISPLAYNAMES};

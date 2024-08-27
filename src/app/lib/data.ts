@@ -1,5 +1,6 @@
-import { GamePlayer } from './types';
+import { GamePlayer, Category } from './types';
 import { getKoreanTime } from './utils';
+import { CATEGORY_IMAGE_IDS } from './constants'; 
 
 //사용자 공연 목록 GET
 export const fetchStageData = async (day: number) => {
@@ -89,4 +90,31 @@ export const fetchGamePlayers = async (): Promise<{
   const currentTime = getKoreanTime();
 
   return { players, currentTime };
+};
+
+export const postSelectedImages = async (selectedImages: Record<Category, string | null>): Promise<void> => {
+  const selectedImageIds = Object.entries(selectedImages).reduce((acc, [category, image]) => {
+    if (image) {
+      const imageId = CATEGORY_IMAGE_IDS[category as Category][image];
+      acc[category] = imageId;
+    }
+    return acc;
+  }, {} as Record<string, number>);
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/vote/submit`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ selectedImages: selectedImageIds }),
+    });
+
+    if (!response.ok) {
+      throw new Error('API 요청 실패');
+    }
+  } catch (error) {
+    console.error('선택 전송 중 오류 발생:', error);
+    throw error; // 필요시 호출하는 쪽에서 에러를 처리할 수 있도록 에러를 던집니다.
+  }
 };
