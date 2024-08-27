@@ -1,19 +1,14 @@
 'use client';
-
 import React, { useState, useEffect, useCallback } from 'react';
-import {
-  EmblaCarouselType,
-  EmblaOptionsType,
-  EmblaEventType,
-} from 'embla-carousel';
+import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 
 import { DotButton } from './EmblaCarouselArrowsDotsButtons';
 import Schedule from '../Schedule';
-import { FESTIVAL_DATE } from '@/app/lib/constants';
-import { getCurrentDay, isToday } from '@/app/lib/utils';
-import { getFormattedDate } from '@/app/lib/utils';
+import { isToday } from '@/app/lib/utils';
 import { Stage } from '@/app/lib/types';
+import Image from 'next/image';
+import DateDisplay from '@/app/_commons/dateDisplay';
 
 type PropType = {
   slides: number[];
@@ -21,9 +16,8 @@ type PropType = {
   stages: Stage[][];
 };
 
-const EmblaCarousel = (props: PropType) => {
+const EmblaCarousel = ({ slides, options, stages }: PropType) => {
   const [day, setDay] = useState(1);
-  const { slides, options, stages } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -38,6 +32,18 @@ const EmblaCarousel = (props: PropType) => {
     [emblaApi]
   );
 
+  const handleNext = () => {
+    scrollTo(
+      selectedIndex + 1 > scrollSnaps.length
+        ? scrollSnaps.length
+        : selectedIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    scrollTo(selectedIndex - 1 < 0 ? 0 : selectedIndex - 1);
+  };
+
   const onInit = useCallback((emblaApi: EmblaCarouselType) => {
     setScrollSnaps(emblaApi.scrollSnapList());
   }, []);
@@ -46,27 +52,12 @@ const EmblaCarousel = (props: PropType) => {
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, []);
 
-  const logEmblaEvent = useCallback(
-    (emblaApi: EmblaCarouselType, eventName: EmblaEventType) => {
-      console.log(`Embla just triggered ${eventName}!`);
-    },
-    []
-  );
-
   useEffect(() => {
     if (!emblaApi) return;
 
     emblaApi.on('select', () => {
-      const previousSlideIndex = emblaApi.previousScrollSnap();
       const currentSlideIndex = emblaApi.selectedScrollSnap();
-
-      if (currentSlideIndex > previousSlideIndex) {
-        console.log(`Moved to slide ${currentSlideIndex + 1}`);
-        setDay(currentSlideIndex + 1);
-      } else {
-        console.log(`Moved to slide ${currentSlideIndex + 1}`);
-        setDay(currentSlideIndex + 1);
-      }
+      setDay(currentSlideIndex + 1);
     });
   }, [emblaApi]);
 
@@ -80,19 +71,33 @@ const EmblaCarousel = (props: PropType) => {
     emblaApi.on('select', onSelect);
   }, [emblaApi, onInit, onSelect]);
 
-  // useEffect(() => {
-  //   if (emblaApi) emblaApi.on("pointerUp", logEmblaEvent);
-  // }, [emblaApi, logEmblaEvent]);
-
   return (
-    <>
-      <div className="w-[32.5rem] mt-[1.5rem]  flex flex-col justify-center items-center text-center h-[3rem] flex-shrink-0">
-        <span className="w-[8rem] h-[2.1rem] font-semibold text-brown-100 text-xl rounded-[3rem] bg-brown-400 mb-[1rem] p-[0.5rem] flex justify-center items-center">
-          {isToday(day) ? 'TODAY' : getFormattedDate(FESTIVAL_DATE[day - 1])}
-        </span>
-      </div>
-      <div className="w-[32.5rem] text-brown-500 text-center text-4xl font-bold flex items-center justify-center mb-[1rem]">
-        {`DAY ${day} `}
+    <div className={'flex flex-col h-full justify-center'}>
+      <div className="flex flex-col justify-center items-center text-center">
+        <DateDisplay selectedDay={day} />
+        <div className={'relative flex'}>
+          <Image
+            src={'/assets/carousel/title-arrow.svg'}
+            alt={'arrow'}
+            width={12}
+            height={20}
+            onClick={handlePrev}
+            className={`rotate-180 ${selectedIndex === 0 && 'invisible'}`}
+          />
+          <div className={'flex justify-center mx-[3rem]'}>
+            <span className="text-brown-600 text-[2.8rem] font-bold leading-loose">
+              {`DAY ${day}`}
+            </span>
+          </div>
+          <Image
+            src={'/assets/carousel/title-arrow.svg'}
+            alt={'arrow'}
+            width={12}
+            height={20}
+            onClick={handleNext}
+            className={`${selectedIndex === scrollSnaps.length - 1 && 'invisible'}`}
+          />
+        </div>
       </div>
       <div className="embla flex flex-col">
         <div className="embla__viewport" ref={emblaRef}>
@@ -121,30 +126,24 @@ const EmblaCarousel = (props: PropType) => {
             )}
           >
             {index === selectedIndex ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
-                fill="none"
-              >
-                <circle cx="4" cy="4" r="4" fill="#B67E5C" />
-              </svg>
+              <Image
+                src={'/assets/carousel/indicator-fill-dot.svg'}
+                alt={'dot'}
+                width={8}
+                height={8}
+              />
             ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
-                fill="none"
-              >
-                <circle cx="4" cy="4" r="4" fill="#E6C299" />
-              </svg>
+              <Image
+                src={'/assets/carousel/indicator-dot.svg'}
+                alt={'dot'}
+                width={8}
+                height={8}
+              />
             )}
           </DotButton>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

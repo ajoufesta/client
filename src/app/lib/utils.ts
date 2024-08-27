@@ -38,7 +38,7 @@ export const isToday = (day: number): boolean => {
  */
 export const getFormattedDate = (date: string): string => {
   const [year, month, day] = date.split('-');
-  return `${month}월 ${day}일`;
+  return `${month} / ${day}`;
 };
 
 /**

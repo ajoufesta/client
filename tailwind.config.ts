@@ -15,8 +15,13 @@ const config: Config = {
         icon: '3.263rem',
       },
       backgroundImage: {
+        'orange-gradient':
+          'linear-gradient(192deg, #742215 -22.83%, #CE5350 39.02%, #EAD776 100.87%);',
         'skyBlue-gradient':
           'radial-gradient( circle at 70% -20%, rgba(4, 127, 254, 0.6) 15%, rgba(0, 208, 236, 0.3) 15%, transparent 40%);',
+      },
+      boxShadow: {
+        'carousel-container': '0 5px 5px 0 rgba(230, 194, 153, 0.2)',
       },
 
       colors: {
@@ -45,10 +50,12 @@ const config: Config = {
         brown: {
           100: '#FAF8F5',
           200: '#FBF3E3',
-          300: '#FBE6BF',
+          300: '#F1E9E8',
           400: '#E6C299',
           500: '#B67E5C',
-          600: '#612D0D',
+          600: '#6D2114',
+          700: '#742215',
+          800: '#E3D3D0',
         },
         gray: {
           50: '#F0F0F0',
@@ -75,6 +82,11 @@ const config: Config = {
           2: 'rgb(224, 191, 92)',
           3: 'rgb(104, 123, 184)',
           4: 'rgb(129,187,113)',
+        },
+        playRank: {
+          1: '#CE5350',
+          2: '#D77B48',
+          3: '#D79E48',
         },
       },
 

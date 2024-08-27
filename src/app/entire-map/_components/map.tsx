@@ -75,11 +75,11 @@ function MapWithPin() {
     const ctx = canvas?.getContext('2d');
     const mapImage = new Image();
 
-    mapImage.src = 'asset/map.png'; // 지도 이미지
+    mapImage.src = 'assets/map/map.png'; // 지도 이미지
     const pinImages = pins.reduce(
       (acc, pin) => {
         const img = new Image();
-        img.src = `asset/${pin.pinName}.png`; // 핀 이미지 로드
+        img.src = `assets/map/${pin.pinName}.png`; // 핀 이미지 로드
         acc[pin.pinName] = img;
         return acc;
       },

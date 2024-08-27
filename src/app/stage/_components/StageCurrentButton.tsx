@@ -18,28 +18,49 @@ const StageCurrentButton = ({
   isToday,
 }: StagePropTypes) => {
   return (
-    //현공연 text-blue-400 bg-white px-[1.6rem]
     <div
-      className={`w-[30rem] h-[5.1rem] flex justify-between items-center rounded-2xl font-bold text-brown-500 px-[1.6rem] ${
-        isNow === true && status !== 'DONE' && isToday ? 'bg-brown-500' : ''
+      className={`w-full h-[5.1rem] flex justify-between items-center rounded-full font-bold text-brown-500 px-[1.6rem] ${
+        isNow && status !== 'DONE' && isToday ? 'bg-brown-600' : ''
       }`}
     >
       <div
         className={`flex justify-between w-[13rem] h-[2.5rem] rounded-[5rem] text-center font-bold text-brown-500 text-2xl items-center px-6 ${
-          isNow === true && status !== 'DONE' && isToday
-            ? 'bg-brown-100'
-            : 'bg-brown-200'
+          isNow && status !== 'DONE' && isToday ? 'bg-white' : 'bg-brown-800'
         }`}
       >
-        <span className="block">{startTime}</span>
-        <span className="block">-</span>
-        <span className="block">{endTime}</span>
+        <span
+          className={`text-brown-600 ${
+            isNow && status !== 'DONE' && isToday
+              ? 'font-semibold'
+              : 'text-brown-600 font-normal'
+          }`}
+        >
+          {startTime}
+        </span>
+        <span
+          className={`text-brown-600 ${
+            isNow && status !== 'DONE' && isToday
+              ? 'font-semibold'
+              : ' font-normal'
+          }`}
+        >
+          -
+        </span>
+        <span
+          className={`text-brown-600 ${
+            isNow && status !== 'DONE' && isToday
+              ? 'font-semibold'
+              : 'font-normal'
+          }`}
+        >
+          {endTime}
+        </span>
       </div>
       <div
         className={`w-[11.9rem] text-center text-[1.6rem] ${
-          isNow === true && status !== 'DONE' && isToday
-            ? 'text-white'
-            : 'text-brown-500'
+          isNow && status !== 'DONE' && isToday
+            ? 'text-brown-300 font-semibold'
+            : 'text-brown-600 font-normal'
         }`}
       >
         {showName}
