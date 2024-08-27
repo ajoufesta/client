@@ -21,8 +21,8 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.AUTO_ACTIONS }}
         with:
           source-directory: 'output'
-          destination-github-username: "syncd-bot"
-          destination-repository-name: "vercel-sync-d-frontend"
+          destination-github-username: "ajoufesta"
+          destination-repository-name: "ajoufeat-client"
           user-email: ${{ secrets.OFFICIAL_ACCOUNT_EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
