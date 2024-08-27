@@ -103,3 +103,21 @@ export const dummyPlayer: GamePlayer = {
   level: 0,
   name: '공석',
 };
+
+export const dummyPlayers: GamePlayer[] = [
+  {
+    studentId: 123456789,
+    level: 0,
+    name: '공석',
+  },
+  {
+    studentId: 123456789,
+    level: 0,
+    name: '공석',
+  },
+  {
+    studentId: 123456789,
+    level: 0,
+    name: '공석',
+  },
+];

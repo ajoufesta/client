@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import RefreshIcon from '@/public/refreshIcon.svg';
+import RefreshIcon from '@/public/assets/play/refreshIcon.svg';
 import { useState } from 'react';
 
 type Props = {

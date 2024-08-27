@@ -15,6 +15,8 @@ const config: Config = {
         icon: '3.263rem',
       },
       backgroundImage: {
+        'orange-gradient':
+          'linear-gradient(192deg, #742215 -22.83%, #CE5350 39.02%, #EAD776 100.87%);',
         'skyBlue-gradient':
           'radial-gradient( circle at 70% -20%, rgba(4, 127, 254, 0.6) 15%, rgba(0, 208, 236, 0.3) 15%, transparent 40%);',
       },
@@ -80,6 +82,11 @@ const config: Config = {
           2: 'rgb(224, 191, 92)',
           3: 'rgb(104, 123, 184)',
           4: 'rgb(129,187,113)',
+        },
+        playRank: {
+          1: '#CE5350',
+          2: '#D77B48',
+          3: '#D79E48',
         },
       },
 

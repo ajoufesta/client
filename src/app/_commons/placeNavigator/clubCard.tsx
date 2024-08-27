@@ -12,8 +12,6 @@ interface Props {
 }
 
 const ClubCard = ({ boothId }: Props) => {
-  console.log('ClubCard', boothId);
-
   const mock: Club = {
     clubId: 1,
     clubName: 'testName',

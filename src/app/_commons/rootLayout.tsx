@@ -24,14 +24,12 @@ const CustomRootLayout = ({ children }: { children: React.ReactNode }) => {
       <body
         style={{
           height: `calc(var(--vh, 1vh) * 100)`,
-          background:
-            'linear-gradient(192deg, #742215 -22.83%, #CE5350 39.02%, #EAD776 100.87%), #FFF',
         }}
-        className="w-screen max-w-screen-sm relative flex flex-col items-center mx-auto"
+        className="w-screen max-w-screen-sm flex flex-col items-center mx-auto bg-orange-gradient"
       >
         <main
           style={{ height: `calc(var(--vh, 1vh) * 100 - 94px)` }}
-          className="w-full px-8 py-14 flex flex-col items-center justify-center"
+          className="w-full px-[2rem] py-14 flex flex-col items-center justify-center relative"
         >
           {children}
         </main>

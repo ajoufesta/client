@@ -1,6 +1,6 @@
 import { PlaceLocations } from './types';
 
-const FESTIVAL_DATE = ['2024-03-04', '2024-03-05'];
+const FESTIVAL_DATE = ['2024-09-02', '2024-09-03'];
 
 const SECTION_LIST = [
   {

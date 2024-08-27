@@ -5,11 +5,10 @@ import useEmblaCarousel from 'embla-carousel-react';
 
 import { DotButton } from './EmblaCarouselArrowsDotsButtons';
 import Schedule from '../Schedule';
-import { FESTIVAL_DATE } from '@/app/lib/constants';
 import { isToday } from '@/app/lib/utils';
-import { getFormattedDate } from '@/app/lib/utils';
 import { Stage } from '@/app/lib/types';
 import Image from 'next/image';
+import DateDisplay from '@/app/_commons/dateDisplay';
 
 type PropType = {
   slides: number[];
@@ -75,10 +74,8 @@ const EmblaCarousel = ({ slides, options, stages }: PropType) => {
   return (
     <div className={'flex flex-col h-full justify-center'}>
       <div className="flex flex-col justify-center items-center text-center">
-        <span className="font-bold text-brown-300 text-[1.6rem] rounded-[3rem] bg-brown-600 mb-[1rem] py-[0.5rem] px-[1rem] flex justify-center items-center">
-          {isToday(day) ? 'TODAY' : getFormattedDate(FESTIVAL_DATE[day - 1])}
-        </span>
-        <div className={'relative flex h-full'}>
+        <DateDisplay selectedDay={day} />
+        <div className={'relative flex'}>
           <Image
             src={'/assets/carousel/title-arrow.svg'}
             alt={'arrow'}
@@ -87,8 +84,8 @@ const EmblaCarousel = ({ slides, options, stages }: PropType) => {
             onClick={handlePrev}
             className={`rotate-180 ${selectedIndex === 0 && 'invisible'}`}
           />
-          <div className={'mx-[3rem]'}>
-            <span className="text-brown-600 text-[2.8rem] font-bold ">
+          <div className={'flex justify-center mx-[3rem]'}>
+            <span className="text-brown-600 text-[2.8rem] font-bold leading-loose">
               {`DAY ${day}`}
             </span>
           </div>
