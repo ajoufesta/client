@@ -4,6 +4,8 @@ import pins from '../_resources/pins.json';
 import useModalStore from '@/app/hooks/useModalStore';
 import ClubInfo from '@/app/_commons/clubInfo';
 import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
+import PlaceNavigator from '@/app/_commons/placeNavigator';
+import { fetchDongbakBooths } from '@/app/lib/data';
 
 const INITIAL_POSITION = { x: 650, y: 550 };
 const MAP_SIZE = 1200;
@@ -24,6 +26,7 @@ function MapWithPin() {
   const { openModal, setModalContent } = useModalStore();
   const { setLocation } = useSelectedLocationStore();
   const mapContainerRef = useRef<HTMLDivElement>(null);
+
   const [containerSize, setContainerSize] = useState({
     width: 600,
     height: 1000,
@@ -294,12 +297,19 @@ function MapWithPin() {
     setLocation,
     setModalContent,
   ]);
+  const fetchAndRenderData = () => {
+    return (
+      <div
+        ref={mapContainerRef}
+        className="flex mt-2 w-[33.5rem] h-[49.9rem] flex-col items-center border-2 border-brown-500 rounded-3xl overflow-hidden relative shadow-md"
+      >
+        <canvas ref={canvasRef} />
+        <PlaceNavigator />
+      </div>
+    );
+  };
 
-  return (
-    <div ref={mapContainerRef} className="w-full h-full">
-      <canvas ref={canvasRef} />
-    </div>
-  );
+  return fetchAndRenderData();
 }
 
 export default MapWithPin;
