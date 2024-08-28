@@ -7,8 +7,8 @@ import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
 
 const INITIAL_POSITION = { x: 650, y: 550 };
 const MAP_SIZE = 1200;
-const ORIGIN_MAP_WIDTH = 2336
-const ORIGIN_MAP_HEIGHT = 2481
+const ORIGIN_MAP_WIDTH = 2336;
+const ORIGIN_MAP_HEIGHT = 2481;
 const PAN_SENSITIVITY = 2.5;
 
 interface Pin {
@@ -68,13 +68,10 @@ function MapWithPin() {
     [containerHeight, containerWidth]
   );
 
-  const maxViewPosX = useMemo(
-    () => (ORIGIN_MAP_WIDTH - MAP_SIZE),
-    [containerWidth]
-  );
+  const maxViewPosX = useMemo(() => ORIGIN_MAP_WIDTH - MAP_SIZE, []);
   const maxViewPosY = useMemo(
-    () =>(ORIGIN_MAP_HEIGHT - (MAP_SIZE*screenRatio)),
-    [containerHeight]
+    () => ORIGIN_MAP_HEIGHT - MAP_SIZE * screenRatio,
+    [screenRatio]
   );
 
   useEffect(() => {
@@ -117,7 +114,7 @@ function MapWithPin() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // render map in canvas
-      console.log("d",  viewPosRef.current.x, viewPosRef.current.y,)
+      console.log('d', viewPosRef.current.x, viewPosRef.current.y);
       ctx.drawImage(
         mapImage,
         viewPosRef.current.x,
@@ -190,8 +187,8 @@ function MapWithPin() {
 
       console.log('y : ', limitedViewPosY, newViewPosY, maxViewPosY);
       console.log('x : ', limitedViewPosX, newViewPosX, maxViewPosX);
-      console.log('width : ', containerWidth)
-      console.log('height : ',containerHeight)
+      console.log('width : ', containerWidth);
+      console.log('height : ', containerHeight);
       console.log('ratio : ', screenRatio);
 
       viewPosRef.current = { x: limitedViewPosX, y: limitedViewPosY };
@@ -290,6 +287,8 @@ function MapWithPin() {
   }, [
     containerHeight,
     containerWidth,
+    maxViewPosX,
+    maxViewPosY,
     openModal,
     screenRatio,
     setLocation,
