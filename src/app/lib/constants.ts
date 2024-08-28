@@ -40,30 +40,6 @@ const SECTION_LIST = [
   },
 ];
 
-export const DONGBAK_SECTION_LIST: {
-  [key in 'A' | 'B' | 'C' | 'D']: {
-    name: string;
-    image: string;
-  };
-} = {
-  A: {
-    name: 'A구역',
-    image: '/sectionA.png',
-  },
-  B: {
-    name: 'B구역',
-    image: '/sectionB.png',
-  },
-  C: {
-    name: 'C구역',
-    image: '/sectionC.png',
-  },
-  D: {
-    name: 'D구역',
-    image: '/sectionD.png',
-  },
-};
-
 export const MapPinColor = {
   A: ['bg-mapPin-1', 'text-mapPin-1'],
   B: ['bg-mapPin-2', 'text-mapPin-2'],

@@ -1,15 +1,15 @@
 'use client';
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useRef, useEffect, useMemo, useState } from 'react';
 import pins from '../_resources/pins.json';
 import useModalStore from '@/app/hooks/useModalStore';
 import ClubInfo from '@/app/_commons/clubInfo';
 import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
 
 const INITIAL_POSITION = { x: 650, y: 550 };
-const MAP_SIZE = 1300;
+const MAP_SIZE = 1200;
+const ORIGIN_MAP_WIDTH = 2336;
+const ORIGIN_MAP_HEIGHT = 2481;
 const PAN_SENSITIVITY = 2.5;
-const MAP_WIDTH_LIMIT = 1300;
-const MAP_HEIGHT_LIMIT = 1300;
 
 interface Pin {
   x: number;
@@ -24,32 +24,54 @@ function MapWithPin() {
   const { openModal, setModalContent } = useModalStore();
   const { setLocation } = useSelectedLocationStore();
   const mapContainerRef = useRef<HTMLDivElement>(null);
+  const [containerSize, setContainerSize] = useState({
+    width: 600,
+    height: 1000,
+  });
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const viewPosRef = useRef(INITIAL_POSITION);
   const isPanningRef = useRef(false);
   const startPosRef = useRef({ x: 0, y: 0 });
   const canvasSizeRef = useRef<number>(0);
-  const containerHeight = useMemo(
-    () =>
-      mapContainerRef.current ? mapContainerRef.current.clientHeight : 1000,
-    [mapContainerRef]
-  );
-  const containerWidth = useMemo(
-    () => (mapContainerRef.current ? mapContainerRef.current.clientWidth : 600),
-    [mapContainerRef]
-  );
+  // const containerHeight = useMemo(
+  //   () =>
+  //     mapContainerRef.current ? mapContainerRef.current.clientHeight : 1000,
+  //    [mapContainerRef.current]
+  // );
+  // const containerWidth = useMemo(
+  //   () => (mapContainerRef.current ? mapContainerRef.current.clientWidth : 600),
+  //   [mapContainerRef.current]
+  // );
+  useEffect(() => {
+    const updateContainerSize = () => {
+      if (mapContainerRef.current) {
+        setContainerSize({
+          width: mapContainerRef.current.clientWidth,
+          height: mapContainerRef.current.clientHeight,
+        });
+      }
+    };
+
+    updateContainerSize();
+    window.addEventListener('resize', updateContainerSize);
+
+    return () => {
+      window.removeEventListener('resize', updateContainerSize);
+    };
+  }, []);
+
+  const { width: containerWidth, height: containerHeight } = containerSize;
+
   const screenRatio = useMemo(
     () => containerHeight / containerWidth,
     [containerHeight, containerWidth]
   );
-  const maxViewPosX = useMemo(
-    () => MAP_SIZE + containerWidth * 0.75,
-    [containerWidth]
-  );
+
+  const maxViewPosX = useMemo(() => ORIGIN_MAP_WIDTH - MAP_SIZE, []);
   const maxViewPosY = useMemo(
-    () => MAP_SIZE + containerHeight * 0.5,
-    [containerHeight]
+    () => ORIGIN_MAP_HEIGHT - MAP_SIZE * screenRatio,
+    [screenRatio]
   );
 
   useEffect(() => {
@@ -92,6 +114,7 @@ function MapWithPin() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // render map in canvas
+      console.log('d', viewPosRef.current.x, viewPosRef.current.y);
       ctx.drawImage(
         mapImage,
         viewPosRef.current.x,
@@ -162,8 +185,10 @@ function MapWithPin() {
       const limitedViewPosX = Math.max(Math.min(newViewPosX, maxViewPosX), 0);
       const limitedViewPosY = Math.max(Math.min(newViewPosY, maxViewPosY), 0);
 
-      console.log('y : ', limitedViewPosY, newViewPosY, maxViewPosX);
+      console.log('y : ', limitedViewPosY, newViewPosY, maxViewPosY);
       console.log('x : ', limitedViewPosX, newViewPosX, maxViewPosX);
+      console.log('width : ', containerWidth);
+      console.log('height : ', containerHeight);
       console.log('ratio : ', screenRatio);
 
       viewPosRef.current = { x: limitedViewPosX, y: limitedViewPosY };
@@ -262,6 +287,8 @@ function MapWithPin() {
   }, [
     containerHeight,
     containerWidth,
+    maxViewPosX,
+    maxViewPosY,
     openModal,
     screenRatio,
     setLocation,
