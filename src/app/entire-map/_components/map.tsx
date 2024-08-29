@@ -114,7 +114,6 @@ function MapWithPin() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // render map in canvas
-      console.log('d', viewPosRef.current.x, viewPosRef.current.y);
       ctx.drawImage(
         mapImage,
         viewPosRef.current.x,
@@ -184,12 +183,6 @@ function MapWithPin() {
 
       const limitedViewPosX = Math.max(Math.min(newViewPosX, maxViewPosX), 0);
       const limitedViewPosY = Math.max(Math.min(newViewPosY, maxViewPosY), 0);
-
-      console.log('y : ', limitedViewPosY, newViewPosY, maxViewPosY);
-      console.log('x : ', limitedViewPosX, newViewPosX, maxViewPosX);
-      console.log('width : ', containerWidth);
-      console.log('height : ', containerHeight);
-      console.log('ratio : ', screenRatio);
 
       viewPosRef.current = { x: limitedViewPosX, y: limitedViewPosY };
       draw();

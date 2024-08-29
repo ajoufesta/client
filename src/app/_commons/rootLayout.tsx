@@ -28,7 +28,7 @@ const CustomRootLayout = ({ children }: { children: React.ReactNode }) => {
         className="w-screen max-w-screen-sm flex flex-col items-center mx-auto bg-orange-gradient"
       >
         <main
-          style={{ height: `calc(var(--vh, 1vh) * 100 - 94px)` }}
+          style={{ height: `calc(var(--vh, 1vh) * 100 - 84px)` }}
           className="w-full px-[2rem] py-14 flex flex-col items-center justify-center relative"
         >
           {children}

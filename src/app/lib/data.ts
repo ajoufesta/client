@@ -90,3 +90,25 @@ export const fetchGamePlayers = async (): Promise<{
 
   return { players, currentTime };
 };
+
+export const postSelectedImages = async (selectedId: number): Promise<void> => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/vote/submit`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ selectedId: selectedId }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('API 요청 실패');
+    }
+  } catch (error) {
+    console.error('선택 전송 중 오류 발생:', error);
+    throw error; // 필요시 호출하는 쪽에서 에러를 처리할 수 있도록 에러를 던집니다.
+  }
+};

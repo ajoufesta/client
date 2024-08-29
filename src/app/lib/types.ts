@@ -63,3 +63,8 @@ export interface GamePlayer {
   level: number;
   name: string;
 }
+
+export interface Vote {
+  id: number;
+  src: string;
+}

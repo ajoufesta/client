@@ -26,6 +26,11 @@ const links = [
     icon: [DongyeonIcon, DongyeonActiveIcon],
   },
   { name: '권총사격', href: ['/play'], icon: [PlayIcon, PlayActiveIcon] },
+  {
+    name: '투표',
+    href: ['/vote'],
+    icon: [PlayIcon, PlayActiveIcon],
+  },
 ];
 
 const FooterLinks = () => {
