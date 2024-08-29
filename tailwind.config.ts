@@ -16,7 +16,7 @@ const config: Config = {
       },
       backgroundImage: {
         'orange-gradient':
-          'linear-gradient(192deg, #742215 -22.83%, #CE5350 39.02%, #EAD776 100.87%);',
+          'linear-gradient(191deg, #C8302C -19.47%, rgba(206, 83, 80, 0.90) 38.25%, rgba(255, 234, 130, 0.90) 95.98%);',
         'skyBlue-gradient':
           'radial-gradient( circle at 70% -20%, rgba(4, 127, 254, 0.6) 15%, rgba(0, 208, 236, 0.3) 15%, transparent 40%);',
       },

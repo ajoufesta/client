@@ -19,7 +19,6 @@ type PropType = {
 const EmblaCarousel = ({ slides, options, stages }: PropType) => {
   const [day, setDay] = useState(1);
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
-
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const PlayPage = async () => {
   const { players, currentTime } = await fetchGamePlayers();
   return (
-    <div className="flex flex-col gap-[5rem] w-full">
+    <div className="flex flex-col w-full h-full justify-between py-[3rem]">
       <div className={'flex flex-col gap-2.5'}>
         <CurrentDateDisplay />
         <h1 className="text-[2.4rem] text-brown-800 font-bold text-center">
@@ -27,7 +27,7 @@ const PlayPage = async () => {
         </div>
       </div>
 
-      <div className="flex flex-col w-full h-full gap-[1.2rem] transform -translate-x-[2rem]">
+      <div className="flex flex-col w-full justify-center h-full gap-[1.2rem] transform -translate-x-[2rem]">
         <Rank players={players.length === 0 ? dummyPlayers : players} />
       </div>
 

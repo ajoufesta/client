@@ -64,6 +64,7 @@ export interface GamePlayer {
   name: string;
 }
 
-export const categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4'] as const;
-
-export type Category = typeof categories[number];
+export interface Vote {
+  id: number;
+  src: string;
+}

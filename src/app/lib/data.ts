@@ -1,6 +1,5 @@
-import { GamePlayer, Category } from './types';
+import { GamePlayer } from './types';
 import { getKoreanTime } from './utils';
-import { CATEGORY_IMAGE_IDS } from './constants'; 
 
 //사용자 공연 목록 GET
 export const fetchStageData = async (day: number) => {
@@ -92,23 +91,18 @@ export const fetchGamePlayers = async (): Promise<{
   return { players, currentTime };
 };
 
-export const postSelectedImages = async (selectedImages: Record<Category, string | null>): Promise<void> => {
-  const selectedImageIds = Object.entries(selectedImages).reduce((acc, [category, image]) => {
-    if (image) {
-      const imageId = CATEGORY_IMAGE_IDS[category as Category][image];
-      acc[category] = imageId;
-    }
-    return acc;
-  }, {} as Record<string, number>);
-
+export const postSelectedImages = async (selectedId: number): Promise<void> => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/vote/submit`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ selectedImages: selectedImageIds }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/vote/submit`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ selectedId: selectedId }),
+      }
+    );
 
     if (!response.ok) {
       throw new Error('API 요청 실패');
