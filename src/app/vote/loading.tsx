@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Loading = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen w-screen bg-brown-100">
+    <div className="flex flex-col items-center justify-center h-screen w-screen bg-transparent">
       <Image
         src="/384.png"
         alt="동박페이지 로딩 중..."
