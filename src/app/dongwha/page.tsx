@@ -1,5 +1,4 @@
 import React from 'react';
-import { EmblaOptionsType } from 'embla-carousel';
 import DongyeonCarousel from './_components/dongyeonCarousel';
 import DongyeonButton from './_components/DongyeonButton';
 
@@ -20,7 +19,6 @@ interface DonghwaPageProps {
 
 const page = ({ searchParams }: DonghwaPageProps) => {
   const category = searchParams?.category || 'events';
-  const OPTIONS: EmblaOptionsType = {};
 
   return (
     <>
@@ -35,10 +33,7 @@ const page = ({ searchParams }: DonghwaPageProps) => {
       <DongyeonButton />
       <div className="flex flex-col justify-center items-center w-full h-[33.5rem]">
         <main className="relative bg-white rounded-[20px] flex justify-center w-full h-full shadow-carousel-container">
-          <DongyeonCarousel
-            options={OPTIONS}
-            isAjouFesta={category === 'ajouFesta'}
-          />
+          <DongyeonCarousel isAjouFesta={category === 'ajouFesta'} />
           <hr className="absolute bottom-0 h-[0.4rem] w-[15.9rem] bg-brown-700 rounded-[1rem]" />
         </main>
       </div>

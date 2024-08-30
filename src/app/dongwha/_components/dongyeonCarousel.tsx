@@ -1,21 +1,25 @@
 'use client';
-import React from 'react';
-import { EmblaOptionsType } from 'embla-carousel';
+import React, { useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Image from 'next/image';
 import { SelectedSnapDisplay, useSelectedSnapDisplay } from './SelectedSnap';
 
 type PropType = {
-  options?: EmblaOptionsType;
   isAjouFesta: boolean;
 };
 
 const DONGBAK_SLIDE_COUNT = 7;
 const FESTA_SLIDE_COUNT = 6;
 
-const DongyeonCarousel = ({ options, isAjouFesta }: PropType) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+const DongyeonCarousel = ({ isAjouFesta }: PropType) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({});
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi);
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.scrollTo(0);
+    }
+  }, [emblaApi, isAjouFesta]);
 
   return (
     <section className="embla_dongyeon flex items-center mx-auto">
