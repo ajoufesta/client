@@ -85,18 +85,18 @@ export const getFormattedTime = (time: string): string => {
 };
 
 export const getLocationByPlace = (clubId: number): PlaceLocation => {
-  var tempPin = pins.find((pin) => {
-    if ('boothId' in pin) {
-      return pin.boothId === clubId;
+  const tempPin = pins.find((pin) => {
+    if (pin.boothId === clubId) {
+      return pin;
     }
   });
-  return (
-    { location: '1', x: tempPin?.x!, y: tempPin?.y! } || {
-      location: '',
-      x: 0,
-      y: 0,
-    }
-  );
+  return tempPin
+    ? { location: '1', x: tempPin.x, y: tempPin.y }
+    : {
+        location: '',
+        x: 0,
+        y: 0,
+      };
 };
 
 export const getKoreanTime = () => {

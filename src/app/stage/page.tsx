@@ -1,13 +1,11 @@
 import React from 'react';
 
 import EmblaCarousel from './_components/stageCarousel/EmblaCarousel';
-import { EmblaOptionsType } from 'embla-carousel';
 
 import './_components/stageCarousel/embla.css';
 import { fetchStageData } from '../lib/data';
 import { Metadata } from 'next';
 
-const OPTIONS: EmblaOptionsType = {};
 const SLIDE_COUNT = 2;
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
@@ -24,11 +22,7 @@ const Page = () => {
     const stageData = await Promise.all(stageDataPromises);
 
     return (
-      <EmblaCarousel
-        slides={SLIDES}
-        options={OPTIONS}
-        stages={[stageData[0], stageData[1]]}
-      />
+      <EmblaCarousel slides={SLIDES} stages={[stageData[0], stageData[1]]} />
     );
   };
 

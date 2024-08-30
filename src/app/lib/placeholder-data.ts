@@ -95,6 +95,7 @@ export const emptyClub: Club = {
   link: 'https://www.instagram.com/ajou_club.union/',
   linkIconId: 'default',
   section: 'A',
+  clubRepresentative: '',
   phoneNumber: '010-0000-0000',
 };
 

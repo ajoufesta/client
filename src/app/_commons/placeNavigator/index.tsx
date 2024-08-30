@@ -1,11 +1,9 @@
 'use client';
 
-import { Club, Place } from '@/app/lib/types';
 import { useRef, useEffect, useState } from 'react';
 import NavigatorHandle from '@/public/navigator-handle.svg';
 
 import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
-import { DONGBAK_LOCATIONS } from '@/app/lib/constants';
 import { getLocationByPlace } from '@/app/lib/utils';
 import useModalStore from '@/app/hooks/useModalStore';
 import ClubInfo from '../clubInfo';
@@ -14,6 +12,7 @@ import ClubCard from './clubCard';
 import HandleArrowLeft from '@/public/handle-arrow-left.svg';
 import { fetchDongbakBooths } from '@/app/lib/data';
 import NavigatorHandleClosed from '@/public/navigator-handle-long.svg';
+import { Club } from '@/app/lib/types';
 
 const PlaceNavigator = () => {
   const { setPlace, setLocation } = useSelectedLocationStore();
@@ -22,54 +21,26 @@ const PlaceNavigator = () => {
   const { openModal, setModalContent } = useModalStore();
   const [places, setPlaces] = useState([]);
 
-  const divRef = useRef<HTMLDivElement>(null);
-  const initialPosition = 0;
+  const divRef = useRef<HTMLDivElement | null>(null);
 
-  // const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-  //   initialPosition = e.touches[0].clientX;
-  // };
-
-  // const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-  //   if (!divRef.current) return;
-  //   const newPosition = e.touches[0].clientX;
-  //   const diffX = initialPosition - newPosition;
-
-  //   if (initialPosition > window.innerWidth / 2 && diffX > 0) {
-  //     divRef.current.style.transform = `translateX(calc(${-diffX}px - 77%))`;
-  //   } else if (initialPosition < window.innerWidth / 2 && diffX < 0) {
-  //     divRef.current.style.transform = `translateX(calc(${-diffX}px - 169%)`;
-  //   }
-  // };
-
-  // const handleTouchEnd = () => {
-  //   if (!divRef.current) return;
-
-  //   if (divRef.current.getBoundingClientRect().left < window.innerWidth / 2) {
-  //     setIsNavOpen(true);
-  //     divRef.current.style.transform = "translateX(-169%)";
-  //   } else {
-  //     setIsNavOpen(false);
-  //     divRef.current.style.transform = "translateX(-77%)";
-  //   }
-  // };
-
-  const handleClickHandle = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClickHandle = () => {
     if (!isNavOpen) {
       setIsDayOpen(false);
       setIsSectionBarOpen(false);
       setIsNavOpen(true);
-      if (divRef.current) {
+      if (divRef.current && 'style' in divRef.current) {
         divRef.current.style.transition = 'transform 0.2s ease-out';
         divRef.current.style.transform = 'translateX(-166%)';
       }
     } else {
       setIsNavOpen(false);
-      if (divRef.current) {
+      if (divRef.current && 'style' in divRef.current) {
         divRef.current.style.transition = 'transform 0.2s ease-out';
         divRef.current.style.transform = 'translateX(-97%)';
       }
     }
   };
+
   useEffect(() => {
     async function fetchData() {
       const temPlaces = await fetchDongbakBooths();
@@ -78,9 +49,10 @@ const PlaceNavigator = () => {
 
     fetchData();
   }, []);
+
   useEffect(() => {
     if (!isNavOpen) {
-      if (divRef.current) {
+      if (divRef.current && 'style' in divRef.current) {
         divRef.current.style.transition = 'transform 0.2s ease-out';
         divRef.current.style.transform = 'translateX(-97%)';
       }
@@ -125,7 +97,7 @@ const PlaceNavigator = () => {
             isNavOpen ? 'z-20' : 'touch-none pointer-events-none'
           }`}
         >
-          {places.map((place: any, index) => (
+          {places.map((place: Club, index) => (
             <div
               key={index}
               onClick={() => {
@@ -141,7 +113,7 @@ const PlaceNavigator = () => {
                 setModalContent(<ClubInfo boothId={place.clubId} />);
                 openModal();
                 setIsNavOpen(false);
-                if (divRef.current) {
+                if (divRef.current && 'style' in divRef.current) {
                   divRef.current.style.transition = 'transform 0.2s ease-out';
                   divRef.current.style.transform = 'translateX(-77%)';
                 }

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect, useCallback } from 'react';
-import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
+import { EmblaCarouselType } from 'embla-carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 
 import { DotButton } from './EmblaCarouselArrowsDotsButtons';
@@ -12,13 +12,12 @@ import DateDisplay from '@/app/_commons/dateDisplay';
 
 type PropType = {
   slides: number[];
-  options?: EmblaOptionsType;
   stages: Stage[][];
 };
 
-const EmblaCarousel = ({ slides, options, stages }: PropType) => {
+const EmblaCarousel = ({ slides, stages }: PropType) => {
   const [day, setDay] = useState(1);
-  const [emblaRef, emblaApi] = useEmblaCarousel(options);
+  const [emblaRef, emblaApi] = useEmblaCarousel({});
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
