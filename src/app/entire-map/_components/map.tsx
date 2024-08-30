@@ -5,7 +5,6 @@ import useModalStore from '@/app/hooks/useModalStore';
 import ClubInfo from '@/app/_commons/clubInfo';
 import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
 import PlaceNavigator from '@/app/_commons/placeNavigator';
-import { fetchDongbakBooths } from '@/app/lib/data';
 
 const INITIAL_POSITION = { x: 650, y: 550 };
 const MAP_SIZE = 1200;
@@ -26,6 +25,7 @@ function MapWithPin() {
   const { openModal, setModalContent } = useModalStore();
   const { setLocation } = useSelectedLocationStore();
   const mapContainerRef = useRef<HTMLDivElement>(null);
+  var clikcedBooth = 0;
 
   const [containerSize, setContainerSize] = useState({
     width: 600,
@@ -37,15 +37,6 @@ function MapWithPin() {
   const isPanningRef = useRef(false);
   const startPosRef = useRef({ x: 0, y: 0 });
   const canvasSizeRef = useRef<number>(0);
-  // const containerHeight = useMemo(
-  //   () =>
-  //     mapContainerRef.current ? mapContainerRef.current.clientHeight : 1000,
-  //    [mapContainerRef.current]
-  // );
-  // const containerWidth = useMemo(
-  //   () => (mapContainerRef.current ? mapContainerRef.current.clientWidth : 600),
-  //   [mapContainerRef.current]
-  // );
   useEffect(() => {
     const updateContainerSize = () => {
       if (mapContainerRef.current) {
@@ -117,7 +108,6 @@ function MapWithPin() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // render map in canvas
-      console.log('d', viewPosRef.current.x, viewPosRef.current.y);
       ctx.drawImage(
         mapImage,
         viewPosRef.current.x,
@@ -172,6 +162,32 @@ function MapWithPin() {
     const handleStart = (clientX: number, clientY: number) => {
       isPanningRef.current = true;
       startPosRef.current = { x: clientX, y: clientY };
+      if (!canvas) return;
+
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = clientX - rect.left;
+      const mouseY = clientY - rect.top;
+
+      pins.forEach((pin) => {
+        const relativePinX =
+          (pin.x - viewPosRef.current.x) * (canvasSizeRef.current / MAP_SIZE);
+        const relativePinY =
+          (pin.y - viewPosRef.current.y) * (canvasSizeRef.current / MAP_SIZE);
+
+        const pinLeft = relativePinX - pin.width / 3;
+        const pinRight = relativePinX + pin.width / 3;
+        const pinTop = relativePinY - pin.height / 3;
+        const pinBottom = relativePinY + pin.height / 3;
+
+        if (
+          mouseX >= pinLeft &&
+          mouseX <= pinRight &&
+          mouseY >= pinTop &&
+          mouseY <= pinBottom
+        ) {
+          clikcedBooth = pin.boothId!;
+        }
+      });
     };
 
     const handleMove = (clientX: number, clientY: number) => {
@@ -187,12 +203,6 @@ function MapWithPin() {
 
       const limitedViewPosX = Math.max(Math.min(newViewPosX, maxViewPosX), 0);
       const limitedViewPosY = Math.max(Math.min(newViewPosY, maxViewPosY), 0);
-
-      console.log('y : ', limitedViewPosY, newViewPosY, maxViewPosY);
-      console.log('x : ', limitedViewPosX, newViewPosX, maxViewPosX);
-      console.log('width : ', containerWidth);
-      console.log('height : ', containerHeight);
-      console.log('ratio : ', screenRatio);
 
       viewPosRef.current = { x: limitedViewPosX, y: limitedViewPosY };
       draw();
@@ -219,12 +229,12 @@ function MapWithPin() {
         const pinRight = relativePinX + pin.width / 3;
         const pinTop = relativePinY - pin.height / 3;
         const pinBottom = relativePinY + pin.height / 3;
-
         if (
           mouseX >= pinLeft &&
           mouseX <= pinRight &&
           mouseY >= pinTop &&
-          mouseY <= pinBottom
+          mouseY <= pinBottom &&
+          clikcedBooth == pin.boothId
         ) {
           setLocation({ location: '1', x: pin.x, y: pin.y });
           setModalContent(<ClubInfo boothId={pin.boothId || 0} />);
