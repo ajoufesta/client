@@ -4,15 +4,18 @@ interface Props {
   players: GamePlayer[];
 }
 
+const COLOR_SET = ['#CE5350', '#D77B48', '#D79E48'];
+
 const Rank = ({ players }: Props) => {
   return players.map((player, index) => (
     <div
       className="flex justify-start overflow-hidden rounded-r-full relative py-[1.2rem] px-[1.7rem] w-fit"
       key={index}
     >
-      <div className={`w-[${6 * index}rem] h-full`} />
+      <div style={{ width: `${4 * index}rem`, height: `100%` }} />
       <div
-        className={`w-[3.3rem] h-[3.3rem] ${'bg-playRank-' + (index + 1)} rounded-full flex justify-center`}
+        style={{ backgroundColor: COLOR_SET[index] }}
+        className={`w-[3.3rem] h-[3.3rem] rounded-full flex justify-center`}
       >
         <span className="text-bold text-white text-[1.8rem] text-center leading-loose">
           {index + 1}

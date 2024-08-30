@@ -83,11 +83,6 @@ const config: Config = {
           3: 'rgb(104, 123, 184)',
           4: 'rgb(129,187,113)',
         },
-        playRank: {
-          1: '#CE5350',
-          2: '#D77B48',
-          3: '#D79E48',
-        },
       },
 
       keyframes: {
