@@ -24,6 +24,7 @@ const ClubInfo = ({ boothId }: Props) => {
             clubActivities: boothInfo.clubActivities,
             link: boothInfo.link,
             linkIconId: boothInfo.linkIconId,
+            clubRepresentative: boothInfo.clubRepresentative,
             section: 'A',
             phoneNumber: boothInfo.phoneNumber,
           };

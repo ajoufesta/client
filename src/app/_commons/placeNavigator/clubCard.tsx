@@ -8,19 +8,36 @@ const imageUrls = {
 };
 
 interface Props {
-  boothId: number;
+  clubId: number;
+  clubName: string;
+  clubDetail: string;
+  clubActivities: string[];
+  link: string;
+  clubRepresentative: string;
+  linkIconId: 'picture' | 'instagram' | 'default';
+  phoneNumber: string;
 }
 
-const ClubCard = ({ boothId }: Props) => {
+const ClubCard = ({
+  clubId,
+  clubName,
+  clubDetail,
+  clubActivities,
+  link,
+  linkIconId,
+  clubRepresentative,
+  phoneNumber,
+}: Props) => {
   const mock: Club = {
-    clubId: 1,
-    clubName: 'testName',
-    clubDetail: '놀러오세요',
-    clubActivities: ['아주페스타 개발하기'],
-    link: 'www.google.com',
-    linkIconId: 'default',
+    clubId: clubId,
+    clubName: clubName,
+    clubDetail: clubDetail,
+    clubActivities: clubActivities.slice(0, 1),
+    link: link,
+    linkIconId: linkIconId,
     section: 'A',
-    phoneNumber: '010-0000-0000',
+    clubRepresentative: clubRepresentative,
+    phoneNumber: phoneNumber,
   };
 
   return (

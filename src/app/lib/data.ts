@@ -24,10 +24,10 @@ export const fetchStageData = async (day: number) => {
   }
 };
 
-export const fetchDongbakBooths = async (day: number, section: string) => {
+export const fetchDongbakBooths = async () => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/clubs?day=${day}&section=${section}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/clubs/all`,
       {
         next: {
           revalidate: 900, // 15분

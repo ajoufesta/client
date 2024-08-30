@@ -72,7 +72,7 @@ const PlaceNavigator = () => {
   };
   useEffect(() => {
     async function fetchData() {
-      const temPlaces = await fetchDongbakBooths(1, 'A');
+      const temPlaces = await fetchDongbakBooths();
       setPlaces(temPlaces);
     }
 
@@ -125,16 +125,20 @@ const PlaceNavigator = () => {
             isNavOpen ? 'z-20' : 'touch-none pointer-events-none'
           }`}
         >
-          {places.map((place, index) => (
+          {places.map((place: any, index) => (
             <div
               key={index}
               onClick={() => {
+                console.log(place);
                 setPlace(place);
+                // setLocation({ location: '1', x: pin.x, y: pin.y });
+                // setModalContent(<ClubInfo boothId={pin.boothId || 0} />);
+                // openModal();
                 setLocation(
                   // ❗️ 현재 동아리 박람회 페이지에서만 사용가능함 ❗️
-                  getLocationByPlace(place, DONGBAK_LOCATIONS[1]['A'])
+                  getLocationByPlace(place.clubId)
                 );
-                setModalContent(<ClubInfo boothId={1} />);
+                setModalContent(<ClubInfo boothId={place.clubId} />);
                 openModal();
                 setIsNavOpen(false);
                 if (divRef.current) {
@@ -143,7 +147,16 @@ const PlaceNavigator = () => {
                 }
               }}
             >
-              <ClubCard boothId={1} />
+              <ClubCard
+                clubId={place.clubId}
+                clubName={place.clubName}
+                clubDetail={place.clubDetail}
+                clubActivities={place.clubActivities}
+                link={place.link}
+                linkIconId={place.linkIconId}
+                clubRepresentative={place.clubRepresentative}
+                phoneNumber={place.phoneNumber}
+              />
             </div>
           ))}
           <div className="h-32 mb-10">&nbsp;</div>
