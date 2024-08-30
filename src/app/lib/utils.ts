@@ -1,7 +1,7 @@
 import { FESTIVAL_DATE } from './constants';
 import { emptyBooth, emptyClub, emptyPub } from './placeholder-data';
 import { Pub, Booth, PlaceLocation, Place, Club } from './types';
-
+import pins from '../entire-map/_resources/pins.json';
 /**
  * 현재 날짜가 축제 기간 중 몇 번째 날인지 확인
  * @param {Date} date - 날짜
@@ -84,20 +84,18 @@ export const getFormattedTime = (time: string): string => {
   return `${hours}:${minutes}`;
 };
 
-export const getLocationByPlace = (
-  place: Place,
-  locations: PlaceLocation[]
-): PlaceLocation => {
+export const getLocationByPlace = (clubId: number): PlaceLocation => {
+  var tempPin = pins.find((pin) => {
+    if ('boothId' in pin) {
+      return pin.boothId === clubId;
+    }
+  });
   return (
-    locations.find((location) => {
-      if ('boothId' in place) {
-        return location.location === place.boothLocation;
-      } else if ('pubId' in place) {
-        return location.location === place.pubLocation;
-      } else {
-        return location.location === place.clubId.toString();
-      }
-    }) || { location: '', x: 0, y: 0 }
+    { location: '1', x: tempPin?.x!, y: tempPin?.y! } || {
+      location: '',
+      x: 0,
+      y: 0,
+    }
   );
 };
 

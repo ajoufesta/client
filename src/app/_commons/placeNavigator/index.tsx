@@ -1,8 +1,9 @@
 'use client';
 
 import { Club, Place } from '@/app/lib/types';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import NavigatorHandle from '@/public/navigator-handle.svg';
+
 import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
 import { DONGBAK_LOCATIONS } from '@/app/lib/constants';
 import { getLocationByPlace } from '@/app/lib/utils';
@@ -11,22 +12,15 @@ import ClubInfo from '../clubInfo';
 import useIsOpenStore from '@/app/hooks/useIsOpenStore';
 import ClubCard from './clubCard';
 import HandleArrowLeft from '@/public/handle-arrow-left.svg';
+import { fetchDongbakBooths } from '@/app/lib/data';
+import NavigatorHandleClosed from '@/public/navigator-handle-long.svg';
 
-interface PlaceNavigatorProps {
-  places: Place[];
-  selectedDay: number;
-  selectedSection: string;
-}
-
-const PlaceNavigator = ({
-  places,
-  selectedDay,
-  selectedSection,
-}: PlaceNavigatorProps) => {
+const PlaceNavigator = () => {
   const { setPlace, setLocation } = useSelectedLocationStore();
   const { isNavOpen, setIsNavOpen, setIsDayOpen, setIsSectionBarOpen } =
     useIsOpenStore();
   const { openModal, setModalContent } = useModalStore();
+  const [places, setPlaces] = useState([]);
 
   const divRef = useRef<HTMLDivElement>(null);
   const initialPosition = 0;
@@ -72,16 +66,23 @@ const PlaceNavigator = ({
       setIsNavOpen(false);
       if (divRef.current) {
         divRef.current.style.transition = 'transform 0.2s ease-out';
-        divRef.current.style.transform = 'translateX(-77%)';
+        divRef.current.style.transform = 'translateX(-97%)';
       }
     }
   };
+  useEffect(() => {
+    async function fetchData() {
+      const temPlaces = await fetchDongbakBooths();
+      setPlaces(temPlaces);
+    }
 
+    fetchData();
+  }, []);
   useEffect(() => {
     if (!isNavOpen) {
       if (divRef.current) {
         divRef.current.style.transition = 'transform 0.2s ease-out';
-        divRef.current.style.transform = 'translateX(-77%)';
+        divRef.current.style.transform = 'translateX(-97%)';
       }
     }
   }, [isNavOpen]);
@@ -93,35 +94,51 @@ const PlaceNavigator = ({
         ref={divRef}
       >
         <div className="relative">
-          <NavigatorHandle
-            className="mt-[1.6rem]"
-            onClick={handleClickHandle}
-          />
-          <HandleArrowLeft
-            className={`absolute top-[3rem] left-3 ${
-              isNavOpen ? 'rotate-180' : ''
-            }`}
-            onClick={handleClickHandle}
-          />
+          {isNavOpen ? (
+            <>
+              <NavigatorHandle
+                className="mt-[1.6rem]"
+                onClick={handleClickHandle}
+              />
+              <HandleArrowLeft
+                className={`absolute top-[3rem] left-3 ${'rotate-180'}`}
+                onClick={handleClickHandle}
+              />
+            </>
+          ) : (
+            <>
+              <NavigatorHandleClosed
+                className="mt-[1.6rem] w-[60px]"
+                onClick={handleClickHandle}
+              />
+              <div
+                className={`absolute top-[2.5rem] left-4 cursor-pointer text-white font-bold text-lg`}
+                onClick={handleClickHandle}
+              >
+                전체 부스
+              </div>
+            </>
+          )}
         </div>
         <div
           className={`flex flex-col p-4 gap-4 items-center w-full bg-brown-500 overflow-y-auto ${
             isNavOpen ? 'z-20' : 'touch-none pointer-events-none'
           }`}
         >
-          {places.map((place, index) => (
+          {places.map((place: any, index) => (
             <div
               key={index}
               onClick={() => {
+                console.log(place);
                 setPlace(place);
+                // setLocation({ location: '1', x: pin.x, y: pin.y });
+                // setModalContent(<ClubInfo boothId={pin.boothId || 0} />);
+                // openModal();
                 setLocation(
                   // ❗️ 현재 동아리 박람회 페이지에서만 사용가능함 ❗️
-                  getLocationByPlace(
-                    place,
-                    DONGBAK_LOCATIONS[selectedDay][selectedSection]
-                  )
+                  getLocationByPlace(place.clubId)
                 );
-                setModalContent(<ClubInfo boothId={1} />);
+                setModalContent(<ClubInfo boothId={place.clubId} />);
                 openModal();
                 setIsNavOpen(false);
                 if (divRef.current) {
@@ -130,7 +147,16 @@ const PlaceNavigator = ({
                 }
               }}
             >
-              <ClubCard boothId={1} />
+              <ClubCard
+                clubId={place.clubId}
+                clubName={place.clubName}
+                clubDetail={place.clubDetail}
+                clubActivities={place.clubActivities}
+                link={place.link}
+                linkIconId={place.linkIconId}
+                clubRepresentative={place.clubRepresentative}
+                phoneNumber={place.phoneNumber}
+              />
             </div>
           ))}
           <div className="h-32 mb-10">&nbsp;</div>

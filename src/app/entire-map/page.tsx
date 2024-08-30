@@ -21,7 +21,7 @@ const EntireMapPage = () => {
   return (
     <div
       className={
-        'flex flex-col w-full h-full align-middle justify-center gap-10'
+        'flex flex-col w-full h-full  items-center align-middle justify-center gap-10'
       }
     >
       <div className={'flex justify-center'}>
@@ -32,7 +32,7 @@ const EntireMapPage = () => {
           height={77}
         />
       </div>
-      <div className="w-full h-full flex-col items-center border-2 border-brown-500 rounded-3xl overflow-hidden relative shadow-md">
+      <div className="flex mt-2 w-[33.5rem] h-[49.9rem] flex-col items-center justify-center rounded-3xl overflow-hidden relative shadow-md">
         <MapWithPin />
         <PlaceModal />
         {/*<UnderBar />*/}
