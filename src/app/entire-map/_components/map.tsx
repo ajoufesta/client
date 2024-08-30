@@ -24,8 +24,8 @@ interface Pin {
 function MapWithPin() {
   const { openModal, setModalContent } = useModalStore();
   const { setLocation } = useSelectedLocationStore();
-  const mapContainerRef = useRef<HTMLDivElement>(null);
-  var clikcedBooth = 0;
+  const mapContainerRef = useRef<HTMLDivElement | null>(null);
+  let clikcedBooth = 0;
 
   const [containerSize, setContainerSize] = useState({
     width: 600,
@@ -39,7 +39,11 @@ function MapWithPin() {
   const canvasSizeRef = useRef<number>(0);
   useEffect(() => {
     const updateContainerSize = () => {
-      if (mapContainerRef.current) {
+      if (
+        mapContainerRef.current &&
+        'clientWidth' in mapContainerRef.current &&
+        'clientHeight' in mapContainerRef.current
+      ) {
         setContainerSize({
           width: mapContainerRef.current.clientWidth,
           height: mapContainerRef.current.clientHeight,
