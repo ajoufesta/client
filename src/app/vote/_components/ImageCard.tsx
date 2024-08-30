@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { VOTE_IMAGES } from '@/app/lib/constants';
 import ImageZoom from '@/app/vote/_components/ImageZoom';
@@ -12,6 +12,13 @@ const ImageCard = () => {
   const [selectedId, setSelectedId] = useState(0); // 0 : defaultIamgeId
   const [isVoted, setIsVoted] = useState(false);
 
+  useEffect(() => {
+    const isVotedInCLient = localStorage.getItem('isVoted');
+    if (isVotedInCLient === 'true') {
+      setIsVoted(true);
+    }
+  }, []);
+
   const handleImageSelect = (id: number) => {
     setSelectedId(id);
     setZoomedImage(0);
@@ -21,6 +28,7 @@ const ImageCard = () => {
     try {
       await postSelectedImages(selectedId);
       setIsVoted(true);
+      localStorage.setItem('isVoted', 'true');
     } catch (error) {
       setIsVoted(false);
       console.error('전송 실패:', error);
@@ -41,7 +49,7 @@ const ImageCard = () => {
         <div className="text-center mt-4">
           <Link href="/entire-map">
             <button
-              className={`bg-brown-600 px-10 py-4 text-brown-300 font-semibold text-xl rounded-xl ${selectedId > 0 || 'opacity-50'}`}
+              className={`bg-brown-600 px-10 py-4 text-brown-300 font-semibold text-xl rounded-xl`}
             >
               지도로 돌아가기
             </button>
