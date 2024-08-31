@@ -6,6 +6,11 @@ import ClubInfo from '@/app/_commons/clubInfo';
 import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
 import PlaceNavigator from '@/app/_commons/placeNavigator';
 
+import PopupImage from '@/public/assets/map/popup.png';
+import useIsFirstStore from '@/app/hooks/useIsFirstStore';
+import { useRouter } from 'next/navigation';
+import { links } from '@/app/_commons/footer-links';
+
 const INITIAL_POSITION = { x: 650, y: 550 };
 const MAP_SIZE = 1200;
 const ORIGIN_MAP_WIDTH = 2336;
@@ -21,7 +26,22 @@ interface Pin {
   pinName: string;
 }
 
+// 특정 링크로 이동하는 함수
+
 function MapWithPin() {
+  const useNavigateToLink = () => {
+    const router = useRouter();
+    const { setCameFromSection } = useIsFirstStore();
+
+    // 경로로 이동하는 함수
+    const navigateToLink = (href: string) => {
+      setCameFromSection(false); // 필요에 따라 추가 작업
+      router.push(href); // 주어진 경로로 이동
+    };
+
+    return navigateToLink;
+  };
+  const navigateToLink = useNavigateToLink(); // 링크 이동 함수 사용
   const { openModal, setModalContent } = useModalStore();
   const { setLocation } = useSelectedLocationStore();
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
@@ -238,11 +258,50 @@ function MapWithPin() {
           mouseX <= pinRight &&
           mouseY >= pinTop &&
           mouseY <= pinBottom &&
-          clikcedBooth == pin.boothId
+          clikcedBooth == pin.boothId &&
+          pin.type == 'boothPin'
         ) {
           setLocation({ location: '1', x: pin.x, y: pin.y });
           setModalContent(<ClubInfo boothId={pin.boothId || 0} />);
           openModal();
+        }
+
+        if (
+          mouseX >= pinLeft &&
+          mouseX <= pinRight &&
+          mouseY >= pinTop &&
+          mouseY <= pinBottom &&
+          clikcedBooth == pin.boothId &&
+          pin.type == 'customPin'
+        ) {
+          switch (pin.pinName) {
+            case 'popup':
+              setLocation({ location: '1', x: pin.x, y: pin.y });
+              setModalContent(
+                <img src="assets/map/modal_popup.png" alt="popup"></img>
+              );
+              openModal();
+              break;
+            case 'busking':
+              navigateToLink(links[0].href[0]);
+              break;
+            case 'show':
+              navigateToLink(links[2].href[0]);
+              break;
+            case 'photo':
+              navigateToLink(links[4].href[0]);
+              break;
+            case 'center':
+              navigateToLink(links[2].href[0]);
+              break;
+            case 'food':
+              setLocation({ location: '1', x: pin.x, y: pin.y });
+              setModalContent(
+                <img src="assets/map/modal_food.png" alt="food_menu"></img>
+              );
+              openModal();
+              break;
+          }
         }
       });
     };
