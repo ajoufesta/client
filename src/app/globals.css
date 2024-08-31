@@ -29,7 +29,7 @@
 
   .highlight-2 {
     display: inline;
-    box-shadow: inset 0 -1rem 0 rgba(182, 126, 92, 0.1);
+    box-shadow: inset 0 -1rem 0 #FAF8F5;
   }
 
   .move-right {

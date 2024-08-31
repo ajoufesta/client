@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import UnderBar from './_components/underBar';
 import { Metadata } from 'next';
 import MapWithPin from '@/app/entire-map/_components/map';
 import PlaceModal from '@/app/_commons/placeModal';
@@ -21,7 +20,7 @@ const EntireMapPage = () => {
   return (
     <div
       className={
-        'flex flex-col w-full h-full  items-center align-middle justify-center gap-10'
+        'flex flex-col w-full h-full items-center align-middle justify-center gap-10'
       }
     >
       <div className={'flex justify-center'}>
