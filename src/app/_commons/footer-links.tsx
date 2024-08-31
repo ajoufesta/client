@@ -12,24 +12,26 @@ import DongyeonIcon from '@/public/assets/footer/dongyeonIcon.svg';
 import DongariIcon from '@/public/assets/footer/dongariIcon.svg';
 import BuskingIcon from '@/public/assets/footer/buskingIcon.svg';
 import PlayActiveIcon from '@/public/assets/footer/playActiveIcon.svg';
+import VoteIcon from '@/public/assets/footer/voteIcon.svg';
+import VoteActiveIcon from '@/public/assets/footer/voteActiveIcon.svg';
 
 export const links = [
   { name: '버스킹', href: ['/stage'], icon: [BuskingIcon, BuskingActiveIcon] },
-  {
-    name: '동아리',
-    href: ['/entire-map', '/dongbak'],
-    icon: [DongariIcon, DongariActiveIcon],
-  },
   {
     name: '동연소식',
     href: ['/dongwha'],
     icon: [DongyeonIcon, DongyeonActiveIcon],
   },
+  {
+    name: '지도',
+    href: ['/entire-map', '/dongbak'],
+    icon: [DongariIcon, DongariActiveIcon],
+  },
   { name: '권총사격', href: ['/play'], icon: [PlayIcon, PlayActiveIcon] },
   {
     name: '투표',
     href: ['/vote'],
-    icon: [PlayIcon, PlayActiveIcon],
+    icon: [VoteIcon, VoteActiveIcon],
   },
 ];
 

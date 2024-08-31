@@ -25,22 +25,21 @@ const ImageCard = () => {
   };
 
   const handleSendResults = async () => {
-    try {
-      await postSelectedImages(selectedId);
-      setIsVoted(true);
-      localStorage.setItem('isVoted', 'true');
-    } catch (error) {
-      setIsVoted(false);
-      console.error('전송 실패:', error);
+    if (selectedId > 0) {
+      try {
+        await postSelectedImages(selectedId);
+        setIsVoted(true);
+        localStorage.setItem('isVoted', 'true');
+      } catch (error) {
+        setIsVoted(false);
+        console.error('전송 실패:', error);
+      }
     }
   };
 
   if (isVoted) {
     return (
-      <div
-        className="flex flex-col justify-center items-center h-screen"
-        style={{ backgroundColor: 'inherit' }}
-      >
+      <div className="flex flex-col justify-center items-center h-screen">
         <h1 className="text-3xl font-bold text-white mb-4">
           {isVoted
             ? '투표에 참여해주셔서 감사합니다!'
@@ -102,8 +101,9 @@ const ImageCard = () => {
       </div>
       <div className="text-center mt-4">
         <button
+          disabled={selectedId === 0}
           onClick={handleSendResults}
-          className={`bg-brown-600 px-10 py-4 text-brown-300 font-semibold text-xl rounded-xl ${selectedId > 0 || 'opacity-50'}`}
+          className={`bg-brown-600 px-10 py-4 text-brown-300 font-semibold text-xl rounded-xl disabled:opacity-50`}
         >
           투표
         </button>

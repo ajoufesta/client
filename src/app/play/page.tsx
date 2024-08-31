@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const PlayPage = async () => {
   const { players, currentTime } = await fetchGamePlayers();
   return (
-    <div className="flex flex-col w-full h-full justify-between py-[3rem]">
+    <div className="flex flex-col w-full h-full justify-between">
       <div className={'flex flex-col gap-2.5'}>
         <CurrentDateDisplay />
         <h1 className="text-[2.4rem] text-brown-800 font-bold text-center">
@@ -39,9 +39,6 @@ const PlayPage = async () => {
           <div>
             <p className=" font-normal text-center text-[1.4rem]">
               권총사격대회에 참가하여 상품을 차지하세요!
-            </p>
-            <p className=" font-normal text-center text-[1.4rem]">
-              순위 내에 들면 상품을 드립니다.
             </p>
           </div>
           <div className="flex flex-col items-start gap-[0.8rem]">
