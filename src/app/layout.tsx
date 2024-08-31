@@ -1,6 +1,8 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import CustomRootLayout from './_commons/rootLayout';
+import GoogleAnalytics from './lib/GoogleAnalytics';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   manifest: '/manifest.json',
@@ -41,5 +43,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <CustomRootLayout>{children}</CustomRootLayout>;
+  return (
+    <html lang="ko">
+      <body>
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+        ) : null}
+        <CustomRootLayout>{children}</CustomRootLayout>
+        <Analytics />
+      </body>
+    </html>
+  );
 }
