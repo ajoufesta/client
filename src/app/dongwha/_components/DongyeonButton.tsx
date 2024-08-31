@@ -18,16 +18,14 @@ const DongyeonButton = () => {
   };
 
   return (
-    <div className="flex w-full h-[6.5rem] gap-3.5 mb-3.5">
+    <div className="flex w-full gap-3.5 mb-3.5">
       <div
-        className={`w-full h-full py-[1rem] rounded-2xl bg-brown-600 flex justify-center align-middle text-center ${isAjouFesta && 'opacity-60'}`}
+        className={`w-full h-full py-[1rem] text-center rounded-2xl bg-brown-600 font-bold text-2xl text-brown-300 flex justify-center align-middle ${isAjouFesta && 'opacity-60'}`}
         onClick={() => handleClick(false)}
       >
-        <p className="font-bold text-2xl text-brown-300 content-center">
-          동아리박람회
-          <br />
-          이벤트 안내
-        </p>
+        동아리박람회
+        <br />
+        이벤트 안내
       </div>
       <div
         className={`w-full f-full py-[1rem] rounded-2xl bg-brown-600 flex justify-center align-middle text-center ${isAjouFesta || 'opacity-60'}`}
