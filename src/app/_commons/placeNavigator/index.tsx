@@ -65,7 +65,7 @@ const PlaceNavigator = () => {
         className="relative flex justify-end w-full h-full transform translate-x-[-77%]"
         ref={divRef}
       >
-        <div className="relative">
+        <div>
           {isNavOpen ? (
             <>
               <NavigatorHandle
@@ -93,13 +93,14 @@ const PlaceNavigator = () => {
           )}
         </div>
         <div
-          className={`flex flex-col p-4 gap-4 items-center w-full bg-brown-500 overflow-y-auto ${
+          className={`flex flex-col p-[1.3rem] gap-4 items-center w-full bg-brown-700 relative overflow-x-hidden overflow-y-auto ${
             isNavOpen ? 'z-20' : 'touch-none pointer-events-none'
           }`}
         >
           {places.map((place: Club, index) => (
             <div
               key={index}
+              className={'w-full'}
               onClick={() => {
                 console.log(place);
                 setPlace(place);
@@ -131,7 +132,6 @@ const PlaceNavigator = () => {
               />
             </div>
           ))}
-          <div className="h-32 mb-10">&nbsp;</div>
         </div>
       </div>
     </div>

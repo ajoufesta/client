@@ -18,9 +18,9 @@ const DongyeonButton = () => {
   };
 
   return (
-    <div className="flex w-full gap-3.5 mb-3.5">
+    <div className="flex w-full h-[6.5rem] gap-3.5 mb-3.5">
       <div
-        className={`w-full h-[6.5rem] rounded-2xl bg-brown-600 flex justify-center align-middle text-center ${isAjouFesta && 'opacity-60'}`}
+        className={`w-full h-full py-[1rem] rounded-2xl bg-brown-600 flex justify-center align-middle text-center ${isAjouFesta && 'opacity-60'}`}
         onClick={() => handleClick(false)}
       >
         <p className="font-bold text-2xl text-brown-300 content-center">
@@ -30,7 +30,7 @@ const DongyeonButton = () => {
         </p>
       </div>
       <div
-        className={`w-full h-[6.5rem] rounded-2xl bg-brown-600 flex justify-center align-middle text-center ${isAjouFesta || 'opacity-60'}`}
+        className={`w-full f-full py-[1rem] rounded-2xl bg-brown-600 flex justify-center align-middle text-center ${isAjouFesta || 'opacity-60'}`}
         onClick={() => handleClick(true)}
       >
         <p className="font-bold text-2xl text-brown-300 content-center">

@@ -7,6 +7,8 @@ interface Props {
   boothId: number;
 }
 
+const COLOR_SET = ['#C7A7A1', '#E3D3D0', '#F1E9E8'];
+
 const ClubInfo = ({ boothId }: Props) => {
   const [clubInfo, setClubInfo] = useState<Club | null>(null);
   const [loading, setLoading] = useState(true);
@@ -49,36 +51,31 @@ const ClubInfo = ({ boothId }: Props) => {
   }
 
   return (
-    <div className="w-full h-fit min-h-[8rem] flex-shrink-0 bg-white border border-brown-400 rounded-xl p-6 relative">
-      <h1 className="w-[14rem] block text-2xl leading-4 font-bold text-brown-500 mb-2">
-        {clubInfo.clubName}
-      </h1>
-      <span className="text-normal text-brown-500 highlight-2">
-        {clubInfo.clubDetail}
-      </span>
-      {clubInfo.clubActivities[0] && (
-        <div className="mt-2 px-2 py-1 rounded-lg bg-brown-400">
-          <span className="text-sm text-brown-500">
-            {clubInfo.clubActivities[0]}
-          </span>
-        </div>
-      )}
-      {clubInfo.clubActivities[1] && (
-        <div className="mt-1 px-2 py-1 rounded-lg bg-brown-300">
-          <span className="text-sm text-brown-500">
-            {clubInfo.clubActivities[1]}
-          </span>
-        </div>
-      )}
-      {clubInfo.clubActivities[2] && (
-        <div className="mt-1 px-2 py-1 rounded-lg bg-brown-200">
-          <span className="text-sm text-brown-500">
-            {clubInfo.clubActivities[2]}
-          </span>
-        </div>
+    <div className="flex flex-col w-full h-fit bg-white border-[0.2rem] border-brown-700 rounded-[2rem] px-[2rem] py-[1.6rem] relative">
+      <div className="flex flex-col gap-[0.7rem] h-full mb-[1rem]">
+        <h1 className="w-full text-[1.8rem] font-bold text-brown-700">
+          {clubInfo.clubName}
+        </h1>
+        <span className="w-fit text-[1.4rem] text-brown-700 highlight-2">
+          {clubInfo.clubDetail}
+        </span>
+      </div>
+
+      {clubInfo.clubActivities.length > 0 && (
+        <>
+          {clubInfo.clubActivities.map((activity, index) => (
+            <div
+              key={index}
+              style={{ backgroundColor: COLOR_SET[index] }}
+              className={`mt-2 px-2 py-1 rounded-lg`}
+            >
+              <span className="text-[1.2rem] text-brown-700">{activity}</span>
+            </div>
+          ))}
+        </>
       )}
 
-      <div className="absolute top-6 right-5 flex gap-1">
+      <div className="absolute top-[1.6rem] right-[2rem] flex gap-1">
         <a
           href={`tel:${clubInfo.phoneNumber}`}
           onClick={(e) => e.stopPropagation()}
@@ -86,19 +83,19 @@ const ClubInfo = ({ boothId }: Props) => {
           <Image
             src={'/call-icon.svg'}
             alt="동아리 임원 연락처"
-            width={24}
-            height={24}
+            width={30}
+            height={30}
           />
         </a>
         <a href={clubInfo.link} target="_blank" rel="noreferrer">
           <Image
             src={'/link-icon.svg'}
             alt="동아리 홍보 링크"
-            width={24}
-            height={24}
+            width={30}
+            height={30}
           />
         </a>
-        <div className="w-[2.4rem] h-[2.4rem] rounded-full bg-brown-500 flex justify-center items-center">
+        <div className="w-[3rem] h-[3rem] rounded-full bg-brown-700 flex justify-center items-center">
           <span className="mt-[0.1rem] text-xl font-bold text-white">
             {clubInfo.clubId.toString().padStart(2, '0')}
           </span>

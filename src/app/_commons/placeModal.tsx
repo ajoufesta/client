@@ -19,7 +19,7 @@ const PlaceModal = () => {
     <>
       {isModalOpen && location && (
         <div
-          className="top-0 left-0 absolute w-full h-full bg-transparentWhite-100 z-5 px-3.5 pb-20 flex flex-col-reverse"
+          className="top-0 left-0 absolute w-full h-full bg-transparentWhite-100 z-5 p-3.5 flex flex-col-reverse"
           onClick={handleOutsideClick}
         >
           <div className="mb-2 " onClick={stopPropagation}>

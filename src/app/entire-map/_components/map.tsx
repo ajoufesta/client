@@ -6,10 +6,10 @@ import ClubInfo from '@/app/_commons/clubInfo';
 import useSelectedLocationStore from '@/app/hooks/useSelectedLocationStore';
 import PlaceNavigator from '@/app/_commons/placeNavigator';
 
-import PopupImage from '@/public/assets/map/popup.png';
 import useIsFirstStore from '@/app/hooks/useIsFirstStore';
 import { useRouter } from 'next/navigation';
 import { links } from '@/app/_commons/footer-links';
+import ImageZoom from '@/app/entire-map/_components/ImageZoom';
 
 const INITIAL_POSITION = { x: 650, y: 550 };
 const MAP_SIZE = 1200;
@@ -57,6 +57,9 @@ function MapWithPin() {
   const isPanningRef = useRef(false);
   const startPosRef = useRef({ x: 0, y: 0 });
   const canvasSizeRef = useRef<number>(0);
+  const [isImageZoom, setIsImageZoom] = useState(false);
+  const [zoomedImage, setZoomedImage] = useState('');
+
   useEffect(() => {
     const updateContainerSize = () => {
       if (
@@ -125,6 +128,11 @@ function MapWithPin() {
       },
       {} as Record<string, HTMLImageElement>
     );
+
+    const displayFullImage = (src: string) => {
+      setIsImageZoom(true);
+      setZoomedImage(src);
+    };
 
     const draw = () => {
       if (!ctx || !canvas) return;
@@ -277,10 +285,7 @@ function MapWithPin() {
           switch (pin.pinName) {
             case 'popup':
               setLocation({ location: '1', x: pin.x, y: pin.y });
-              setModalContent(
-                <img src="assets/map/modal_popup.png" alt="popup"></img>
-              );
-              openModal();
+              displayFullImage('/assets/map/modal_popup.png');
               break;
             case 'busking':
               navigateToLink(links[0].href[0]);
@@ -296,10 +301,7 @@ function MapWithPin() {
               break;
             case 'food':
               setLocation({ location: '1', x: pin.x, y: pin.y });
-              setModalContent(
-                <img src="assets/map/modal_food.png" alt="food_menu"></img>
-              );
-              openModal();
+              displayFullImage('/assets/map/modal_food.png');
               break;
           }
         }
@@ -374,10 +376,16 @@ function MapWithPin() {
     return (
       <div
         ref={mapContainerRef}
-        className="flex mt-2 w-[33.5rem] h-[49.9rem] flex-col items-center border-2 border-brown-500 rounded-3xl overflow-hidden relative shadow-md"
+        className="flex mt-2 w-[33.5rem] h-[49.9rem] flex-col items-center border-2 border-brown-700 rounded-3xl overflow-hidden relative shadow-md"
       >
         <canvas ref={canvasRef} />
         <PlaceNavigator />
+        {isImageZoom && (
+          <ImageZoom
+            zoomedImage={zoomedImage}
+            onClose={() => setIsImageZoom(false)}
+          />
+        )}
       </div>
     );
   };
