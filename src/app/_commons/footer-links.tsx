@@ -13,7 +13,7 @@ import DongariIcon from '@/public/assets/footer/dongariIcon.svg';
 import BuskingIcon from '@/public/assets/footer/buskingIcon.svg';
 import PlayActiveIcon from '@/public/assets/footer/playActiveIcon.svg';
 
-const links = [
+export const links = [
   { name: '버스킹', href: ['/stage'], icon: [BuskingIcon, BuskingActiveIcon] },
   {
     name: '동아리',
