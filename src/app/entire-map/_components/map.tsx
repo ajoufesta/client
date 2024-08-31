@@ -14,7 +14,7 @@ import { links } from '@/app/_commons/footer-links';
 const INITIAL_POSITION = { x: 650, y: 550 };
 const MAP_SIZE = 1200;
 const ORIGIN_MAP_WIDTH = 2336;
-const ORIGIN_MAP_HEIGHT = 2481;
+const ORIGIN_MAP_HEIGHT = 2556;
 const PAN_SENSITIVITY = 2.5;
 
 interface Pin {
