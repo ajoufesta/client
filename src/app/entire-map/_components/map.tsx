@@ -284,23 +284,21 @@ function MapWithPin() {
         ) {
           switch (pin.pinName) {
             case 'popup':
-              setLocation({ location: '1', x: pin.x, y: pin.y });
               displayFullImage('/assets/map/modal_popup.png');
               break;
             case 'busking':
               navigateToLink(links[0].href[0]);
               break;
             case 'show':
-              navigateToLink(links[2].href[0]);
+              navigateToLink(links[4].href[0]);
               break;
             case 'photo':
-              navigateToLink(links[4].href[0]);
+              displayFullImage('/assets/carousel/dongbak6.jpeg');
               break;
             case 'center':
               navigateToLink(links[2].href[0]);
               break;
             case 'food':
-              setLocation({ location: '1', x: pin.x, y: pin.y });
               displayFullImage('/assets/map/modal_food.png');
               break;
           }

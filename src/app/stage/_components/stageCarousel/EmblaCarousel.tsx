@@ -83,7 +83,7 @@ const EmblaCarousel = ({ slides, stages }: PropType) => {
             className={`rotate-180 ${selectedIndex === 0 && 'invisible'}`}
           />
           <div className={'flex justify-center mx-[3rem]'}>
-            <span className="text-brown-600 text-[2.8rem] font-bold leading-loose">
+            <span className="text-brown-600 text-[2.8rem] font-bold">
               {`DAY ${day}`}
             </span>
           </div>
@@ -112,35 +112,35 @@ const EmblaCarousel = ({ slides, stages }: PropType) => {
           </div>
         </div>
       </div>
-      <div className="embla__dots">
-        {scrollSnaps.map((_, index) => (
-          <DotButton
-            key={index}
-            onClick={() => {
-              scrollTo(index);
-            }}
-            className={'embla__dot'.concat(
-              index === selectedIndex ? ' embla__dot--selected' : ''
-            )}
-          >
-            {index === selectedIndex ? (
-              <Image
-                src={'/assets/carousel/indicator-fill-dot.svg'}
-                alt={'dot'}
-                width={8}
-                height={8}
-              />
-            ) : (
-              <Image
-                src={'/assets/carousel/indicator-dot.svg'}
-                alt={'dot'}
-                width={8}
-                height={8}
-              />
-            )}
-          </DotButton>
-        ))}
-      </div>
+      {/*<div className="embla__dots">*/}
+      {/*  {scrollSnaps.map((_, index) => (*/}
+      {/*    <DotButton*/}
+      {/*      key={index}*/}
+      {/*      onClick={() => {*/}
+      {/*        scrollTo(index);*/}
+      {/*      }}*/}
+      {/*      className={'embla__dot'.concat(*/}
+      {/*        index === selectedIndex ? ' embla__dot--selected' : ''*/}
+      {/*      )}*/}
+      {/*    >*/}
+      {/*      {index === selectedIndex ? (*/}
+      {/*        <Image*/}
+      {/*          src={'/assets/carousel/indicator-fill-dot.svg'}*/}
+      {/*          alt={'dot'}*/}
+      {/*          width={8}*/}
+      {/*          height={8}*/}
+      {/*        />*/}
+      {/*      ) : (*/}
+      {/*        <Image*/}
+      {/*          src={'/assets/carousel/indicator-dot.svg'}*/}
+      {/*          alt={'dot'}*/}
+      {/*          width={8}*/}
+      {/*          height={8}*/}
+      {/*        />*/}
+      {/*      )}*/}
+      {/*    </DotButton>*/}
+      {/*  ))}*/}
+      {/*</div>*/}
     </div>
   );
 };
