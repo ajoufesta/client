@@ -47,7 +47,7 @@ const PlayPage = async () => {
                 일시
               </span>
               <p className="text-brown-600 font-normal ml-2 text-[1.2rem]">
-                9.2(월) - 9.3(화) 양일간 각각 17시까지
+                9.2(월) - 9.3(화) 양일간 각각 18시까지
               </p>
             </div>
             <div className="flex justify-between items-center">
