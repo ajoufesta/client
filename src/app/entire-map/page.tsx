@@ -34,9 +34,6 @@ const EntireMapPage = () => {
       <div className="flex mt-2 w-[33.5rem] h-[49.9rem] flex-col items-center justify-center rounded-3xl overflow-hidden relative shadow-md">
         <MapWithPin />
         <PlaceModal />
-        {/*<UnderBar />*/}
-        {/*<SectionNavigator />*/}
-        {/*<Tutorial />*/}
       </div>
     </div>
   );

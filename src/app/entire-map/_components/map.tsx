@@ -287,16 +287,16 @@ function MapWithPin() {
               displayFullImage('/assets/map/modal_popup.png');
               break;
             case 'busking':
-              navigateToLink(links[0].href[0]);
+              navigateToLink('/stage');
               break;
             case 'show':
-              navigateToLink(links[4].href[0]);
+              navigateToLink('/vote');
               break;
             case 'photo':
               displayFullImage('/assets/carousel/dongbak6.jpeg');
               break;
             case 'center':
-              navigateToLink(links[2].href[0]);
+              navigateToLink('/dongwha');
               break;
             case 'food':
               displayFullImage('/assets/map/modal_food.png');

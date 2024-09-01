@@ -13,8 +13,8 @@ const ImageCard = () => {
   const [isVoted, setIsVoted] = useState(false);
 
   useEffect(() => {
-    const isVotedInCLient = localStorage.getItem('isVoted');
-    if (isVotedInCLient === 'true') {
+    const isVotedInClient = localStorage.getItem('isAlreadyVoted');
+    if (isVotedInClient === 'true') {
       setIsVoted(true);
     }
   }, []);
@@ -29,7 +29,7 @@ const ImageCard = () => {
       try {
         await postSelectedImages(selectedId);
         setIsVoted(true);
-        localStorage.setItem('isVoted', 'true');
+        localStorage.setItem('isAlreadyVoted', 'true');
       } catch (error) {
         setIsVoted(false);
         console.error('전송 실패:', error);
