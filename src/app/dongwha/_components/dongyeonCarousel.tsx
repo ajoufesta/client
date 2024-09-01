@@ -33,7 +33,7 @@ const DongyeonCarousel = ({ isAjouFesta }: PropType) => {
                 key={index}
               >
                 <Image
-                  src={`/assets/carousel/${isAjouFesta ? 'donghwa' : 'dongbak'}${index + 1}.${isAjouFesta ? 'png' : 'jpeg'}`}
+                  src={`/assets/carousel/${isAjouFesta ? 'donghwa' : 'dongbak'}${index + 1}.jpeg`}
                   alt="이미지"
                   width={315}
                   height={315}
