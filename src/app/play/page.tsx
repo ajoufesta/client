@@ -34,7 +34,7 @@ const PlayPage = async () => {
       <div className="flex flex-col gap-3">
         <div className="w-full h-full px-[2.5rem] flex flex-col justify-center items-center rounded-2xl text-xl text-brown-600 relative overflow-hidden gap-[0.8rem] py-[3rem]">
           <h2 className="text-[2rem] text-brown-600 font-bold text-center">
-            권총사격 대회
+            권총사격 대회 안내
           </h2>
           <div className="flex flex-col items-start gap-[0.8rem] mt-[1rem]">
             <div className="flex justify-between items-center">
